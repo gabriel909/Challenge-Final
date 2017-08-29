@@ -1,0 +1,15 @@
+PODS:
+  - PopupController (0.2.0)
+  - SkyFloatingLabelTextField (3.2.0)
+
+DEPENDENCIES:
+  - PopupController
+  - SkyFloatingLabelTextField
+
+SPEC CHECKSUMS:
+  PopupController: 0b69fdf11cbeaa807789a8c3992599083640988f
+  SkyFloatingLabelTextField: 4e2d2f7160af660ed1da6bb9d0027b5c474b4b79
+
+PODFILE CHECKSUM: bc90532294b0e720b6cec57fc83d42f6b4bcf19e
+
+COCOAPODS: 1.2.1
