@@ -13,6 +13,8 @@
 		4EDD3BF71F547E180012117C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EDD3BF61F547E180012117C /* Assets.xcassets */; };
 		4EDD3BFA1F547E180012117C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EDD3BF81F547E180012117C /* LaunchScreen.storyboard */; };
 		54A08B10364E3F07A3AE7D13 /* Pods_Challenge_Final.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0453924069ED25118C3CDB /* Pods_Challenge_Final.framework */; };
+		EB8F6EE41F631FFD005E1770 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8F6EE31F631FFD005E1770 /* GradientView.swift */; };
+		EB8F6EE61F632068005E1770 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8F6EE51F632068005E1770 /* CustomButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		4EDD3BFB1F547E180012117C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE0453924069ED25118C3CDB /* Pods_Challenge_Final.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Challenge_Final.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5DBD2ED16117F8E7F679500 /* Pods-Challenge-Final.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Challenge-Final.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Challenge-Final/Pods-Challenge-Final.debug.xcconfig"; sourceTree = "<group>"; };
+		EB8F6EE31F631FFD005E1770 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		EB8F6EE51F632068005E1770 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,8 @@
 			isa = PBXGroup;
 			children = (
 				4EDD3BEF1F547E180012117C /* AppDelegate.swift */,
+				EB8F6EE51F632068005E1770 /* CustomButton.swift */,
+				EB8F6EE31F631FFD005E1770 /* GradientView.swift */,
 				4EDD3BF11F547E180012117C /* ViewController.swift */,
 				4EDD3BF31F547E180012117C /* Main.storyboard */,
 				4EDD3BF61F547E180012117C /* Assets.xcassets */,
@@ -212,8 +218,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB8F6EE61F632068005E1770 /* CustomButton.swift in Sources */,
 				4EDD3BF21F547E180012117C /* ViewController.swift in Sources */,
 				4EDD3BF01F547E180012117C /* AppDelegate.swift in Sources */,
+				EB8F6EE41F631FFD005E1770 /* GradientView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,6 +387,7 @@
 				4EDD3C001F547E180012117C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
