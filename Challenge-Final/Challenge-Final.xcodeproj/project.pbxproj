@@ -115,10 +115,10 @@
 		4EDD3BEE1F547E180012117C /* Challenge-Final */ = {
 			isa = PBXGroup;
 			children = (
-				2B4FA4051F66FA26009550B9 /* Other */,
 				2B4FA4021F66F9DA009550B9 /* Model */,
 				2B4FA4031F66F9E0009550B9 /* View */,
 				2B4FA4041F66F9E4009550B9 /* Controller */,
+				2B4FA4051F66FA26009550B9 /* Other */,
 			);
 			path = "Challenge-Final";
 			sourceTree = "<group>";
