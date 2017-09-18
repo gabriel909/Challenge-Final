@@ -12,14 +12,14 @@
 		2BC43C711F70269900A84A7F /* SchoolListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC43C701F70269900A84A7F /* SchoolListViewController.swift */; };
 		2BC43C741F70271400A84A7F /* SchoolsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC43C721F70271400A84A7F /* SchoolsTableViewCell.swift */; };
 		2BC43C751F70271400A84A7F /* SchoolsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BC43C731F70271400A84A7F /* SchoolsTableViewCell.xib */; };
+		2BC43C781F7041B000A84A7F /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC43C771F7041B000A84A7F /* DAO.swift */; };
+		2BC43C7A1F7041E200A84A7F /* Escola.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC43C791F7041E200A84A7F /* Escola.swift */; };
 		4EDD3BF01F547E180012117C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDD3BEF1F547E180012117C /* AppDelegate.swift */; };
 		4EDD3BF21F547E180012117C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDD3BF11F547E180012117C /* LoginViewController.swift */; };
 		4EDD3BF51F547E180012117C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EDD3BF31F547E180012117C /* Main.storyboard */; };
 		4EDD3BF71F547E180012117C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EDD3BF61F547E180012117C /* Assets.xcassets */; };
 		4EDD3BFA1F547E180012117C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EDD3BF81F547E180012117C /* LaunchScreen.storyboard */; };
 		54A08B10364E3F07A3AE7D13 /* Pods_Challenge_Final.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0453924069ED25118C3CDB /* Pods_Challenge_Final.framework */; };
-		E5956CD51F7008E600935B58 /* Escola.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CD41F7008E600935B58 /* Escola.swift */; };
-		E5956CD81F70103700935B58 /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CD71F70103700935B58 /* DAO.swift */; };
 		E5956CDA1F7029A800935B58 /* Aluno.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CD91F7029A800935B58 /* Aluno.swift */; };
 		E5956CDD1F702CF900935B58 /* Denuncia.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CDC1F702CF900935B58 /* Denuncia.swift */; };
 		E5956CDF1F702DF800935B58 /* SuperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CDE1F702DF800935B58 /* SuperModel.swift */; };
@@ -39,6 +39,8 @@
 		2BC43C701F70269900A84A7F /* SchoolListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolListViewController.swift; sourceTree = "<group>"; };
 		2BC43C721F70271400A84A7F /* SchoolsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolsTableViewCell.swift; sourceTree = "<group>"; };
 		2BC43C731F70271400A84A7F /* SchoolsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolsTableViewCell.xib; sourceTree = "<group>"; };
+		2BC43C771F7041B000A84A7F /* DAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
+		2BC43C791F7041E200A84A7F /* Escola.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Escola.swift; sourceTree = "<group>"; };
 		4EDD3BEC1F547E180012117C /* Challenge-Final.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Challenge-Final.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EDD3BEF1F547E180012117C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4EDD3BF11F547E180012117C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -47,8 +49,6 @@
 		4EDD3BF91F547E180012117C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EDD3BFB1F547E180012117C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE0453924069ED25118C3CDB /* Pods_Challenge_Final.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Challenge_Final.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5956CD41F7008E600935B58 /* Escola.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Escola.swift; sourceTree = "<group>"; };
-		E5956CD71F70103700935B58 /* DAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
 		E5956CD91F7029A800935B58 /* Aluno.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aluno.swift; sourceTree = "<group>"; };
 		E5956CDC1F702CF900935B58 /* Denuncia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Denuncia.swift; sourceTree = "<group>"; };
 		E5956CDE1F702DF800935B58 /* SuperModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperModel.swift; sourceTree = "<group>"; };
@@ -77,8 +77,8 @@
 		2B4FA4021F66F9DA009550B9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E5956CD41F7008E600935B58 /* Escola.swift */,
 				E5956CD91F7029A800935B58 /* Aluno.swift */,
+				2BC43C791F7041E200A84A7F /* Escola.swift */,
 				E5956CDC1F702CF900935B58 /* Denuncia.swift */,
 				E5956CDE1F702DF800935B58 /* SuperModel.swift */,
 				E5956CE01F70308000935B58 /* Categoria.swift */,
@@ -120,7 +120,7 @@
 				4EDD3BFB1F547E180012117C /* Info.plist */,
 				2B4BB5791F66FFDE005A0ED3 /* Helper.swift */,
 				4EDD3BEF1F547E180012117C /* AppDelegate.swift */,
-				E5956CD71F70103700935B58 /* DAO.swift */,
+				2BC43C771F7041B000A84A7F /* DAO.swift */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -297,16 +297,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BC43C711F70269900A84A7F /* SchoolListViewController.swift in Sources */,
-				E5956CD81F70103700935B58 /* DAO.swift in Sources */,
 				EB8F6EE61F632068005E1770 /* CustomButton.swift in Sources */,
 				2B4FA4071F66FB13009550B9 /* RegisterViewController.swift in Sources */,
 				2BC43C741F70271400A84A7F /* SchoolsTableViewCell.swift in Sources */,
+				2BC43C7A1F7041E200A84A7F /* Escola.swift in Sources */,
 				4EDD3BF21F547E180012117C /* LoginViewController.swift in Sources */,
 				E5956CE51F70322900935B58 /* Serie.swift in Sources */,
+				2BC43C781F7041B000A84A7F /* DAO.swift in Sources */,
 				4EDD3BF01F547E180012117C /* AppDelegate.swift in Sources */,
 				E5956CE31F7031F000935B58 /* Aviso.swift in Sources */,
 				E5956CE11F70308000935B58 /* Categoria.swift in Sources */,
-				E5956CD51F7008E600935B58 /* Escola.swift in Sources */,
 				E5956CDA1F7029A800935B58 /* Aluno.swift in Sources */,
 				E5956CE71F70382500935B58 /* Methods.swift in Sources */,
 				E5956CE91F703BF500935B58 /* Status.swift in Sources */,
