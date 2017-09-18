@@ -204,6 +204,48 @@
             </objects>
             <point key="canvasLocation" x="976.79999999999995" y="-7.6461769115442282"/>
         </scene>
+        <!--School List View Controller-->
+        <scene sceneID="gDK-kX-QSn">
+            <objects>
+                <viewController id="RlM-GU-Eyr" customClass="SchoolListViewController" customModule="Challenge_Final" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cRN-N7-jRe"/>
+                        <viewControllerLayoutGuide type="bottom" id="ajl-1H-oU5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yH4-lf-eKx" customClass="GradientView" customModule="Challenge_Final" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                <color key="value" red="0.21960784310000001" green="0.31372549020000001" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                <color key="value" red="0.31372549020000001" green="0.44705882349999998" blue="0.6705882353" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="startPointX">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="startPointY">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="endPointX">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="endPointY">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <connections>
+                        <segue destination="oPE-a5-dWw" kind="unwind" unwindAction="unWindToViewControllerWithSender:" id="Tsj-DI-xtQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z79-Ba-ECX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="oPE-a5-dWw" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1857" y="327"/>
+        </scene>
         <!--Register View Controller-->
         <scene sceneID="otE-p1-qGl">
             <objects>
@@ -219,7 +261,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7wa-HU-97U">
                                 <rect key="frame" x="30" y="69" width="315" height="320"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4wN-sO-4we" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
+                                    <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4wN-sO-4we" customClass="SkyFloatingLabelTextField" customModule="SkyFloatingLabelTextField">
                                         <rect key="frame" x="0.0" y="0.0" width="315" height="53.5"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
@@ -476,6 +518,15 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <connections>
+                        <outlet property="confirmPasswordTextField" destination="WI4-mk-sHe" id="k3f-kz-8Rs"/>
+                        <outlet property="emailTextField" destination="NO4-2M-gi2" id="y0g-h5-Dbm"/>
+                        <outlet property="nameTextField" destination="U5K-7I-yCN" id="XSE-jq-llS"/>
+                        <outlet property="passwordTextField" destination="aId-Yg-Ca6" id="mQz-Ux-Big"/>
+                        <outlet property="schoolTextField" destination="4wN-sO-4we" id="CWK-kb-EGX"/>
+                        <outlet property="yearTextField" destination="q0T-Y9-NkG" id="0wC-Ds-mrU"/>
+                        <segue destination="RlM-GU-Eyr" kind="presentation" identifier="toSchoolList" id="fcI-9R-KE2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5mf-Wt-XDX" sceneMemberID="firstResponder"/>
             </objects>
