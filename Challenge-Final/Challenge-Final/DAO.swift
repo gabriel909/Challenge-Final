@@ -12,13 +12,17 @@ import Foundation
 class DAO {
     
     static let sharedDAO = DAO()
-    let token: String = ""
     
     private init() {
         
     }
     
-    public func sendRequest(url: URL, parameters: [String:Any]? ,method: Methods,completion: @escaping ([String:Any]) -> Void) {
+    public func createAluno(nome: String) {
+        
+    
+    }
+    
+    public func sendRequest(url: URL, parameters: [String:Any]? ,method: Methods,completion: @escaping (Any) -> Void) {
         let session = URLSession.shared
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
@@ -42,7 +46,7 @@ class DAO {
             
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: AnyObject] {
-                    completion(json)
+                    completion(json["data"])
                 }
                 
             } catch let error {

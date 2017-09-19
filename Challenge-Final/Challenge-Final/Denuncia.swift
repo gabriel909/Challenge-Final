@@ -27,5 +27,9 @@ class Denuncia: SuperModel {
         super.init()
     }
     
+    public func getDenunciaAsJson() -> [String:Any] {
+        let parameters: [String:Any] = ["categoria": self.categoria, "descricao": self.descricao, "date": self.date, "status": self.status]
+        return parameters
+    }
     
 }

@@ -10,7 +10,7 @@ import Foundation
 
 class SuperModel {
     
-    let token = ""
+    var token = ""
     let sharedDAO: DAO
     let apiUrl = ""
     

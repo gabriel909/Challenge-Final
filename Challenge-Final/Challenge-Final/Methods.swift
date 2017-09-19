@@ -13,5 +13,4 @@ enum Methods: String {
     case put = "put"
     case post = "post"
     case delete = "delete"
-    
 }
