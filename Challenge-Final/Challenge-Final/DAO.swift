@@ -12,14 +12,32 @@ import Foundation
 class DAO {
     
     static let sharedDAO = DAO()
+    let apiUrl = ""
     
     private init() {
         
     }
     
-    public func createAluno(nome: String) {
-        
-    
+    public func loginAluno(email: String, password: String,success: @escaping (Aluno) -> Void, failure: @escaping (String) -> Void) {
+        let parameters = ["email": email, "password": password]
+        guard let url = URL(string: apiUrl + "/alunos/login") else { return }
+        sendRequest(url: url, parameters: parameters, method: Methods.post, completion: { (dict) in
+            guard let jsonDict = dict as? [String: Any] else { return }
+            if jsonDict["error"] == nil {
+                
+                guard let jsonEscola = jsonDict["escola"] as? [String:Any] else { return }
+                
+                let newEscola = Escola(unidade: jsonEscola["unidade"] as! String, nomeEscola: jsonEscola["nome"] as! String, id: jsonEscola["id"] as! Int)
+                
+                
+                let newAluno = Aluno(name: jsonDict["name"] as! String, password: jsonDict["password"] as! String, serie: jsonDict["serie"] as! String, email: jsonDict["email"] as! String, avatar: jsonDict["avatar"] as! Int, id: jsonDict["id"] as! Int, escola: newEscola)
+                newAluno.token = jsonDict["token"] as! String
+                
+                success(newAluno)
+            } else {
+                failure("error")
+            }
+        })
     }
     
     public func sendRequest(url: URL, parameters: [String:Any]? ,method: Methods,completion: @escaping (Any) -> Void) {
@@ -46,7 +64,7 @@ class DAO {
             
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: AnyObject] {
-                    completion(json["data"])
+                    completion(json["data"] as Any)
                 }
                 
             } catch let error {

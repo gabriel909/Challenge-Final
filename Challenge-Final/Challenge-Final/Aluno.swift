@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Aluno: SuperModel {
     let name: String
@@ -56,6 +57,7 @@ class Aluno: SuperModel {
         
     }
     
+ 
     
     
     public func sendDenuncia(denuncia:Denuncia, completion: @escaping (String) -> Void) {
@@ -65,6 +67,7 @@ class Aluno: SuperModel {
         
         
         let params = denuncia.getDenunciaAsJson()
+        
         
         self.sharedDAO.sendRequest(url: url, parameters: params, method: Methods.post, completion: { (dict) in
             
@@ -92,12 +95,44 @@ class Aluno: SuperModel {
             
             for denuncia in jsonDictArray {
                 
+                var denunciaImage:[UIImage] = []
+                var denunciaVideo:[URL] = []
                 guard let jsonDenuncia = denuncia as? [String: Any] else { return }
                 
-                /*
-                 create denuncia
-                 append denuncia to array
-                 */
+                guard let jsonDenunciaImages = jsonDenuncia["images"] as? NSArray else { return }
+                guard let jsonDenunciaVideos = jsonDenuncia["videos"] as? NSArray else { return }
+                
+                for video in jsonDenunciaVideos {
+                    
+                    guard let jsonVideo = video as? [String:Any] else { return }
+                    
+                    let dataDecoded : Data = Data(base64Encoded: jsonVideo["base64Str"] as! String, options: .ignoreUnknownCharacters)!
+                    
+                    let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+
+                    let videoURL = documentsURL.appendingPathComponent("video.mov")
+                    
+                    try! dataDecoded.write(to: videoURL)
+
+                    denunciaVideo.append(videoURL)
+                    
+                }
+                
+                for image in jsonDenunciaImages {
+                    
+                    guard let jsonVideo = image as? [String:Any] else { return }
+                    
+                    let dataDecoded : Data = Data(base64Encoded: jsonVideo["base64Str"] as! String, options: .ignoreUnknownCharacters)!
+                    guard let decodedimage = UIImage(data: dataDecoded) else { return }
+                    denunciaImage.append(decodedimage)
+                    
+                }
+                
+                let newDenuncia = Denuncia(categoria: Categoria(rawValue: jsonDenuncia["categoria"] as! String)!, descricao: jsonDenuncia["descricao"] as! String, date: jsonDenuncia["created-at"] as! String, status: jsonDenuncia["status"] as! String, images: denunciaImage, videos: denunciaVideo)
+                
+                arrayDenuncias.append(newDenuncia)
+                
+                
             }
             completion(arrayDenuncias)
             
@@ -120,7 +155,7 @@ class Aluno: SuperModel {
                 guard let jsonAviso = aviso as? [String: Any] else { return }
                 
                 
-                let newAviso = Aviso(titulo: jsonAviso["titulo"] as! String, descricao: jsonAviso["descricao"] as! String, data: jsonAviso["CreatedAt"] as! String)
+                let newAviso = Aviso(titulo: jsonAviso["titulo"] as! String, descricao: jsonAviso["descricao"] as! String, data: jsonAviso["CreatedAt"] as! String, id: jsonAviso["id"] as! Int)
                 
                 arrayAviso.append(newAviso)
             }
