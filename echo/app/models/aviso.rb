@@ -1,0 +1,2 @@
+class Aviso < ApplicationRecord
+end

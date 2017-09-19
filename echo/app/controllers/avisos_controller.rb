@@ -1,0 +1,2 @@
+class AvisosController < ApplicationController
+end

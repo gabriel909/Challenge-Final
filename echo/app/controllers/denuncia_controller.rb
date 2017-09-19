@@ -1,0 +1,2 @@
+class DenunciaController < ApplicationController
+end
