@@ -8,10 +8,10 @@
 
 import Foundation
 
-class Aviso: SuperModel {
+class Aviso {
     let titulo: String
     let descricao: String
-    let data: String
+    var data: String
     let id: Int
     
     init(titulo: String, descricao: String, data: String, id: Int) {
@@ -19,20 +19,15 @@ class Aviso: SuperModel {
         self.descricao = descricao
         self.data = data
         self.id = id
-        super.init()
     }
     
-    func deleteAviso(completion: @escaping (String) -> Void) {
-        guard let url = URL(string: self.apiUrl + "/avisos/\(self.id)") else { return }
-        self.sharedDAO.sendRequest(url: url, parameters: nil, method: Methods.delete, completion: { (dict) in
-            guard let jsonDict = dict as? [String:Any] else { return }
-            if jsonDict["error"] != nil {
-                completion("error")
-            } else {
-                completion("ok")
-            }
-        })
+    init(parameters: [String:Any]) {
+        self.titulo = parameters["titulo"] as! String
+        self.descricao = parameters["descricao"] as! String
+        self.data = parameters["created_at"] as! String
+        self.id = parameters["id"] as! Int
     }
+    
     
     
 }
