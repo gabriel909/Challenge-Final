@@ -22,7 +22,6 @@
 		54A08B10364E3F07A3AE7D13 /* Pods_Challenge_Final.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0453924069ED25118C3CDB /* Pods_Challenge_Final.framework */; };
 		E5956CDA1F7029A800935B58 /* Aluno.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CD91F7029A800935B58 /* Aluno.swift */; };
 		E5956CDD1F702CF900935B58 /* Denuncia.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CDC1F702CF900935B58 /* Denuncia.swift */; };
-		E5956CDF1F702DF800935B58 /* SuperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CDE1F702DF800935B58 /* SuperModel.swift */; };
 		E5956CE11F70308000935B58 /* Categoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CE01F70308000935B58 /* Categoria.swift */; };
 		E5956CE31F7031F000935B58 /* Aviso.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CE21F7031F000935B58 /* Aviso.swift */; };
 		E5956CE51F70322900935B58 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CE41F70322900935B58 /* Serie.swift */; };
@@ -52,7 +51,6 @@
 		AE0453924069ED25118C3CDB /* Pods_Challenge_Final.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Challenge_Final.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5956CD91F7029A800935B58 /* Aluno.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aluno.swift; sourceTree = "<group>"; };
 		E5956CDC1F702CF900935B58 /* Denuncia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Denuncia.swift; sourceTree = "<group>"; };
-		E5956CDE1F702DF800935B58 /* SuperModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperModel.swift; sourceTree = "<group>"; };
 		E5956CE01F70308000935B58 /* Categoria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categoria.swift; sourceTree = "<group>"; };
 		E5956CE21F7031F000935B58 /* Aviso.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aviso.swift; sourceTree = "<group>"; };
 		E5956CE41F70322900935B58 /* Serie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
@@ -82,7 +80,6 @@
 				E5956CD91F7029A800935B58 /* Aluno.swift */,
 				2BC43C791F7041E200A84A7F /* Escola.swift */,
 				E5956CDC1F702CF900935B58 /* Denuncia.swift */,
-				E5956CDE1F702DF800935B58 /* SuperModel.swift */,
 				E5956CE01F70308000935B58 /* Categoria.swift */,
 				E5956CE21F7031F000935B58 /* Aviso.swift */,
 				E5956CE41F70322900935B58 /* Serie.swift */,
@@ -316,7 +313,6 @@
 				EB8F6EE41F631FFD005E1770 /* GradientView.swift in Sources */,
 				E5956CEB1F715DF400935B58 /* URLGenerator.swift in Sources */,
 				E5956CDD1F702CF900935B58 /* Denuncia.swift in Sources */,
-				E5956CDF1F702DF800935B58 /* SuperModel.swift in Sources */,
 				2B4BB57A1F66FFDE005A0ED3 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
