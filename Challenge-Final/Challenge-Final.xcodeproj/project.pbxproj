@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2B4BB57A1F66FFDE005A0ED3 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4BB5791F66FFDE005A0ED3 /* Helper.swift */; };
 		2B4FA4071F66FB13009550B9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4FA4061F66FB13009550B9 /* RegisterViewController.swift */; };
+		2B62C2D01F74018B00CCD8B5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B62C2CF1F74018B00CCD8B5 /* MainViewController.swift */; };
 		2BC43C711F70269900A84A7F /* SchoolListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC43C701F70269900A84A7F /* SchoolListViewController.swift */; };
 		2BC43C741F70271400A84A7F /* SchoolsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC43C721F70271400A84A7F /* SchoolsTableViewCell.swift */; };
 		2BC43C751F70271400A84A7F /* SchoolsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BC43C731F70271400A84A7F /* SchoolsTableViewCell.xib */; };
@@ -36,6 +37,7 @@
 		13B4645275CA3D816B5F4E83 /* Pods-Challenge-Final.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Challenge-Final.release.xcconfig"; path = "Pods/Target Support Files/Pods-Challenge-Final/Pods-Challenge-Final.release.xcconfig"; sourceTree = "<group>"; };
 		2B4BB5791F66FFDE005A0ED3 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		2B4FA4061F66FB13009550B9 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		2B62C2CF1F74018B00CCD8B5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2BC43C701F70269900A84A7F /* SchoolListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolListViewController.swift; sourceTree = "<group>"; };
 		2BC43C721F70271400A84A7F /* SchoolsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolsTableViewCell.swift; sourceTree = "<group>"; };
 		2BC43C731F70271400A84A7F /* SchoolsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolsTableViewCell.xib; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				2B4FA4061F66FB13009550B9 /* RegisterViewController.swift */,
 				2BC43C701F70269900A84A7F /* SchoolListViewController.swift */,
 				2BC43C721F70271400A84A7F /* SchoolsTableViewCell.swift */,
+				2B62C2CF1F74018B00CCD8B5 /* MainViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				2B4FA4071F66FB13009550B9 /* RegisterViewController.swift in Sources */,
 				2BC43C741F70271400A84A7F /* SchoolsTableViewCell.swift in Sources */,
 				2BC43C7A1F7041E200A84A7F /* Escola.swift in Sources */,
+				2B62C2D01F74018B00CCD8B5 /* MainViewController.swift in Sources */,
 				4EDD3BF21F547E180012117C /* LoginViewController.swift in Sources */,
 				E5956CE51F70322900935B58 /* Serie.swift in Sources */,
 				2BC43C781F7041B000A84A7F /* DAO.swift in Sources */,
