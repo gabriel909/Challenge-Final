@@ -30,7 +30,7 @@ extension UIViewController {
         view.addGestureRecognizer(tap)
     }
     
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
     }
 }
@@ -95,16 +95,6 @@ extension UIView {
         }
     }
     
-    @IBInspectable
-    var borderColor: UIColor? {
-        get {
-            let color = UIColor.init(CGColor: layer.borderColor!)
-            return color
-        }
-        set {
-            layer.borderColor = newValue?.CGColor
-        }
-    }
     
     @IBInspectable
     var shadowRadius: CGFloat {
@@ -112,7 +102,7 @@ extension UIView {
             return layer.shadowRadius
         }
         set {
-            layer.shadowColor = UIColor.blackColor().CGColor
+            layer.shadowColor = UIColor.black.cgColor
             layer.shadowOffset = CGSize(width: 0, height: 2)
             layer.shadowOpacity = 0.4
             layer.shadowRadius = shadowRadius

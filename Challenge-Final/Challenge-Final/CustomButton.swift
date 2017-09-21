@@ -20,7 +20,7 @@ import UIKit
         }
     }
     
-    @IBInspectable var borderWidth: CGFloat = 0.0 {
+    @IBInspectable override var borderWidth: CGFloat {
         didSet {
             layer.borderWidth = borderWidth
         }
