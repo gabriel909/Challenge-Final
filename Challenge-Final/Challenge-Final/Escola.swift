@@ -24,7 +24,7 @@ class Escola {
     
     init(parameters: [String:Any]) {
         self.unidade = parameters["unidade"] as! String
-        self.nomeEscola = parameters["nomeEscola"] as! String
+        self.nomeEscola = parameters["nome"] as! String
         self.id = parameters["id"] as! Int
     }
     
