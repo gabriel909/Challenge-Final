@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum status: String {
+enum Status: String {
     case resolvido = "resolvido"
     case nao_resolvido = "nao_resolvido"
     case andamento = "andamento"

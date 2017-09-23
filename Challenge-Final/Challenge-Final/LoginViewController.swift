@@ -12,6 +12,11 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let den = Denuncia(categoria: Categoria.Colegas, descricao: "sla", date: "fdafdsa", status: Status.andamento, images: nil, videos: nil)
+        DAO.sharedDAO.sendDenuncia(denuncia: den, idAluno: 11,idEscola: 1 ,completion: { (den) in
+            print("den category: \(den.descricao)")
+            
+        })
         // Do any additional setup after loading the view, typically from a nib.
     }
     

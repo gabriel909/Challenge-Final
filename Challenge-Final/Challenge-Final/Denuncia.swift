@@ -13,11 +13,11 @@ class Denuncia {
     let categoria: Categoria
     let descricao: String
     let date: String
-    let status: String
-    let images: [UIImage]
-    let videos: [URL]
+    let status: Status
+    let images: [UIImage]?
+    let videos: [URL]?
     
-    init(categoria: Categoria, descricao: String, date: String, status: String, images: [UIImage], videos: [URL]) {
+    init(categoria: Categoria, descricao: String, date: String, status: Status, images: [UIImage]?, videos: [URL]?) {
         self.categoria = categoria
         self.descricao = descricao
         self.date = date
@@ -38,7 +38,7 @@ class Denuncia {
             
             let jsonVideo = video as! [String:Any]
             
-             let videoString = jsonVideo["URL"] as! String
+            let videoString = jsonVideo["URL"] as! String
             
             let videoURL = URL(string: videoString)
             
@@ -59,7 +59,16 @@ class Denuncia {
         self.categoria = Categoria(rawValue: jsonDenuncia["categoria"] as! String)!
         self.date = jsonDenuncia["created_at"] as! String
         self.descricao = jsonDenuncia["descricao"] as! String
-        self.status = jsonDenuncia["status"] as! String
+        let status = jsonDenuncia["status"] as! String
+        switch status {
+        case "andamento":
+            self.status = Status.andamento
+        case "resolvido":
+            self.status = Status.resolvido
+        default:
+            self.status = Status.nao_resolvido
+        }
+        
         self.images = denunciaImage
         self.videos = denunciaVideo
         
@@ -69,49 +78,52 @@ class Denuncia {
         
         
         get {
-        
-        var imagesBase64: [String:Any] = [:]
-        var videosBase64: [String:Any] = [:]
-        
-        var counter = 1 //this is needed to provide a key for the image and video json
-        
-        
-        for image in self.images {
-            let base64ImageData = UIImagePNGRepresentation(image)! as Data
             
-            let strBase64 = base64ImageData.base64EncodedString(options: .lineLength64Characters)
+            var imagesBase64: [String:Any] = [:]
+            var videosBase64: [String:Any] = [:]
             
-            let key = "image" + String(counter)
+            var counter = 1 //this is needed to provide a key for the image and video json
             
-            imagesBase64[key] = strBase64
+            if self.images != nil {
+                
+                for image in self.images! {
+                    let base64ImageData = UIImagePNGRepresentation(image)! as Data
+                    
+                    let strBase64 = base64ImageData.base64EncodedString(options: .lineLength64Characters)
+                    
+                    let key = "image" + String(counter)
+                    
+                    imagesBase64[key] = strBase64
+                    
+                    counter += 1
+                    
+                }
+            }
             
-            counter += 1
+            counter = 1
             
-        }
-        
-        counter = 1
-        
-        for video in self.videos {
+            if self.videos != nil {
+                for video in self.videos! {
+                    
+                    var base64VideoData: Data = Data()
+                    base64VideoData = try! Data(contentsOf: video)
+                    
+                    
+                    let strBase64 = base64VideoData.base64EncodedString(options: .lineLength64Characters)
+                    
+                    let key = "video" + String(counter)
+                    
+                    videosBase64[key] = strBase64
+                    
+                    counter += 1
+                    
+                }
+                
+            }
             
-            var base64VideoData: Data = Data()
-            base64VideoData = try! Data(contentsOf: video)
+            let parameters: [String:Any] = ["categoria": self.categoria.rawValue, "descricao": self.descricao, "date": self.date, "status": self.status.rawValue,"videos": "fda" /*videosBase64*/, "images": "fdasfda"/*imagesBase64*/]
             
-            
-            let strBase64 = base64VideoData.base64EncodedString(options: .lineLength64Characters)
-            
-            let key = "video" + String(counter)
-            
-            videosBase64[key] = strBase64
-            
-            counter += 1
-            
-        }
-        
-        
-        
-        let parameters: [String:Any] = ["categoria": self.categoria, "descricao": self.descricao, "date": self.date, "status": self.status,"videos": videosBase64, "images": imagesBase64]
-        
-        return parameters
+            return parameters
         }
     }
     

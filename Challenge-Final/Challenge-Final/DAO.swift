@@ -14,7 +14,7 @@ import UIKit
 class DAO {
     
     static let sharedDAO = DAO()
-    let apiUrl = "localhost:3000"
+    let apiUrl = "http://localhost:3000"
     var aluno: Aluno? = nil
     
     private init() {
@@ -24,20 +24,20 @@ class DAO {
     /* Aluno */
     public func createAluno(name: String, password: String, serie: String, email: String,avatar: Int, escola: Escola, completion: @escaping (Aluno) -> Void) {
         
-        let parameters:[String: Any] = ["name": name, "password": password, "serie": serie, "email": email,"escola": escola.json]
+        let parameters:[String: Any] = ["nome": name, "password": password, "serie": serie, "email": email,"avatar": avatar]
         
-        guard let url = URL(string: self.apiUrl + "/alunos/signup") else { return }
+        guard let url = URL(string: self.apiUrl + "/escolas/\(escola.id)/alunos/signup") else { return }
         self.sendRequest(url: url, parameters: parameters, method: Methods.post, completion: { (dict) in
             
-            var newParams = parameters
             
-            guard let jsonDict = dict as? [String:Any] else { return }
-
+            guard var jsonDict = dict as? [String:Any] else { return }
             
-            newParams["token"] = jsonDict["Authorization"] as! String
-            newParams["id"] = jsonDict["id"] as! Int
+            jsonDict["avatar"] = avatar
             
-            self.aluno = Aluno(parameters: newParams)
+            //newParams["token"] = jsonDict["Authorization"] as! String
+            //newParams["id"] = jsonDict["id"] as! Int
+            
+            self.aluno = Aluno(parameters: jsonDict)
             
             completion(self.aluno!)
             
@@ -131,23 +131,20 @@ class DAO {
         
     }
     
-    public func sendDenuncia(denuncia:Denuncia,idAluno: Int,completion: @escaping (String) -> Void) {
+    public func sendDenuncia(denuncia:Denuncia,idAluno: Int,idEscola: Int,completion: @escaping (Denuncia) -> Void) {
         
-        guard let url = URL(string: self.apiUrl + "/alunos/\(idAluno)/denuncias") else { return }
+        guard let url = URL(string: self.apiUrl + "/escolas/\(idEscola)/alunos/\(idAluno)/denuncias") else { return }
         
         
-        var params = denuncia.json
-        params["Authorization"] = aluno!.token
+        let params = denuncia.json
+        print("params: \(params)")
+        //params["Authorization"] = aluno!.token
         
         self.sendRequest(url: url, parameters: params, method: Methods.post, completion: { (dict) in
             
             guard let jsonDict = dict as? [String:Any] else { return }
             
-            if (jsonDict["error"] as! String) != "none" {
-                completion("error")
-            } else {
-                completion("success")
-            }
+            completion(Denuncia(parameters: jsonDict))
             
             
         })
@@ -180,9 +177,11 @@ class DAO {
     /* Request Sender */
     public func sendRequest(url: URL, parameters: [String:Any]? ,method: Methods,completion: @escaping (Any) -> Void) {
         let session = URLSession.shared
+        print("url \(url)")
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         if parameters != nil {
+            request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
             do {
                 request.httpBody = try JSONSerialization.data(withJSONObject: parameters as Any, options: .prettyPrinted)
             } catch let error {
@@ -193,7 +192,7 @@ class DAO {
         
         let task = session.dataTask(with: request) { (data, response, error) in
             guard error == nil else {
-               
+                print("error: \(error?.localizedDescription)")
                 return
             }
             
