@@ -482,7 +482,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Escolha seu avatar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Op-nu-jnU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Escolha seu avatar" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Op-nu-jnU">
                                 <rect key="frame" x="36" y="351.5" width="248" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="r81-9g-ga1"/>
@@ -590,6 +590,9 @@
                                                 <real key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="jCL-pO-GkS" kind="show" id="6zh-6u-Hx8"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SbD-iG-pN1">
                                         <rect key="frame" x="20" y="18" width="50" height="50"/>
@@ -620,7 +623,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEF-KF-FNM" customClass="CustomButton" customModule="Challenge_Final" customModuleProvider="target">
                                         <rect key="frame" x="8" y="8" width="232" height="69.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                        <state key="normal" title="     Denunciar">
+                                        <state key="normal" title="Avisos">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
@@ -634,6 +637,9 @@
                                                 <real key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="JPf-kV-ehs" kind="show" id="rKF-Vm-JfY"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gIg-F2-Hcg">
                                         <rect key="frame" x="20" y="18.5" width="50" height="50"/>
@@ -793,7 +799,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Denúncias" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X8m-6y-8W5">
-                                <rect key="frame" x="36" y="40" width="248" height="40"/>
+                                <rect key="frame" x="36" y="84" width="248" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="PJt-G6-2KD"/>
                                 </constraints>
@@ -802,7 +808,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y3J-wU-7b5">
-                                <rect key="frame" x="36" y="80" width="248" height="1"/>
+                                <rect key="frame" x="36" y="124" width="248" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="8Vd-Kw-eUw"/>
@@ -846,7 +852,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eYe-Aa-nHN" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="RqA-UR-LIr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2640" y="267"/>
+            <point key="canvasLocation" x="2612" y="267"/>
         </scene>
         <!--Announcements View Controller-->
         <scene sceneID="dqh-29-k6k">
@@ -861,7 +867,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avisos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmj-Ql-27S">
-                                <rect key="frame" x="36" y="40" width="248" height="40"/>
+                                <rect key="frame" x="36" y="104" width="248" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="fqZ-II-ZeO"/>
                                 </constraints>
@@ -870,7 +876,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Leo-S5-WbO">
-                                <rect key="frame" x="36" y="80" width="248" height="1"/>
+                                <rect key="frame" x="36" y="144" width="248" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="mto-J7-0U7"/>
@@ -914,7 +920,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OB2-FO-VxD" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="haT-L4-fh5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2640" y="964"/>
+            <point key="canvasLocation" x="2640" y="1075"/>
         </scene>
     </scenes>
 </document>

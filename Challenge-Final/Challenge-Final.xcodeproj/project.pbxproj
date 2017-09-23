@@ -33,6 +33,10 @@
 		E5956CEB1F715DF400935B58 /* URLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CEA1F715DF400935B58 /* URLGenerator.swift */; };
 		EB8F6EE41F631FFD005E1770 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8F6EE31F631FFD005E1770 /* GradientView.swift */; };
 		EB8F6EE61F632068005E1770 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8F6EE51F632068005E1770 /* CustomButton.swift */; };
+		EBDCDD7D1F768A4B00D8F41E /* AnnouncementsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCDD7B1F768A4B00D8F41E /* AnnouncementsTableViewCell.swift */; };
+		EBDCDD7E1F768A4B00D8F41E /* AnnouncementsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDCDD7C1F768A4B00D8F41E /* AnnouncementsTableViewCell.xib */; };
+		EBDCDD811F768FB800D8F41E /* ReportsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCDD7F1F768FB800D8F41E /* ReportsTableViewCell.swift */; };
+		EBDCDD821F768FB800D8F41E /* ReportsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDCDD801F768FB800D8F41E /* ReportsTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +70,10 @@
 		E5DBD2ED16117F8E7F679500 /* Pods-Challenge-Final.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Challenge-Final.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Challenge-Final/Pods-Challenge-Final.debug.xcconfig"; sourceTree = "<group>"; };
 		EB8F6EE31F631FFD005E1770 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		EB8F6EE51F632068005E1770 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		EBDCDD7B1F768A4B00D8F41E /* AnnouncementsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsTableViewCell.swift; sourceTree = "<group>"; };
+		EBDCDD7C1F768A4B00D8F41E /* AnnouncementsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnnouncementsTableViewCell.xib; sourceTree = "<group>"; };
+		EBDCDD7F1F768FB800D8F41E /* ReportsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsTableViewCell.swift; sourceTree = "<group>"; };
+		EBDCDD801F768FB800D8F41E /* ReportsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportsTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +112,8 @@
 				EB8F6EE31F631FFD005E1770 /* GradientView.swift */,
 				EB8F6EE51F632068005E1770 /* CustomButton.swift */,
 				2BC43C731F70271400A84A7F /* SchoolsTableViewCell.xib */,
+				EBDCDD801F768FB800D8F41E /* ReportsTableViewCell.xib */,
+				EBDCDD7C1F768A4B00D8F41E /* AnnouncementsTableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -111,6 +121,7 @@
 		2B4FA4041F66F9E4009550B9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EBDCDD7B1F768A4B00D8F41E /* AnnouncementsTableViewCell.swift */,
 				4EDD3BF11F547E180012117C /* LoginViewController.swift */,
 				2B4FA4061F66FB13009550B9 /* RegisterViewController.swift */,
 				2BC43C701F70269900A84A7F /* SchoolListViewController.swift */,
@@ -118,6 +129,7 @@
 				2B62C2CF1F74018B00CCD8B5 /* MainViewController.swift */,
 				2B263F601F740BCE0005209A /* ReportsViewController.swift */,
 				2B263F621F740C660005209A /* AnnouncementsViewController.swift */,
+				EBDCDD7F1F768FB800D8F41E /* ReportsTableViewCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -244,6 +256,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBDCDD7E1F768A4B00D8F41E /* AnnouncementsTableViewCell.xib in Resources */,
+				EBDCDD821F768FB800D8F41E /* ReportsTableViewCell.xib in Resources */,
 				4EDD3BFA1F547E180012117C /* LaunchScreen.storyboard in Resources */,
 				4EDD3BF71F547E180012117C /* Assets.xcassets in Resources */,
 				4EDD3BF51F547E180012117C /* Main.storyboard in Resources */,
@@ -310,6 +324,7 @@
 				EB8F6EE61F632068005E1770 /* CustomButton.swift in Sources */,
 				2B4FA4071F66FB13009550B9 /* RegisterViewController.swift in Sources */,
 				2BC43C741F70271400A84A7F /* SchoolsTableViewCell.swift in Sources */,
+				EBDCDD811F768FB800D8F41E /* ReportsTableViewCell.swift in Sources */,
 				2BC43C7A1F7041E200A84A7F /* Escola.swift in Sources */,
 				2B62C2D01F74018B00CCD8B5 /* MainViewController.swift in Sources */,
 				4EDD3BF21F547E180012117C /* LoginViewController.swift in Sources */,
@@ -324,6 +339,7 @@
 				E5956CE71F70382500935B58 /* Methods.swift in Sources */,
 				E5956CE91F703BF500935B58 /* Status.swift in Sources */,
 				EB8F6EE41F631FFD005E1770 /* GradientView.swift in Sources */,
+				EBDCDD7D1F768A4B00D8F41E /* AnnouncementsTableViewCell.swift in Sources */,
 				E5956CEB1F715DF400935B58 /* URLGenerator.swift in Sources */,
 				E5956CDD1F702CF900935B58 /* Denuncia.swift in Sources */,
 				2B4BB57A1F66FFDE005A0ED3 /* Helper.swift in Sources */,
