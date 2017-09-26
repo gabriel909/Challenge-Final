@@ -1,37 +1,39 @@
 Rails.application.routes.draw do
 
+  root 'welcome#index'
+
   #GET
   #GET Escolas
-  get '/escolas', to: 'escola#index'
+  get '/escolas', to: 'escolas#index'
 
   #GET Alunos
-  get '/alunos', to: 'aluno#index'
+  get '/alunos', to: 'alunos#index'
 
   #GET Aluno with id
-  get '/alunos/select/:id', to: 'aluno#show'
+  get '/alunos/select/:id', to: 'alunos#show'
 
   #GET Escolas with id
-  get '/escolas/select', to: 'escola#show'
+  get '/escolas/select', to: 'escolas#show'
 
   #POST
   #POST Escola signup
-  post '/escolas/signup', to: 'escola#create'
+  post '/escolas/signup', to: 'escolas#create'
 
   #POST Aluno signup
-  post '/alunos/signup', to: 'aluno#create'
+  post '/alunos/signup', to: 'alunos#create'
 
   #PUT
   #PUT Escola id
-  put '/escola/:id', to: 'escola#update'
+  put '/escolas/:id', to: 'escols#update'
 
   #PUT Aluno id
-  put '/aluno/:id', to: 'alunos#update'
+  put '/alunos/:id', to: 'alunos#update'
 
   #DELETE
   #DELETE escola
-  delete '/escolas/:id', to: 'escola#delete'
+  delete '/escolas/:id', to: 'escolas#delete'
 
   #DELETE Aluno
-  delete '/alunos/:id', to: 'aluno#delete'
+  delete '/alunos/:id', to: 'alunos#delete'
 
 end

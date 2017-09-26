@@ -1,2 +1,0 @@
-class Aviso < ApplicationRecord
-end

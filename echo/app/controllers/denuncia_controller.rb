@@ -1,2 +1,0 @@
-class DenunciaController < ApplicationController
-end

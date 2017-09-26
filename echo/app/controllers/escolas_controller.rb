@@ -1,5 +1,5 @@
 class EscolasController < ApplicationController
-  before_action :set_medico, only: [:show, :delete, :update]
+  before_action :set_escola, only: [:show, :delete, :update]
 
   #POST
   #GET escolas

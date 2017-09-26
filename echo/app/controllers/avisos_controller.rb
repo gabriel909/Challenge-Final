@@ -1,2 +1,0 @@
-class AvisosController < ApplicationController
-end

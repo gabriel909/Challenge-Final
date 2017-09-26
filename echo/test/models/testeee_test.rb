@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DenunciaControllerTest < ActionDispatch::IntegrationTest
+class TesteeeTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

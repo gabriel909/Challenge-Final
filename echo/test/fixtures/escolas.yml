@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  nome: MyString
   unidade: MyString
+  nome: MyString
   CNPJ: MyString
   email: MyString
-  password_digest: MyString
+  senha_digest: MyString
 
 two:
-  nome: MyString
   unidade: MyString
+  nome: MyString
   CNPJ: MyString
   email: MyString
-  password_digest: MyString
+  senha_digest: MyString
