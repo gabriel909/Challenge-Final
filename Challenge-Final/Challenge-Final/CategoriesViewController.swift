@@ -19,6 +19,9 @@ class CategoriesViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.collectionSetup()
         self.collectionview.delegate = self
+        
+        print(width)
+        print(height)
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,17 +32,14 @@ class CategoriesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.navigationBar.transparentNavigationBar()
-        
-        
     }
     
     //MARK: - Aux Methods
     private func collectionSetup() {
         let collectionViewRect = CGRect(x: 0, y: 0, width: width, height: height)
         let collectionViewCellNib = UINib(nibName: "CollectionViewCell", bundle: nil)
-        let layout = UICollectionViewFlowLayout()
         
-        self.collectionview = UICollectionView(frame: collectionViewRect, collectionViewLayout: layout)
+        self.collectionview = UICollectionView(frame: collectionViewRect, collectionViewLayout: createLayout())
         self.collectionview.dataSource = self
         self.collectionview.backgroundColor = .clear
         self.collectionview.register(collectionViewCellNib, forCellWithReuseIdentifier: "idCatCell")
@@ -48,6 +48,16 @@ class CategoriesViewController: UIViewController {
         self.view.addSubview(collectionview)
     }
     
+    private func createLayout() -> UICollectionViewFlowLayout {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        let top_bottom = width / 10.66
+        let right_left = width / 16
+        layout.sectionInset = UIEdgeInsets(top: top_bottom, left: right_left, bottom: top_bottom, right: right_left)
+        layout.itemSize = CGSize(width: width / 2.46, height: height / 4.36)
+        layout.scrollDirection = .vertical
+        
+        return layout
+    }
 }
 
 //MARK: - Extensions
@@ -68,16 +78,9 @@ extension CategoriesViewController: UICollectionViewDataSource {
         
         return cell
     }
-    
-
 }
 
 //MARK: - Table View Delegate
 extension CategoriesViewController: UICollectionViewDelegate {
     
-
-    
 }
-
-
-

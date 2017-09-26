@@ -12,9 +12,11 @@ class CollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var img: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        self.layer.borderColor = UIColor.white.cgColor
+        self.layer.borderWidth = 5
     }
-
 }
