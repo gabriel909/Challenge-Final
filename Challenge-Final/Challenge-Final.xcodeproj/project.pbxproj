@@ -30,7 +30,7 @@
 		E5956CE51F70322900935B58 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CE41F70322900935B58 /* Serie.swift */; };
 		E5956CE71F70382500935B58 /* Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CE61F70382500935B58 /* Methods.swift */; };
 		E5956CE91F703BF500935B58 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CE81F703BF500935B58 /* Status.swift */; };
-		E5956CEB1F715DF400935B58 /* URLGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CEA1F715DF400935B58 /* URLGenerator.swift */; };
+		E5970D4B1F79BB7C009973E7 /* Base64Enconder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5970D4A1F79BB7C009973E7 /* Base64Enconder.swift */; };
 		EB8F6EE41F631FFD005E1770 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8F6EE31F631FFD005E1770 /* GradientView.swift */; };
 		EB8F6EE61F632068005E1770 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8F6EE51F632068005E1770 /* CustomButton.swift */; };
 		EBDCDD7D1F768A4B00D8F41E /* AnnouncementsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCDD7B1F768A4B00D8F41E /* AnnouncementsTableViewCell.swift */; };
@@ -66,7 +66,7 @@
 		E5956CE41F70322900935B58 /* Serie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
 		E5956CE61F70382500935B58 /* Methods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Methods.swift; sourceTree = "<group>"; };
 		E5956CE81F703BF500935B58 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
-		E5956CEA1F715DF400935B58 /* URLGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLGenerator.swift; sourceTree = "<group>"; };
+		E5970D4A1F79BB7C009973E7 /* Base64Enconder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base64Enconder.swift; sourceTree = "<group>"; };
 		E5DBD2ED16117F8E7F679500 /* Pods-Challenge-Final.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Challenge-Final.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Challenge-Final/Pods-Challenge-Final.debug.xcconfig"; sourceTree = "<group>"; };
 		EB8F6EE31F631FFD005E1770 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		EB8F6EE51F632068005E1770 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -141,7 +141,7 @@
 				2B4BB5791F66FFDE005A0ED3 /* Helper.swift */,
 				4EDD3BEF1F547E180012117C /* AppDelegate.swift */,
 				2BC43C771F7041B000A84A7F /* DAO.swift */,
-				E5956CEA1F715DF400935B58 /* URLGenerator.swift */,
+				E5970D4A1F79BB7C009973E7 /* Base64Enconder.swift */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -227,7 +227,7 @@
 				TargetAttributes = {
 					4EDD3BEB1F547E180012117C = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = AU45XX83RQ;
+						DevelopmentTeam = 44E939YYW6;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -325,6 +325,7 @@
 				2B4FA4071F66FB13009550B9 /* RegisterViewController.swift in Sources */,
 				2BC43C741F70271400A84A7F /* SchoolsTableViewCell.swift in Sources */,
 				EBDCDD811F768FB800D8F41E /* ReportsTableViewCell.swift in Sources */,
+				E5970D4B1F79BB7C009973E7 /* Base64Enconder.swift in Sources */,
 				2BC43C7A1F7041E200A84A7F /* Escola.swift in Sources */,
 				2B62C2D01F74018B00CCD8B5 /* MainViewController.swift in Sources */,
 				4EDD3BF21F547E180012117C /* LoginViewController.swift in Sources */,
@@ -340,7 +341,6 @@
 				E5956CE91F703BF500935B58 /* Status.swift in Sources */,
 				EB8F6EE41F631FFD005E1770 /* GradientView.swift in Sources */,
 				EBDCDD7D1F768A4B00D8F41E /* AnnouncementsTableViewCell.swift in Sources */,
-				E5956CEB1F715DF400935B58 /* URLGenerator.swift in Sources */,
 				E5956CDD1F702CF900935B58 /* Denuncia.swift in Sources */,
 				2B4BB57A1F66FFDE005A0ED3 /* Helper.swift in Sources */,
 			);
@@ -478,7 +478,7 @@
 			baseConfigurationReference = E5DBD2ED16117F8E7F679500 /* Pods-Challenge-Final.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = AU45XX83RQ;
+				DEVELOPMENT_TEAM = 44E939YYW6;
 				INFOPLIST_FILE = "Challenge-Final/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Gabriel.Challenge-Final";
@@ -493,7 +493,7 @@
 			baseConfigurationReference = 13B4645275CA3D816B5F4E83 /* Pods-Challenge-Final.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = AU45XX83RQ;
+				DEVELOPMENT_TEAM = 44E939YYW6;
 				INFOPLIST_FILE = "Challenge-Final/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Gabriel.Challenge-Final";

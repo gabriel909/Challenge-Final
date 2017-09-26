@@ -14,10 +14,11 @@ class Denuncia {
     let descricao: String
     let date: String
     let status: Status
-    let images: [UIImage]?
-    let videos: [URL]?
+    let images: [String]?
+    let videos: [String]?
     
-    init(categoria: Categoria, descricao: String, date: String, status: Status, images: [UIImage]?, videos: [URL]?) {
+    
+    init(categoria: Categoria, descricao: String, date: String, status: Status, images: [String]?, videos: [String]?) {
         self.categoria = categoria
         self.descricao = descricao
         self.date = date
@@ -26,35 +27,32 @@ class Denuncia {
         self.videos = videos
     }
     
-    init(parameters: [String:Any]) {
-        var denunciaImage:[UIImage] = []
-        var denunciaVideo:[URL] = []
+    init(parameters: [String:Any], imgsArray: NSArray?, videosArray: NSArray?) {
         let jsonDenuncia = parameters
         
-        let jsonDenunciaImages = jsonDenuncia["images"] as! NSArray
-        let jsonDenunciaVideos = jsonDenuncia["videos"] as! NSArray
+        var imgUrls: NSArray = []
+        var videoUrls: NSArray = []
         
-        for video in jsonDenunciaVideos {
+        
+        print("json jesus")
+        
+        if imgsArray != nil {
             
-            let jsonVideo = video as! [String:Any]
+            for img in imgsArray! {
+                let url = Denuncia.convertJsonMedia(json: img)
+                imgUrls = imgUrls.adding(url) as NSArray
+            }
+        }
+        
+        if videosArray != nil {
             
-            let videoString = jsonVideo["URL"] as! String
-            
-            let videoURL = URL(string: videoString)
-            
-            denunciaVideo.append(videoURL!)
+            for video in videosArray! {
+                let url = Denuncia.convertJsonMedia(json: video)
+                videoUrls = videoUrls.adding(url) as NSArray
+            }
             
         }
         
-        for image in jsonDenunciaImages {
-            
-            let jsonVideo = image as! [String:Any]
-            
-            let dataDecoded : Data = Data(base64Encoded: jsonVideo["base64Str"] as! String, options: .ignoreUnknownCharacters)!
-            let decodedimage = UIImage(data: dataDecoded)
-            denunciaImage.append(decodedimage!)
-            
-        }
         
         self.categoria = Categoria(rawValue: jsonDenuncia["categoria"] as! String)!
         self.date = jsonDenuncia["created_at"] as! String
@@ -69,63 +67,33 @@ class Denuncia {
             self.status = Status.nao_resolvido
         }
         
-        self.images = denunciaImage
-        self.videos = denunciaVideo
+        self.images = imgUrls as? [String]
+        self.videos = videoUrls as? [String]
+        
+        for image in self.images! {
+            print("url: \(image)")
+        }
+        
+        for video in self.videos! {
+            print("videoUrl: \(video)")
+        }
         
     }
     
     var json: [String:Any] {
         
-        
         get {
             
-            var imagesBase64: [String:Any] = [:]
-            var videosBase64: [String:Any] = [:]
-            
-            var counter = 1 //this is needed to provide a key for the image and video json
-            
-            if self.images != nil {
-                
-                for image in self.images! {
-                    let base64ImageData = UIImagePNGRepresentation(image)! as Data
-                    
-                    let strBase64 = base64ImageData.base64EncodedString(options: .lineLength64Characters)
-                    
-                    let key = "image" + String(counter)
-                    
-                    imagesBase64[key] = strBase64
-                    
-                    counter += 1
-                    
-                }
-            }
-            
-            counter = 1
-            
-            if self.videos != nil {
-                for video in self.videos! {
-                    
-                    var base64VideoData: Data = Data()
-                    base64VideoData = try! Data(contentsOf: video)
-                    
-                    
-                    let strBase64 = base64VideoData.base64EncodedString(options: .lineLength64Characters)
-                    
-                    let key = "video" + String(counter)
-                    
-                    videosBase64[key] = strBase64
-                    
-                    counter += 1
-                    
-                }
-                
-            }
-            
-            let parameters: [String:Any] = ["categoria": self.categoria.rawValue, "descricao": self.descricao, "date": self.date, "status": self.status.rawValue,"videos": "fda" /*videosBase64*/, "images": "fdasfda"/*imagesBase64*/]
+            let parameters: [String:Any] = ["categoria": self.categoria.rawValue, "descricao": self.descricao, "status": self.status.rawValue,"video": self.videos, "image": self.images as Any]
             
             return parameters
         }
     }
     
+    static private func convertJsonMedia(json: Any) -> Any {
+        let jsonDict = json as! [String:Any]
+        let base64Data = jsonDict["base64Data"] as! [String:Any]
+        return base64Data["url"]
+    }
     
 }
