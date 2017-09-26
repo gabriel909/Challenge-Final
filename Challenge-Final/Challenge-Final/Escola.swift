@@ -8,23 +8,30 @@
 
 import Foundation
 
-class Escola: SuperModel {
+class Escola {
     let unidade: String
     let nomeEscola: String
+    var id: Int
     
+    var json: [String:Any] {
+        get {
+            let parameters:[String:Any] = ["unidade": self.unidade,"nomeEscola": self.nomeEscola]
+            return parameters
+        }
     
-    init(unidade: String, nomeEscola: String) {
-        self.unidade = unidade
-        self.nomeEscola = nomeEscola
-        super.init()
     }
     
     
-    public func getEscolas() {
-        guard  let url  = URL(string: "blablabla") else { return }
-        sharedDAO.sendRequest(url: url, parameters: nil, method: Methods.get, completion: { (dict) in
-            
-        })
+    init(parameters: [String:Any]) {
+        self.unidade = parameters["unidade"] as! String
+        self.nomeEscola = parameters["nome"] as! String
+        self.id = parameters["id"] as! Int
+    }
+    
+    init(unidade: String, nomeEscola: String, id: Int) {
+        self.nomeEscola = nomeEscola
+        self.unidade = unidade
+        self.id = id
     }
     
 }

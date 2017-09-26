@@ -7,8 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B263F611F740BCE0005209A /* ReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B263F601F740BCE0005209A /* ReportsViewController.swift */; };
+		2B263F631F740C660005209A /* AnnouncementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B263F621F740C660005209A /* AnnouncementsViewController.swift */; };
 		2B4BB57A1F66FFDE005A0ED3 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4BB5791F66FFDE005A0ED3 /* Helper.swift */; };
 		2B4FA4071F66FB13009550B9 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B4FA4061F66FB13009550B9 /* RegisterViewController.swift */; };
+		2B62C2D01F74018B00CCD8B5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B62C2CF1F74018B00CCD8B5 /* MainViewController.swift */; };
+		2B787D711F7AA194009B28A2 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B787D701F7AA194009B28A2 /* CategoriesViewController.swift */; };
+		2B787D731F7AA280009B28A2 /* DetailsReportsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B787D721F7AA280009B28A2 /* DetailsReportsViewController.swift */; };
+		2B787D751F7AAD8C009B28A2 /* DetailsAnnouncementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B787D741F7AAD8C009B28A2 /* DetailsAnnouncementsViewController.swift */; };
+		2B787D771F7AAE95009B28A2 /* NewReportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B787D761F7AAE95009B28A2 /* NewReportViewController.swift */; };
+		2B787D7A1F7AB192009B28A2 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B787D781F7AB192009B28A2 /* CollectionViewCell.swift */; };
+		2B787D7B1F7AB192009B28A2 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B787D791F7AB192009B28A2 /* CollectionViewCell.xib */; };
 		2BC43C711F70269900A84A7F /* SchoolListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC43C701F70269900A84A7F /* SchoolListViewController.swift */; };
 		2BC43C741F70271400A84A7F /* SchoolsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC43C721F70271400A84A7F /* SchoolsTableViewCell.swift */; };
 		2BC43C751F70271400A84A7F /* SchoolsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BC43C731F70271400A84A7F /* SchoolsTableViewCell.xib */; };
@@ -22,20 +31,33 @@
 		54A08B10364E3F07A3AE7D13 /* Pods_Challenge_Final.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0453924069ED25118C3CDB /* Pods_Challenge_Final.framework */; };
 		E5956CDA1F7029A800935B58 /* Aluno.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CD91F7029A800935B58 /* Aluno.swift */; };
 		E5956CDD1F702CF900935B58 /* Denuncia.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CDC1F702CF900935B58 /* Denuncia.swift */; };
-		E5956CDF1F702DF800935B58 /* SuperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CDE1F702DF800935B58 /* SuperModel.swift */; };
 		E5956CE11F70308000935B58 /* Categoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CE01F70308000935B58 /* Categoria.swift */; };
 		E5956CE31F7031F000935B58 /* Aviso.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CE21F7031F000935B58 /* Aviso.swift */; };
 		E5956CE51F70322900935B58 /* Serie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CE41F70322900935B58 /* Serie.swift */; };
 		E5956CE71F70382500935B58 /* Methods.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CE61F70382500935B58 /* Methods.swift */; };
 		E5956CE91F703BF500935B58 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5956CE81F703BF500935B58 /* Status.swift */; };
+		E5970D4B1F79BB7C009973E7 /* Base64Enconder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5970D4A1F79BB7C009973E7 /* Base64Enconder.swift */; };
 		EB8F6EE41F631FFD005E1770 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8F6EE31F631FFD005E1770 /* GradientView.swift */; };
 		EB8F6EE61F632068005E1770 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB8F6EE51F632068005E1770 /* CustomButton.swift */; };
+		EBDCDD7D1F768A4B00D8F41E /* AnnouncementsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCDD7B1F768A4B00D8F41E /* AnnouncementsTableViewCell.swift */; };
+		EBDCDD7E1F768A4B00D8F41E /* AnnouncementsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDCDD7C1F768A4B00D8F41E /* AnnouncementsTableViewCell.xib */; };
+		EBDCDD811F768FB800D8F41E /* ReportsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDCDD7F1F768FB800D8F41E /* ReportsTableViewCell.swift */; };
+		EBDCDD821F768FB800D8F41E /* ReportsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDCDD801F768FB800D8F41E /* ReportsTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		13B4645275CA3D816B5F4E83 /* Pods-Challenge-Final.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Challenge-Final.release.xcconfig"; path = "Pods/Target Support Files/Pods-Challenge-Final/Pods-Challenge-Final.release.xcconfig"; sourceTree = "<group>"; };
+		2B263F601F740BCE0005209A /* ReportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsViewController.swift; sourceTree = "<group>"; };
+		2B263F621F740C660005209A /* AnnouncementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsViewController.swift; sourceTree = "<group>"; };
 		2B4BB5791F66FFDE005A0ED3 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		2B4FA4061F66FB13009550B9 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		2B62C2CF1F74018B00CCD8B5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		2B787D701F7AA194009B28A2 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		2B787D721F7AA280009B28A2 /* DetailsReportsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsReportsViewController.swift; sourceTree = "<group>"; };
+		2B787D741F7AAD8C009B28A2 /* DetailsAnnouncementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsAnnouncementsViewController.swift; sourceTree = "<group>"; };
+		2B787D761F7AAE95009B28A2 /* NewReportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReportViewController.swift; sourceTree = "<group>"; };
+		2B787D781F7AB192009B28A2 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		2B787D791F7AB192009B28A2 /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		2BC43C701F70269900A84A7F /* SchoolListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolListViewController.swift; sourceTree = "<group>"; };
 		2BC43C721F70271400A84A7F /* SchoolsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SchoolsTableViewCell.swift; sourceTree = "<group>"; };
 		2BC43C731F70271400A84A7F /* SchoolsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolsTableViewCell.xib; sourceTree = "<group>"; };
@@ -51,15 +73,19 @@
 		AE0453924069ED25118C3CDB /* Pods_Challenge_Final.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Challenge_Final.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5956CD91F7029A800935B58 /* Aluno.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aluno.swift; sourceTree = "<group>"; };
 		E5956CDC1F702CF900935B58 /* Denuncia.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Denuncia.swift; sourceTree = "<group>"; };
-		E5956CDE1F702DF800935B58 /* SuperModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperModel.swift; sourceTree = "<group>"; };
 		E5956CE01F70308000935B58 /* Categoria.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Categoria.swift; sourceTree = "<group>"; };
 		E5956CE21F7031F000935B58 /* Aviso.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Aviso.swift; sourceTree = "<group>"; };
 		E5956CE41F70322900935B58 /* Serie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Serie.swift; sourceTree = "<group>"; };
 		E5956CE61F70382500935B58 /* Methods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Methods.swift; sourceTree = "<group>"; };
 		E5956CE81F703BF500935B58 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		E5970D4A1F79BB7C009973E7 /* Base64Enconder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base64Enconder.swift; sourceTree = "<group>"; };
 		E5DBD2ED16117F8E7F679500 /* Pods-Challenge-Final.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Challenge-Final.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Challenge-Final/Pods-Challenge-Final.debug.xcconfig"; sourceTree = "<group>"; };
 		EB8F6EE31F631FFD005E1770 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		EB8F6EE51F632068005E1770 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		EBDCDD7B1F768A4B00D8F41E /* AnnouncementsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsTableViewCell.swift; sourceTree = "<group>"; };
+		EBDCDD7C1F768A4B00D8F41E /* AnnouncementsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnnouncementsTableViewCell.xib; sourceTree = "<group>"; };
+		EBDCDD7F1F768FB800D8F41E /* ReportsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsTableViewCell.swift; sourceTree = "<group>"; };
+		EBDCDD801F768FB800D8F41E /* ReportsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportsTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +106,6 @@
 				E5956CD91F7029A800935B58 /* Aluno.swift */,
 				2BC43C791F7041E200A84A7F /* Escola.swift */,
 				E5956CDC1F702CF900935B58 /* Denuncia.swift */,
-				E5956CDE1F702DF800935B58 /* SuperModel.swift */,
 				E5956CE01F70308000935B58 /* Categoria.swift */,
 				E5956CE21F7031F000935B58 /* Aviso.swift */,
 				E5956CE41F70322900935B58 /* Serie.swift */,
@@ -94,11 +119,15 @@
 			isa = PBXGroup;
 			children = (
 				4EDD3BF31F547E180012117C /* Main.storyboard */,
+				2B787D781F7AB192009B28A2 /* CollectionViewCell.swift */,
+				2B787D791F7AB192009B28A2 /* CollectionViewCell.xib */,
 				4EDD3BF61F547E180012117C /* Assets.xcassets */,
 				4EDD3BF81F547E180012117C /* LaunchScreen.storyboard */,
 				EB8F6EE31F631FFD005E1770 /* GradientView.swift */,
 				EB8F6EE51F632068005E1770 /* CustomButton.swift */,
 				2BC43C731F70271400A84A7F /* SchoolsTableViewCell.xib */,
+				EBDCDD801F768FB800D8F41E /* ReportsTableViewCell.xib */,
+				EBDCDD7C1F768A4B00D8F41E /* AnnouncementsTableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -106,10 +135,19 @@
 		2B4FA4041F66F9E4009550B9 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				EBDCDD7B1F768A4B00D8F41E /* AnnouncementsTableViewCell.swift */,
+				2B787D741F7AAD8C009B28A2 /* DetailsAnnouncementsViewController.swift */,
 				4EDD3BF11F547E180012117C /* LoginViewController.swift */,
 				2B4FA4061F66FB13009550B9 /* RegisterViewController.swift */,
 				2BC43C701F70269900A84A7F /* SchoolListViewController.swift */,
 				2BC43C721F70271400A84A7F /* SchoolsTableViewCell.swift */,
+				2B62C2CF1F74018B00CCD8B5 /* MainViewController.swift */,
+				2B263F601F740BCE0005209A /* ReportsViewController.swift */,
+				2B263F621F740C660005209A /* AnnouncementsViewController.swift */,
+				EBDCDD7F1F768FB800D8F41E /* ReportsTableViewCell.swift */,
+				2B787D701F7AA194009B28A2 /* CategoriesViewController.swift */,
+				2B787D721F7AA280009B28A2 /* DetailsReportsViewController.swift */,
+				2B787D761F7AAE95009B28A2 /* NewReportViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -121,6 +159,7 @@
 				2B4BB5791F66FFDE005A0ED3 /* Helper.swift */,
 				4EDD3BEF1F547E180012117C /* AppDelegate.swift */,
 				2BC43C771F7041B000A84A7F /* DAO.swift */,
+				E5970D4A1F79BB7C009973E7 /* Base64Enconder.swift */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -201,12 +240,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "Gabriel Oliveira";
 				TargetAttributes = {
 					4EDD3BEB1F547E180012117C = {
 						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = AU45XX83RQ;
+						DevelopmentTeam = 44E939YYW6;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -234,6 +274,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBDCDD7E1F768A4B00D8F41E /* AnnouncementsTableViewCell.xib in Resources */,
+				2B787D7B1F7AB192009B28A2 /* CollectionViewCell.xib in Resources */,
+				EBDCDD821F768FB800D8F41E /* ReportsTableViewCell.xib in Resources */,
 				4EDD3BFA1F547E180012117C /* LaunchScreen.storyboard in Resources */,
 				4EDD3BF71F547E180012117C /* Assets.xcassets in Resources */,
 				4EDD3BF51F547E180012117C /* Main.storyboard in Resources */,
@@ -286,7 +329,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -299,20 +342,30 @@
 				2BC43C711F70269900A84A7F /* SchoolListViewController.swift in Sources */,
 				EB8F6EE61F632068005E1770 /* CustomButton.swift in Sources */,
 				2B4FA4071F66FB13009550B9 /* RegisterViewController.swift in Sources */,
+				2B787D771F7AAE95009B28A2 /* NewReportViewController.swift in Sources */,
 				2BC43C741F70271400A84A7F /* SchoolsTableViewCell.swift in Sources */,
+				2B787D751F7AAD8C009B28A2 /* DetailsAnnouncementsViewController.swift in Sources */,
+				EBDCDD811F768FB800D8F41E /* ReportsTableViewCell.swift in Sources */,
+				E5970D4B1F79BB7C009973E7 /* Base64Enconder.swift in Sources */,
 				2BC43C7A1F7041E200A84A7F /* Escola.swift in Sources */,
+				2B62C2D01F74018B00CCD8B5 /* MainViewController.swift in Sources */,
+				2B787D7A1F7AB192009B28A2 /* CollectionViewCell.swift in Sources */,
 				4EDD3BF21F547E180012117C /* LoginViewController.swift in Sources */,
+				2B263F631F740C660005209A /* AnnouncementsViewController.swift in Sources */,
 				E5956CE51F70322900935B58 /* Serie.swift in Sources */,
 				2BC43C781F7041B000A84A7F /* DAO.swift in Sources */,
 				4EDD3BF01F547E180012117C /* AppDelegate.swift in Sources */,
 				E5956CE31F7031F000935B58 /* Aviso.swift in Sources */,
+				2B787D711F7AA194009B28A2 /* CategoriesViewController.swift in Sources */,
 				E5956CE11F70308000935B58 /* Categoria.swift in Sources */,
+				2B787D731F7AA280009B28A2 /* DetailsReportsViewController.swift in Sources */,
+				2B263F611F740BCE0005209A /* ReportsViewController.swift in Sources */,
 				E5956CDA1F7029A800935B58 /* Aluno.swift in Sources */,
 				E5956CE71F70382500935B58 /* Methods.swift in Sources */,
 				E5956CE91F703BF500935B58 /* Status.swift in Sources */,
 				EB8F6EE41F631FFD005E1770 /* GradientView.swift in Sources */,
+				EBDCDD7D1F768A4B00D8F41E /* AnnouncementsTableViewCell.swift in Sources */,
 				E5956CDD1F702CF900935B58 /* Denuncia.swift in Sources */,
-				E5956CDF1F702DF800935B58 /* SuperModel.swift in Sources */,
 				2B4BB57A1F66FFDE005A0ED3 /* Helper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,7 +402,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -357,7 +412,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -399,7 +458,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -407,7 +468,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -437,12 +502,13 @@
 			baseConfigurationReference = E5DBD2ED16117F8E7F679500 /* Pods-Challenge-Final.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = AU45XX83RQ;
+				DEVELOPMENT_TEAM = 44E939YYW6;
 				INFOPLIST_FILE = "Challenge-Final/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Gabriel.Challenge-Final";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -451,12 +517,13 @@
 			baseConfigurationReference = 13B4645275CA3D816B5F4E83 /* Pods-Challenge-Final.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = AU45XX83RQ;
+				DEVELOPMENT_TEAM = 44E939YYW6;
 				INFOPLIST_FILE = "Challenge-Final/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Gabriel.Challenge-Final";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

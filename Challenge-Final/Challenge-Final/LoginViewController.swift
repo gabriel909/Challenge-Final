@@ -12,6 +12,29 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        var images:[UIImage] = []
+//        var videos:[String] = []
+//        images.append(#imageLiteral(resourceName: "teste"))
+//
+//
+//        let documentsFolder = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+//        let videoUrl = documentsFolder.appendingPathComponent("FinalVideo2.mov")
+//
+//
+//        let videoData = try! Data(contentsOf: videoUrl)
+//
+//        let videoDataString = videoData.base64EncodedString(options: .lineLength64Characters)
+//
+//
+//
+//        videos.append(videoDataString)
+//        videos.append(videoDataString)
+//
+//        videos = Base64Enconder.encode(videos: videos)
+//
+//
+        
+       
         // Do any additional setup after loading the view, typically from a nib.
     }
     

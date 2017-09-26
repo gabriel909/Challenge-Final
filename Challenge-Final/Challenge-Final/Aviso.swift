@@ -8,27 +8,26 @@
 
 import Foundation
 
-class Aviso: SuperModel {
+class Aviso {
     let titulo: String
     let descricao: String
-    let series: [Serie]
-    let data: Date
+    var data: String
+    let id: Int
     
-    init(titulo: String, descricao: String, series: [Serie], data: Date) {
+    init(titulo: String, descricao: String, data: String, id: Int) {
         self.titulo = titulo
         self.descricao = descricao
-        self.series = series
         self.data = data
-        super.init()
+        self.id = id
     }
     
-    public func getAvisos(completion: @escaping (Aviso) -> Void) {
-        guard let url = URL(string: self.apiUrl + "/avisos") else { return }
-        self.sharedDAO.sendRequest(url: url, parameters: nil, method: Methods.get, completion: { (dict) in
-            
-            
-        }
-        )
+    init(parameters: [String:Any]) {
+        self.titulo = parameters["titulo"] as! String
+        self.descricao = parameters["descricao"] as! String
+        self.data = parameters["created_at"] as! String
+        self.id = parameters["id"] as! Int
     }
+    
+    
     
 }
