@@ -13,3 +13,4 @@ enum Status: String {
     case nao_resolvido = "nao_resolvido"
     case andamento = "andamento"
 }
+

@@ -131,7 +131,7 @@ class DAO {
         
     }
     
-    public func sendDenuncia(denuncia:Denuncia,idAluno: Int,idEscola: Int,completion: @escaping (Denuncia) -> Void) {
+    public func sendDenuncia(denuncia: Denuncia, idAluno: Int, idEscola: Int, completion: @escaping (Denuncia) -> Void) {
         
         guard let url = URL(string: self.apiUrl + "/escolas/\(idEscola)/alunos/\(idAluno)/denuncias") else { return }
         

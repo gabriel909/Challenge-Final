@@ -54,7 +54,6 @@ class SchoolListViewController: UIViewController {
         var result = [String : [String]]()
         
         let characters = Array(Set(array.flatMap({ $0.characters.first }))).sorted()
-        //        print(characters)
         
         for character in characters.map({ String($0) }) {
             result[character] = array.filter({ $0.hasPrefix(character) })
@@ -63,7 +62,6 @@ class SchoolListViewController: UIViewController {
         tableViewDic = result
         tableViewSectionsTitle = Array(tableViewDic.keys).sorted()
     }
-    
 }
 
 //MARK: - Extensions
@@ -114,8 +112,6 @@ extension SchoolListViewController: UITableViewDelegate {
         
         gambi = cell.schoolName.text
 
-        
         dismiss(animated: true, completion: nil)
     }
-    
 }

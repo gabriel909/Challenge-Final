@@ -80,6 +80,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="descriptionLabel" destination="5Ns-xI-MtA" id="BdL-pV-YcD"/>
+                <outlet property="statusBar" destination="5tb-M6-psV" id="qFY-U3-sjx"/>
                 <outlet property="titleLabel" destination="dmO-v5-0Jb" id="feG-10-k1f"/>
             </connections>
             <point key="canvasLocation" x="65" y="23"/>

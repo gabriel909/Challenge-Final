@@ -10,8 +10,10 @@ import UIKit
 
 class ReportsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var statusBar: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

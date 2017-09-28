@@ -10,26 +10,29 @@ import UIKit
 
 class DetailsAnnouncementsViewController: UIViewController {
 
+    @IBOutlet weak var avisoImage: UIImageView!
+    @IBOutlet weak var descTextView: UITextView!
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    var aviso: Aviso!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadLabels()
 
-        // Do any additional setup after loading the view.
+    }
+    
+    private func loadLabels() {
+        descTextView.text = aviso.descricao
+        titleLabel.text = aviso.titulo
+        
+        if aviso.image != nil {
+            //MARK: - TODO Set aviso image
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

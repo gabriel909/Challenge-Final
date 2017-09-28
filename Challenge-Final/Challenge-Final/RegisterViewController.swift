@@ -90,15 +90,6 @@ extension RegisterViewController: UITextFieldDelegate {
         }
     }
     
-//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//        if textField.tag == 1 {
-//            return false
-//
-//        }
-//
-//        return true
-//    }
-    
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         if textField.tag == 1 {
