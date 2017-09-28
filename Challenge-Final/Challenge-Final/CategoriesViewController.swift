@@ -19,9 +19,6 @@ class CategoriesViewController: UIViewController {
         // Do any additional setup after loading the view.
         self.collectionSetup()
         self.collectionview.delegate = self
-        
-        print(width)
-        print(height)
     }
     
     override func didReceiveMemoryWarning() {

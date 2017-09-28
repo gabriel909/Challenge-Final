@@ -35,6 +35,14 @@ extension UIViewController {
     }
 }
 
+//Create and present an UIAlert
+public func message(_ title: String, desc: String, view: UIViewController) {
+    let alertController = UIAlertController(title: title, message: desc, preferredStyle: UIAlertControllerStyle.alert)
+    alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
+    
+    view.present(alertController, animated: true, completion: nil)
+}
+
 class SegueFromRight: UIStoryboardSegue {
     override func perform() {
         let src = self.source

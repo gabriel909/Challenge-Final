@@ -41,6 +41,7 @@ class SchoolListViewController: UIViewController {
         self.tableView = UITableView(frame: tableViewRect , style: .plain)
         self.tableView.dataSource = self
         self.tableView.backgroundColor = .clear
+        self.tableView.sectionIndexColor = .clear
         self.tableView.rowHeight = height / 8.4
         self.tableView.register(tableViewCellNib, forCellReuseIdentifier: "idNormalCell")
         self.tableView.clipsToBounds = true
@@ -92,6 +93,15 @@ extension SchoolListViewController: UITableViewDataSource {
         cell.schoolName.text = cellName
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
+        
+        headerView.backgroundColor = .clear
+        headerView.layer.zPosition = -10
+        
+        return headerView
     }
 }
 

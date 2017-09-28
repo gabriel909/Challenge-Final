@@ -13,7 +13,7 @@ import UIKit
 import SkyFloatingLabelTextField
 
 class RegisterViewController: UIViewController {
-
+    
     @IBOutlet var schoolTextField: SkyFloatingLabelTextField!
     @IBOutlet var nameTextField: SkyFloatingLabelTextField!
     @IBOutlet var emailTextField: SkyFloatingLabelTextField!
@@ -58,8 +58,21 @@ class RegisterViewController: UIViewController {
         print(chosenSchool)
 
     }
-    
-
+    @IBAction func signupButton(_ sender: Any) {
+        if (schoolTextField.text?.isEmpty)! ||
+           (nameTextField.text?.isEmpty)! ||
+           (emailTextField.text?.isEmpty)! ||
+           (passwordTextField.text?.isEmpty)! ||
+           (confirmPasswordTextField.text?.isEmpty)! ||
+           (yearTextField.text?.isEmpty)! {
+            
+            message("Atenção", desc: "Por favor preencha todos os campos", view: self)
+            
+        } else {
+            performSegue(withIdentifier: "signupToMain", sender: self)
+            
+        }
+    }
 }
 
 extension RegisterViewController: UITextFieldDelegate {
@@ -71,10 +84,19 @@ extension RegisterViewController: UITextFieldDelegate {
         
         } else {
         
-            animateViewMoving(true, moveValue: 250)
+            animateViewMoving(true, moveValue: 150)
             
         }
     }
+    
+//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+//        if textField.tag == 1 {
+//            return false
+//
+//        }
+//
+//        return true
+//    }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         
@@ -83,7 +105,7 @@ extension RegisterViewController: UITextFieldDelegate {
         
         } else {
             
-            animateViewMoving(false, moveValue: 250)
+            animateViewMoving(false, moveValue: 150)
         
         }
     }
