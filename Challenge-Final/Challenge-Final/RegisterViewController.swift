@@ -80,6 +80,7 @@ extension RegisterViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         
         if textField.tag == 1 {
+            self.view.endEditing(true)
             performSegue(withIdentifier: "toSchoolList", sender: self)
         
         } else {
