@@ -18,7 +18,6 @@ class Escola {
             let parameters:[String:Any] = ["unidade": self.unidade,"nomeEscola": self.nomeEscola]
             return parameters
         }
-    
     }
     
     
@@ -33,5 +32,4 @@ class Escola {
         self.unidade = unidade
         self.id = id
     }
-    
 }

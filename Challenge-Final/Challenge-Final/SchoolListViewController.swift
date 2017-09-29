@@ -11,20 +11,21 @@ import UIKit
 import Foundation
 
 class SchoolListViewController: UIViewController {
-    private var tableView: UITableView!
+    fileprivate var tableView: UITableView!
     fileprivate var tableViewDic: [String : [String]] = [:]
     fileprivate var tableViewSectionsTitle: [String] = []
+    fileprivate var arrayEscolas: [Escola]!
+    
+    fileprivate let sharedDAO = DAO.sharedDAO
+    
     var selected: String!
 
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        self.populateDic()
         self.tableViewSetup()
-        self.tableView.delegate = self
+        self.populateDic()
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,7 +38,6 @@ class SchoolListViewController: UIViewController {
         let tableViewRect = CGRect(x: 0, y: 0, width: width, height: height)
         let tableViewCellNib = UINib(nibName: "SchoolsTableViewCell", bundle: nil)
         
-        
         self.tableView = UITableView(frame: tableViewRect , style: .plain)
         self.tableView.dataSource = self
         self.tableView.backgroundColor = .clear
@@ -46,21 +46,34 @@ class SchoolListViewController: UIViewController {
         self.tableView.register(tableViewCellNib, forCellReuseIdentifier: "idNormalCell")
         self.tableView.clipsToBounds = true
         
+        self.tableView.delegate = self
+        
         self.view.addSubview(tableView)
     }
     
     private func populateDic() {
-        let array = ["Aname1", "Bname1", "Aname2", "Aname3", "Bname2", "Bname3", "Cname1"]
-        var result = [String : [String]]()
+        var array: [String] = []
         
-        let characters = Array(Set(array.flatMap({ $0.characters.first }))).sorted()
-        
-        for character in characters.map({ String($0) }) {
-            result[character] = array.filter({ $0.hasPrefix(character) })
-        }
-        
-        tableViewDic = result
-        tableViewSectionsTitle = Array(tableViewDic.keys).sorted()
+        sharedDAO.getEscolas(completion: { arrayEscolas in
+            for escola in arrayEscolas {
+                array.append(escola.nomeEscola)
+            }
+            
+            var result = [String : [String]]()
+            
+            let characters = Array(Set(array.flatMap({ $0.characters.first }))).sorted()
+            
+            for character in characters.map({ String($0) }) {
+                result[character] = array.filter({ $0.hasPrefix(character) })
+            }
+            
+            self.tableViewDic = result
+            self.tableViewSectionsTitle = Array(self.tableViewDic.keys).sorted()
+
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
     }
 }
 
@@ -93,14 +106,14 @@ extension SchoolListViewController: UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
-        
-        headerView.backgroundColor = .clear
-        headerView.layer.zPosition = -10
-        
-        return headerView
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
+//
+//        headerView.backgroundColor = .clear
+//        headerView.layer.zPosition = -10
+//
+//        return headerView
+//    }
 }
 
 //MARK: - Table View Delegate

@@ -41,6 +41,7 @@ class ReportsViewController: UIViewController {
         self.tableView = UITableView(frame: tableViewRect , style: .plain)
         self.tableView.dataSource = self
         self.tableView.backgroundColor = .clear
+        self.tableView.separatorStyle = .none
         self.tableView.rowHeight = height / 5
         self.tableView.register(tableViewCellNib, forCellReuseIdentifier: "idReportCell")
         self.tableView.clipsToBounds = true
@@ -53,13 +54,13 @@ class ReportsViewController: UIViewController {
         
         switch status {
             case .andamento:
-                colorHex = 0xffffff
+                colorHex = 0xBBB500
             
             case .resolvido:
-                colorHex = 0xfffff1
+                colorHex = 0x008A4E
             
             case .nao_resolvido:
-                colorHex = 0xffffff
+                colorHex = 0xBB0000
         }
         
         return UIColor(rgb: colorHex)
@@ -84,7 +85,13 @@ extension ReportsViewController: UITableViewDataSource {
         cell.backgroundColor = .clear
         cell.titleLabel.text = "Teste"
         cell.descriptionLabel.text = "aibcuabcpiabcoabc"
-        cell.statusBar.backgroundColor = getColor(forStatus: Status.nao_resolvido)
+        cell.selectionStyle = .none
+        
+        //MARK: - TODO Change color accordingly
+        
+        let status = (indexPath.row % 2 == 0) ? Status.andamento : Status.nao_resolvido
+        
+        cell.statusBar.backgroundColor = getColor(forStatus: status)
         
         return cell
     }
@@ -99,7 +106,7 @@ extension ReportsViewController: UITableViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toDetailsAnnoun" {
+        if segue.identifier == "toDetailsReport" {
             let destVc = segue.destination as! DetailsReportsViewController
             //MARK: - TODO Send the selected aviso
             destVc.report = Denuncia(categoria: .Limpeza, descricao: "idfsnofinsdo", date: "sodifnos", status: .nao_resolvido, images: [], videos: [])

@@ -24,15 +24,13 @@ class DAO {
     /* Aluno */
     public func createAluno(name: String, password: String, serie: String, email: String,avatar: Int, escola: Escola, completion: @escaping (Aluno) -> Void) {
         
-        let parameters:[String: Any] = ["nome": name, "password": password, "serie": serie, "email": email,"avatar": avatar]
+        let parameters:[String: Any] = ["nome": name, "password": password, "serie": serie, "email": email]
         
         guard let url = URL(string: self.apiUrl + "/escolas/\(escola.id)/alunos/signup") else { return }
         self.sendRequest(url: url, parameters: parameters, method: Methods.post, completion: { (dict,abc,def) in
-            
-            
             guard var jsonDict = dict as? [String:Any] else { return }
             
-            jsonDict["avatar"] = avatar
+//            jsonDict["avatar"] = avatar
             
             //newParams["token"] = jsonDict["Authorization"] as! String
             //newParams["id"] = jsonDict["id"] as! Int
@@ -42,21 +40,41 @@ class DAO {
             completion(self.aluno!)
             
         })
-    
     }
     
-    public func loginAluno(email: String, password: String,success: @escaping (Aluno) -> Void, failure: @escaping (String) -> Void) {
+    public func create(aluno: Aluno, escola_id: Int, completion: @escaping (Aluno) -> Void) {
+        
+        let parameters:[String: Any] = ["nome": aluno.name, "password": aluno.password, "serie": aluno.serie, "email": aluno.email/*, "avatar": aluno.avatar*/]
+        
+        guard let url = URL(string: self.apiUrl + "/escolas/\(escola_id)/alunos/signup") else { return }
+        self.sendRequest(url: url, parameters: parameters, method: Methods.post, completion: { (dict, abc, def) in
+            guard var jsonDict = dict as? [String:Any] else { return }
+            
+//            jsonDict["avatar"] = aluno.avatar
+            
+            //newParams["token"] = jsonDict["Authorization"] as! String
+            //newParams["id"] = jsonDict["id"] as! Int
+            
+            self.aluno = Aluno(parameters: jsonDict)
+            
+            completion(self.aluno!)
+            
+        })
+    }
+    
+    public func loginAluno(email: String, password: String, completion: @escaping (Aluno?, String?) -> Void) {
         let parameters = ["email": email, "password": password]
         guard let url = URL(string: apiUrl + "/alunos/login") else { return }
+        
         sendRequest(url: url, parameters: parameters, method: Methods.post, completion: { (dict,abc,def) in
             guard let jsonDict = dict as? [String: Any] else { return }
+            
             if jsonDict["error"] == nil {
-                
                 self.aluno = Aluno(parameters: jsonDict)
+                completion(self.aluno!, nil)
                 
-                success(self.aluno!)
             } else {
-                failure("error")
+                completion(nil, "error")
                 self.aluno = nil
                 
             }
@@ -154,7 +172,6 @@ class DAO {
             
             
         })
-        
     }
     
     
@@ -181,7 +198,7 @@ class DAO {
     }
     
     /* Request Sender */
-    public func sendRequest(url: URL, parameters: [String:Any]? ,method: Methods,completion: @escaping (Any,Any?,Any?) -> Void) {
+    public func sendRequest(url: URL, parameters: [String:Any]?, method: Methods, completion: @escaping (Any, Any?, Any?) -> Void) {
         let session = URLSession.shared
         print("url \(url)")
         var request = URLRequest(url: url)
@@ -212,7 +229,7 @@ class DAO {
                 if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: AnyObject] {
                     
                     
-                    completion(json["data"] as Any,json["img"] as Any?,json["video"] as Any?)
+                    completion(json["data"] as Any, json["img"] as Any?, json["video"] as Any?)
                     
                 } else {
                     print("damn")

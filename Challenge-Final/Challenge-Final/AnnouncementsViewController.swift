@@ -36,6 +36,7 @@ class AnnouncementsViewController: UIViewController {
         self.tableView = UITableView(frame: tableViewRect , style: .plain)
         self.tableView.dataSource = self
         self.tableView.backgroundColor = .clear
+        self.tableView.separatorStyle = .none
         self.tableView.rowHeight = height / 5
         self.tableView.register(tableViewCellNib, forCellReuseIdentifier: "idAnnouncCell")
         self.tableView.clipsToBounds = true
@@ -62,6 +63,7 @@ extension AnnouncementsViewController: UITableViewDataSource {
         cell.backgroundColor = .clear
         cell.titleLabel.text = "Teste"
         cell.descriptionLabel.text = "aibcuabcpiabcoabc"
+        cell.selectionStyle = .none
         
         return cell
     }

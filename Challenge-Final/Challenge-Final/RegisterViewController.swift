@@ -21,6 +21,8 @@ class RegisterViewController: UIViewController {
     @IBOutlet var confirmPasswordTextField: SkyFloatingLabelTextField!
     @IBOutlet var yearTextField: SkyFloatingLabelTextField!
     
+    fileprivate var sharedDAO = DAO.sharedDAO
+    
     var chosenSchool: String!
     
     override func viewDidLoad() {
@@ -36,14 +38,11 @@ class RegisterViewController: UIViewController {
         
     }
 
-    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.navigationBar.transparentNavigationBar()
         self.navigationController?.navigationItem.title = "Cadastro"
         schoolTextField.text = gambi
-
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,10 +67,28 @@ class RegisterViewController: UIViewController {
             
             message("Atenção", desc: "Por favor preencha todos os campos", view: self)
             
-        } else {
-            performSegue(withIdentifier: "signupToMain", sender: self)
+        } else if passwordTextField.text != confirmPasswordTextField.text {
+            message("Atenção", desc: "As senhas não são as mesmas", view: self)
             
+        } else {
+            sharedDAO.create(aluno: getAlunosFromLabels(), escola_id: 2, completion: { (aluno) in
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "signupToMain", sender: self)
+                }
+            })
         }
+    }
+    
+    private func getAlunosFromLabels() -> Aluno {
+        let aluno = Aluno()
+        
+        aluno.name = nameTextField.text!
+        aluno.email = emailTextField.text!
+        aluno.avatar = 1
+        aluno.password = passwordTextField.text!
+        aluno.serie = yearTextField.text!
+        
+        return aluno
     }
 }
 

@@ -9,13 +9,13 @@
 import Foundation
 
 class Aluno {
-    let name: String
-    let email: String
-    let serie: String
-    let password: String
-    let id: Int
-    let avatar: Int
-    let escola_id:Int
+    var name: String
+    var email: String
+    var serie: String
+    var password: String
+    var id: Int?
+    var avatar: Int?
+    var escola_id: Int
     //let token: String
     var denuncias:[Denuncia] = []
     var avisos:[Aviso] = []
@@ -28,7 +28,7 @@ class Aluno {
         self.email = parameters["email"] as! String
         self.name = parameters["nome"] as! String
         self.id = parameters["id"] as! Int
-        self.avatar = parameters["avatar"] as! Int
+//        self.avatar = parameters["avatar"] as! Int
         self.password = parameters["password_digest"] as! String
         self.serie = parameters["serie"] as! String
         self.escola_id = parameters["escola_id"] as! Int
@@ -36,7 +36,14 @@ class Aluno {
         
     }
     
-    
+    init() {
+        self.name = ""
+        self.email = ""
+        self.serie = ""
+        self.password = ""
+        self.avatar = 0
+        self.escola_id = 0
+    }
     
     func deleteAviso(idAviso: Int) {
         self.avisos = self.avisos.filter({$0.id != idAviso})
