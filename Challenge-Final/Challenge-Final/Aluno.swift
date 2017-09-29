@@ -49,7 +49,7 @@ class Aluno {
         self.avisos = self.avisos.filter({$0.id != idAviso})
     }
     
-    init(name: String, password: String, serie: String, email: String, avatar: Int,id: Int,escola_id: Int, token: String) {
+    init(name: String, password: String, serie: String, email: String, avatar: Int,id: Int, escola_id: Int, token: String) {
         self.name = name
         self.email = email
         self.password = password
@@ -60,6 +60,4 @@ class Aluno {
 //        self.token = token
 
     }
-    
- 
 }

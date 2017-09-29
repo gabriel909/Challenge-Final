@@ -69,7 +69,7 @@ class DAO {
         sendRequest(url: url, parameters: parameters, method: Methods.post, completion: { (dict,abc,def) in
             guard let jsonDict = dict as? [String: Any] else { return }
             
-            if jsonDict["error"] == nil {
+            if jsonDict["message"] == nil {
                 self.aluno = Aluno(parameters: jsonDict)
                 completion(self.aluno!, nil)
                 

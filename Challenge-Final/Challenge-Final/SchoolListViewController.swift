@@ -55,6 +55,8 @@ class SchoolListViewController: UIViewController {
         var array: [String] = []
         
         sharedDAO.getEscolas(completion: { arrayEscolas in
+            self.arrayEscolas = arrayEscolas
+            
             for escola in arrayEscolas {
                 array.append(escola.nomeEscola)
             }
@@ -74,6 +76,16 @@ class SchoolListViewController: UIViewController {
                 self.tableView.reloadData()
             }
         })
+    }
+    
+    fileprivate func findSchool(withName name: String) -> Escola? {
+        for escola in arrayEscolas {
+            if escola.nomeEscola == name {
+                return escola
+            }
+        }
+        
+        return nil
     }
 }
 
@@ -123,7 +135,7 @@ extension SchoolListViewController: UITableViewDelegate {
         
         let cell = tableView.cellForRow(at: indexPath) as! SchoolsTableViewCell
         
-        gambi = cell.schoolName.text
+        gambi = self.findSchool(withName: cell.schoolName.text!)
 
         dismiss(animated: true, completion: nil)
     }

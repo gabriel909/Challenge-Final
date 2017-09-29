@@ -32,4 +32,10 @@ class Escola {
         self.unidade = unidade
         self.id = id
     }
+    
+    init() {
+        self.unidade = ""
+        self.nomeEscola = ""
+        self.id = -1
+    }
 }

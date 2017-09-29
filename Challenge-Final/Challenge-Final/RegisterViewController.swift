@@ -6,8 +6,8 @@
 //  Copyright © 2017 Gabriel Oliveira. All rights reserved.
 //
 
-//MARK: - TO DO: Mudar esta merda
-var gambi: String!
+//MARK: - TODO Mudar esta merda
+var gambi: Escola! = Escola()
 
 import UIKit
 import SkyFloatingLabelTextField
@@ -42,7 +42,7 @@ class RegisterViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.navigationBar.transparentNavigationBar()
         self.navigationController?.navigationItem.title = "Cadastro"
-        schoolTextField.text = gambi
+        schoolTextField.text = gambi.nomeEscola
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,10 +68,10 @@ class RegisterViewController: UIViewController {
             message("Atenção", desc: "Por favor preencha todos os campos", view: self)
             
         } else if passwordTextField.text != confirmPasswordTextField.text {
-            message("Atenção", desc: "As senhas não são as mesmas", view: self)
+            message("Atenção", desc: "As senhas não são iguais", view: self)
             
         } else {
-            sharedDAO.create(aluno: getAlunosFromLabels(), escola_id: 2, completion: { (aluno) in
+            sharedDAO.create(aluno: getAlunosFromLabels(), escola_id: gambi.id, completion: { (aluno) in
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "signupToMain", sender: self)
                 }
