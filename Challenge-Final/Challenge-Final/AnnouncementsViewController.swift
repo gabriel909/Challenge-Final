@@ -28,6 +28,11 @@ class AnnouncementsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.navigationBar.transparentNavigationBar()
+    }
+    
     //MARK: - Aux Methods
     private func tableViewSetup() {
         let tableViewRect = CGRect(x: 0, y: 120, width: width, height: height)

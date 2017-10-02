@@ -17,9 +17,7 @@ class DAO {
     let apiUrl = "http://localhost:3000"
     var aluno: Aluno? = nil
     
-    private init() {
-        
-    }
+    private init() { }
     
     /* Aluno */
     public func createAluno(name: String, password: String, serie: String, email: String,avatar: Int, escola: Escola, completion: @escaping (Aluno) -> Void) {
@@ -82,11 +80,10 @@ class DAO {
     }
     
     /* Avisos */
-    public func getAvisos(idAluno: Int,completion: @escaping (Aluno) -> Void) {
-        guard let url = URL(string: self.apiUrl + "/alunos/\(idAluno)/avisos") else { return }
+    public func getAvisos(forAluno aluno: Aluno, completion: @escaping ([Aviso]) -> Void) {
+        guard let url = URL(string: self.apiUrl + "escolas/\(aluno.escola_id)/alunos/\(aluno.id!)/avisos") else { return }
         
-        self.sendRequest(url: url, parameters: nil, method: Methods.get, completion: { (dict,abc,def) in
-            
+        self.sendRequest(url: url, parameters: nil, method: Methods.get, completion: { (dict, abc, def) in
             
             guard let jsonDictArray = dict as? NSArray else { return }
             
@@ -96,7 +93,6 @@ class DAO {
                 
                 guard let jsonAviso = aviso as? [String: Any] else { return }
                 
-                
                 let newAviso = Aviso(parameters: jsonAviso)
                 
                 arrayAviso.append(newAviso)
@@ -104,73 +100,63 @@ class DAO {
             
             self.aluno!.avisos = arrayAviso
             
-            completion(self.aluno!)
+            completion(arrayAviso)
         })
         
     }
     
     func deleteAviso(idAviso: Int, completion: @escaping (String) -> Void) {
-        guard let url = URL(string: self.apiUrl + "/alunos/\(aluno!.id)/avisos/\(idAviso)") else { return }
+        guard let url = URL(string: self.apiUrl + "/alunos/\(aluno!.id!)/avisos/\(idAviso)") else { return }
+        
         self.sendRequest(url: url, parameters: nil, method: Methods.delete, completion: {  (dict,abc,def) in
             guard let jsonDict = dict as? [String:Any] else { return }
+            
             if jsonDict["error"] != nil {
                 completion("error")
+                
             } else {
                 self.aluno!.deleteAviso(idAviso: idAviso)
                 completion("ok")
+                
             }
         })
     }
     
     /* Denuncias */
     public func getDenuncias(completion: @escaping (Aluno) -> Void) {
-        guard let url = URL(string: self.apiUrl + "/alunos/\(aluno!.id)/denuncias") else { return }
+        guard let url = URL(string: self.apiUrl + "/alunos/\(aluno!.id!)/denuncias") else { return }
+        
         self.sendRequest(url: url, parameters: nil, method: Methods.get, completion: { (dict,imgsDict,videosDict) in
-            
-            
             guard let jsonDictArray = dict as? NSArray else { return }
-            
             var arrayDenuncias: [Denuncia] = []
             
             for denuncia in jsonDictArray {
-                
                 guard let jsonDenuncia = denuncia as? [String: Any] else { return }
                 let newDenuncia = Denuncia(parameters: jsonDenuncia, imgsArray: nil, videosArray: nil)
     
                 arrayDenuncias.append(newDenuncia)
-                
             }
             
             self.aluno!.denuncias = arrayDenuncias
-            
             completion(self.aluno!)
-            
         })
-        
     }
     
     public func sendDenuncia(denuncia: Denuncia, idAluno: Int, idEscola: Int, completion: @escaping (Denuncia) -> Void) {
-        
         guard let url = URL(string: self.apiUrl + "/escolas/\(idEscola)/alunos/\(idAluno)/denuncias") else { return }
-        
         
         let params = denuncia.json
         //print("params: \(params)")
         //params["Authorization"] = aluno!.token
         
         self.sendRequest(url: url, parameters: params, method: Methods.post, completion: { (dict,imgsDict,videosDict) in
-            
             print("dict fuck: \(dict)")
-            
             
             guard let jsonDict = dict as? [String:Any] else { return }
             guard let imgsArray = imgsDict as? NSArray else { return }
             guard let videosArray = videosDict as? NSArray else { return }
             
-            
             completion(Denuncia(parameters: jsonDict, imgsArray: imgsArray, videosArray: videosArray))
-            
-            
         })
     }
     
@@ -180,9 +166,7 @@ class DAO {
         guard let url  = URL(string: self.apiUrl + "/escolas") else { return }
         print("method: \(Methods.get)")
         self.sendRequest(url: url, parameters: nil, method: Methods.get, completion: { (dict,imgsDict,nil) in
-            
             var arrayEscola: [Escola] = []
-            
             guard let jsonDictArray = dict as? NSArray else { print("scheisse"); return }
             
             for escola in jsonDictArray {
@@ -193,7 +177,6 @@ class DAO {
             }
             
             completion(arrayEscola)
-            
         })
     }
     
@@ -203,15 +186,17 @@ class DAO {
         print("url \(url)")
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
+        
         if parameters != nil {
             request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
             do {
                 request.httpBody = try JSONSerialization.data(withJSONObject: parameters as Any, options: .prettyPrinted)
+                
             } catch let error {
                 print(error.localizedDescription)
+                
             }
         }
-        
         
         let task = session.dataTask(with: request) { (data, response, error) in
             guard error == nil else {
@@ -219,30 +204,21 @@ class DAO {
                 return
             }
             
-            guard let data = data else {
-                
-                return
-            }
-            
+            guard let data = data else { return }
             
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: AnyObject] {
-                    
-                    
                     completion(json["data"] as Any, json["img"] as Any?, json["video"] as Any?)
                     
                 } else {
                     print("damn")
+                    
                 }
-                
             } catch let error {
                 print(error.localizedDescription)
+                
             }
-            
-            
         }
         task.resume()
-        
     }
-    
 }

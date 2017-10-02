@@ -15,6 +15,7 @@ class SchoolListViewController: UIViewController {
     fileprivate var tableViewDic: [String : [String]] = [:]
     fileprivate var tableViewSectionsTitle: [String] = []
     fileprivate var arrayEscolas: [Escola]!
+    fileprivate let searchController = UISearchController(searchResultsController: nil)
     
     fileprivate let sharedDAO = DAO.sharedDAO
     
@@ -25,7 +26,7 @@ class SchoolListViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         self.tableViewSetup()
-        self.populateDic()
+        self.getSchoolArray()
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,46 +47,54 @@ class SchoolListViewController: UIViewController {
         self.tableView.register(tableViewCellNib, forCellReuseIdentifier: "idNormalCell")
         self.tableView.clipsToBounds = true
         
+        self.tableView.tableHeaderView = searchController.searchBar
+        definesPresentationContext = true
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+        searchController.searchResultsUpdater = self
+        
         self.tableView.delegate = self
         
         self.view.addSubview(tableView)
     }
     
-    private func populateDic() {
-        var array: [String] = []
-        
+    private func getSchoolArray() {
         sharedDAO.getEscolas(completion: { arrayEscolas in
             self.arrayEscolas = arrayEscolas
-            
-            for escola in arrayEscolas {
-                array.append(escola.nomeEscola)
-            }
-            
-            var result = [String : [String]]()
-            
-            let characters = Array(Set(array.flatMap({ $0.characters.first }))).sorted()
-            
-            for character in characters.map({ String($0) }) {
-                result[character] = array.filter({ $0.hasPrefix(character) })
-            }
-            
-            self.tableViewDic = result
-            self.tableViewSectionsTitle = Array(self.tableViewDic.keys).sorted()
 
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self.populateDic(self.arrayEscolas)
             }
         })
     }
     
-    fileprivate func findSchool(withName name: String) -> Escola? {
-        for escola in arrayEscolas {
-            if escola.nomeEscola == name {
-                return escola
-            }
+    fileprivate func populateDic(_ arrayDic: [Escola]) {
+        var array: [String] = []
+        
+        for escola in arrayDic {
+            array.append(escola.nomeEscola)
         }
         
-        return nil
+        var result = [String : [String]]()
+        let characters = Array(Set(array.flatMap({ $0.characters.first }))).sorted()
+        
+        for character in characters.map({ String($0) }) {
+            result[character] = array.filter({ $0.hasPrefix(character) })
+        }
+        
+        self.tableViewDic = result
+        self.tableViewSectionsTitle = Array(self.tableViewDic.keys).sorted()
+        self.tableView.reloadData()
+    }
+    
+    fileprivate func findSchool(withName name: String) -> [Escola] {
+        var filteredSchool: [Escola] = []
+     
+        filteredSchool = arrayEscolas.filter( { (escola : Escola) -> Bool in
+            return escola.nomeEscola.lowercased().contains(name.lowercased())
+        })
+        
+        return filteredSchool
     }
 }
 
@@ -126,17 +135,45 @@ extension SchoolListViewController: UITableViewDataSource {
 //
 //        return headerView
 //    }
+    
+    fileprivate func searchBarIsEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
 }
 
 //MARK: - Table View Delegate
 extension SchoolListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let cell = tableView.cellForRow(at: indexPath) as! SchoolsTableViewCell
-        
-        gambi = self.findSchool(withName: cell.schoolName.text!)
+        gambi = self.findSchool(withName: cell.schoolName.text!).first
 
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension SchoolListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        if !searchBarIsEmpty() {
+            let arraySearch = findSchool(withName: searchBar.text!)
+            self.populateDic(arraySearch)
+            
+        } else {
+            populateDic(arrayEscolas)
+            
+        }
+    }
+}
+
+extension SchoolListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        if !searchBarIsEmpty() {
+            let arraySearch = findSchool(withName: searchController.searchBar.text!)
+            self.populateDic(arraySearch)
+            
+        } else {
+            populateDic(arrayEscolas)
+            
+        }
     }
 }
