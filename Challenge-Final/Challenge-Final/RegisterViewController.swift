@@ -71,15 +71,18 @@ class RegisterViewController: UIViewController {
             message("Atenção", desc: "As senhas não são iguais", view: self)
             
         } else {
-            sharedDAO.create(aluno: getAlunosFromLabels(), escola_id: gambi.id, completion: { (aluno) in
+            let aluno = getAlunoFromLabels()
+            
+            sharedDAO.create(aluno: aluno, escola_id: gambi.id, completion: { (aluno_completion) in
                 DispatchQueue.main.async {
+                    self.sharedDAO.set(aluno: aluno_completion)
                     self.performSegue(withIdentifier: "signupToMain", sender: self)
                 }
             })
         }
     }
     
-    private func getAlunosFromLabels() -> Aluno {
+    private func getAlunoFromLabels() -> Aluno {
         let aluno = Aluno()
         
         aluno.name = nameTextField.text!
@@ -101,7 +104,6 @@ extension RegisterViewController: UITextFieldDelegate {
             performSegue(withIdentifier: "toSchoolList", sender: self)
         
         } else {
-        
             animateViewMoving(true, moveValue: 150)
             
         }
@@ -113,7 +115,6 @@ extension RegisterViewController: UITextFieldDelegate {
             textField.text = chosenSchool
         
         } else {
-            
             animateViewMoving(false, moveValue: 150)
         
         }

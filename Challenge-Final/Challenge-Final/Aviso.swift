@@ -28,7 +28,7 @@ class Aviso {
         self.titulo = parameters["titulo"] as! String
         self.descricao = parameters["descricao"] as! String
         self.data = parameters["created_at"] as! String
-        self.data = parameters["image"] as! String
+        self.image = parameters["image"] as? String
         self.id = parameters["id"] as! Int
     }
 }

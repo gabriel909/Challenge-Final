@@ -20,6 +20,10 @@ class DAO {
     private init() { }
     
     /* Aluno */
+    func set(aluno: Aluno) {
+        self.aluno = aluno
+    }
+    
     public func createAluno(name: String, password: String, serie: String, email: String,avatar: Int, escola: Escola, completion: @escaping (Aluno) -> Void) {
         
         let parameters:[String: Any] = ["nome": name, "password": password, "serie": serie, "email": email]
@@ -81,7 +85,7 @@ class DAO {
     
     /* Avisos */
     public func getAvisos(forAluno aluno: Aluno, completion: @escaping ([Aviso]) -> Void) {
-        guard let url = URL(string: self.apiUrl + "escolas/\(aluno.escola_id)/alunos/\(aluno.id!)/avisos") else { return }
+        guard let url = URL(string: self.apiUrl + "/escolas/\(aluno.escola_id)/alunos/\(aluno.id!)/avisos") else { return }
         
         self.sendRequest(url: url, parameters: nil, method: Methods.get, completion: { (dict, abc, def) in
             

@@ -13,12 +13,16 @@ class AnnouncementsViewController: UIViewController {
     private var tableView: UITableView!
     fileprivate var tableViewDic: [String : [String]] = [:]
     fileprivate var tableViewSectionsTitle: [String] = []
+    fileprivate var arrayAvisos: [Aviso] = []
     fileprivate var selectedIndex: Int!
+    
+    
+    fileprivate let sharedDAO = DAO.sharedDAO
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        getAvisosArray()
         self.tableViewSetup()
         self.tableView.delegate = self
     }
@@ -48,26 +52,41 @@ class AnnouncementsViewController: UIViewController {
         
         self.view.addSubview(tableView)
     }
+    
+    private func getAvisosArray() {
+        var aluno = Aluno()
+        
+        if sharedDAO.aluno != nil {
+            aluno = sharedDAO.aluno!
+            
+        }
+        
+        sharedDAO.getAvisos(forAluno: aluno, completion: { arrayAvisos in
+            self.arrayAvisos = arrayAvisos
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
+    }
 }
 
 //MARK: - Extensions
-//MARK: - Table View Data Source
+//MARK: Table View Data Source
 extension AnnouncementsViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return arrayAvisos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: AnnouncementsTableViewCell
+        let aviso = arrayAvisos[indexPath.row]
         
         cell = tableView.dequeueReusableCell(withIdentifier: "idAnnouncCell", for: indexPath as IndexPath) as! AnnouncementsTableViewCell
         cell.backgroundColor = .clear
-        cell.titleLabel.text = "Teste"
-        cell.descriptionLabel.text = "aibcuabcpiabcoabc"
+        
+        cell.titleLabel.text = aviso.titulo
+        cell.descriptionLabel.text = aviso.descricao
         cell.selectionStyle = .none
         
         return cell
@@ -85,8 +104,7 @@ extension AnnouncementsViewController: UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetailsAnnoun" {
             let destVc = segue.destination as! DetailsAnnouncementsViewController
-            //MARK: - TODO Send the selected aviso
-            destVc.aviso = Aviso(titulo: "Teste", descricao: "aibcuabcpiabcoabc", data: "", image: "", id: 1)
+            destVc.aviso = arrayAvisos[selectedIndex]
         }
     }
 }
