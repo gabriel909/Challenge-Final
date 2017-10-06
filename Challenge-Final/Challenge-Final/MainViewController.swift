@@ -9,11 +9,20 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var serieLabel: UILabel!
+    
+    fileprivate let sharedDAO = DAO.sharedDAO
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        self.setLabels()
+    }
+    
+    private func setLabels() {
+        nameLabel.text = sharedDAO.aluno?.name
+        serieLabel.text = sharedDAO.aluno?.serie
     }
 
     override func didReceiveMemoryWarning() {

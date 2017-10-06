@@ -13,6 +13,9 @@ class ReportsViewController: UIViewController {
     private var tableView: UITableView!
     fileprivate var tableViewSectionsTitle: [String] = []
     fileprivate var selectedIndex: Int!
+    fileprivate var arrayDenuncias: [Denuncia] = []
+    
+    fileprivate let sharedDAO = DAO.sharedDAO
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +52,22 @@ class ReportsViewController: UIViewController {
         self.view.addSubview(tableView)
     }
     
+    private func getReportsArray() {
+        var aluno = Aluno()
+        
+        if sharedDAO.aluno != nil {
+            aluno = sharedDAO.aluno!
+        }
+        
+        sharedDAO.getDenuncias(forAluno: aluno, completion: { arrayDenuncias in
+            self.arrayDenuncias = arrayDenuncias
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
+    }
+    
     private func getColor(forStatus status: Status) -> UIColor {
         var colorHex: Int
         
@@ -70,28 +89,21 @@ class ReportsViewController: UIViewController {
 //MARK: - Extensions
 //MARK: - Table View Data Source
 extension ReportsViewController: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return arrayDenuncias.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: ReportsTableViewCell
+        let denuncia = arrayDenuncias[indexPath.row]
         
         cell = tableView.dequeueReusableCell(withIdentifier: "idReportCell", for: indexPath as IndexPath) as! ReportsTableViewCell
         cell.backgroundColor = .clear
-        cell.titleLabel.text = "Teste"
-        cell.descriptionLabel.text = "aibcuabcpiabcoabc"
+        cell.titleLabel.text = denuncia.categoria.rawValue
+        cell.descriptionLabel.text = denuncia.descricao
         cell.selectionStyle = .none
         
-        //MARK: - TODO Change color accordingly
-        
-        let status = (indexPath.row % 2 == 0) ? Status.andamento : Status.nao_resolvido
-        
-        cell.statusBar.backgroundColor = getColor(forStatus: status)
+        cell.statusBar.backgroundColor = getColor(forStatus: denuncia.status)
         
         return cell
     }
@@ -99,7 +111,6 @@ extension ReportsViewController: UITableViewDataSource {
 
 //MARK: - Table View Delegate
 extension ReportsViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
         performSegue(withIdentifier: "toDetailsReport", sender: self)
@@ -108,8 +119,7 @@ extension ReportsViewController: UITableViewDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toDetailsReport" {
             let destVc = segue.destination as! DetailsReportsViewController
-            //MARK: - TODO Send the selected aviso
-            destVc.report = Denuncia(categoria: .Limpeza, descricao: "idfsnofinsdo", date: "sodifnos", status: .nao_resolvido, images: [], videos: [])
+            destVc.report = arrayDenuncias[selectedIndex]
         }
     }
 }

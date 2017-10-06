@@ -127,8 +127,8 @@ class DAO {
     }
     
     /* Denuncias */
-    public func getDenuncias(completion: @escaping (Aluno) -> Void) {
-        guard let url = URL(string: self.apiUrl + "/alunos/\(aluno!.id!)/denuncias") else { return }
+    public func getDenuncias(forAluno aluno: Aluno, completion: @escaping ([Denuncia]) -> Void) {
+        guard let url = URL(string: self.apiUrl + "/escolas/\(aluno.escola_id)/alunos/\(aluno.id!)/denuncias") else { return }
         
         self.sendRequest(url: url, parameters: nil, method: Methods.get, completion: { (dict,imgsDict,videosDict) in
             guard let jsonDictArray = dict as? NSArray else { return }
@@ -142,7 +142,7 @@ class DAO {
             }
             
             self.aluno!.denuncias = arrayDenuncias
-            completion(self.aluno!)
+            completion(arrayDenuncias)
         })
     }
     

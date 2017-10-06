@@ -24,14 +24,15 @@ class Aluno {
     init(parameters: [String:Any]) {
         
         print("bloody parameters: \(parameters)")
+        let aluno = parameters["aluno"]! as! [String : Any]
         
-        self.email = parameters["email"] as! String
-        self.name = parameters["nome"] as! String
-        self.id = parameters["id"] as! Int
+        self.email = aluno["email"] as! String
+        self.name = aluno["nome"] as! String
+        self.id = aluno["id"] as! Int
 //        self.avatar = parameters["avatar"] as! Int
-        self.password = parameters["password_digest"] as! String
-        self.serie = parameters["serie"] as! String
-        self.escola_id = parameters["escola_id"] as! Int
+        self.password = aluno["password_digest"] as! String
+        self.serie = aluno["serie"] as! String
+        self.escola_id = aluno["escola_id"] as! Int
         
         
     }

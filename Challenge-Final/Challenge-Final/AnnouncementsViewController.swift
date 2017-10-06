@@ -11,11 +11,8 @@ import UIKit
 class AnnouncementsViewController: UIViewController {
     
     private var tableView: UITableView!
-    fileprivate var tableViewDic: [String : [String]] = [:]
-    fileprivate var tableViewSectionsTitle: [String] = []
     fileprivate var arrayAvisos: [Aviso] = []
     fileprivate var selectedIndex: Int!
-    
     
     fileprivate let sharedDAO = DAO.sharedDAO
     
@@ -58,7 +55,6 @@ class AnnouncementsViewController: UIViewController {
         
         if sharedDAO.aluno != nil {
             aluno = sharedDAO.aluno!
-            
         }
         
         sharedDAO.getAvisos(forAluno: aluno, completion: { arrayAvisos in
