@@ -13,10 +13,15 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var email_label: SkyFloatingLabelTextField!
     @IBOutlet weak var password_label: SkyFloatingLabelTextField!
     
+    @IBOutlet weak var cadastroBtn: CustomButton!
     fileprivate let sharedDAO = DAO.sharedDAO
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        cadastroBtn.layer.borderWidth = 1
+        
+        print("\(width) \(height)")
 //        var images:[UIImage] = []
 //        var videos:[String] = []
 //        images.append(#imageLiteral(resourceName: "teste"))
@@ -58,19 +63,21 @@ class LoginViewController: UIViewController {
         } else {
             self.view.endEditing(true)
             
-            sharedDAO.loginAluno(email: email_label.text!, password: password_label.text!, completion: { (aluno, error) in
-                if error == nil && aluno != nil {
-                    self.sharedDAO.aluno = aluno
-                    
-                    DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "login_to_main", sender: self)
-                    }
-                    
-                } else {
-                    message("Atenção", desc: "Deu Merda", view: self)
-                    
-                }
-            })
+            self.performSegue(withIdentifier: "login_to_main", sender: self)
+            
+//            sharedDAO.loginAluno(email: email_label.text!, password: password_label.text!, completion: { (aluno, error) in
+//                if error == nil && aluno != nil {
+//                    self.sharedDAO.aluno = aluno
+//
+//                    DispatchQueue.main.async {
+//                        self.performSegue(withIdentifier: "login_to_main", sender: self)
+//                    }
+//
+//                } else {
+//                    message("Atenção", desc: "Deu Merda", view: self)
+//
+//                }
+//            })
         }
     }
 }

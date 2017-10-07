@@ -9,6 +9,10 @@
 import UIKit
 
 class ReportsViewController: UIViewController {
+    @IBOutlet weak var newBtnOutlet: UIButton!
+    @IBAction func buttonPressed(_ sender: Any) {
+        print("btn pressed")
+    }
     
     private var tableView: UITableView!
     fileprivate var tableViewSectionsTitle: [String] = []
@@ -20,7 +24,8 @@ class ReportsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        newBtnOutlet.layer.zPosition = 1000
+        
         self.tableViewSetup()
         self.tableView.delegate = self
     }
@@ -37,7 +42,7 @@ class ReportsViewController: UIViewController {
     
     //MARK: - Aux Methods
     private func tableViewSetup() {
-        let tableViewRect = CGRect(x: 0, y: 120, width: width, height: height)
+        let tableViewRect = CGRect(x: 0, y: height / 4.73, width: width, height: height / 1.46)
         let tableViewCellNib = UINib(nibName: "ReportsTableViewCell", bundle: nil)
         
         
@@ -48,6 +53,7 @@ class ReportsViewController: UIViewController {
         self.tableView.rowHeight = height / 5
         self.tableView.register(tableViewCellNib, forCellReuseIdentifier: "idReportCell")
         self.tableView.clipsToBounds = true
+        self.tableView.layer.zPosition = -100
         
         self.view.addSubview(tableView)
     }

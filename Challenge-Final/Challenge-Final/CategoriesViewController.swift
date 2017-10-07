@@ -11,6 +11,7 @@ import UIKit
 class CategoriesViewController: UIViewController {
 
     private var collectionview: UICollectionView!
+    fileprivate var catTitle = ["Manutenção", "Higiene", "Funcionários", "Colegas","Acessibilidade", "Professores"]
     var selected: String!
     
     override func viewDidLoad() {
@@ -47,10 +48,10 @@ class CategoriesViewController: UIViewController {
     
     private func createLayout() -> UICollectionViewFlowLayout {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        let top_bottom = width / 10.66
-        let right_left = width / 16
+        let top_bottom = width / 10.76
+        let right_left = width / 13
         layout.sectionInset = UIEdgeInsets(top: top_bottom, left: right_left, bottom: top_bottom, right: right_left)
-        layout.itemSize = CGSize(width: width / 2.46, height: height / 4.36)
+        layout.itemSize = CGSize(width: width / 2.46, height: height / 4.46)
         layout.scrollDirection = .vertical
         
         return layout
@@ -70,7 +71,7 @@ extension CategoriesViewController: UICollectionViewDataSource {
         
         cell = collectionview.dequeueReusableCell(withReuseIdentifier: "idCatCell", for: indexPath as IndexPath) as! CollectionViewCell
         cell.backgroundColor = .clear
-        cell.titleLabel.text = "Teste"
+        cell.titleLabel.text = catTitle[indexPath.row]
         cell.img.image = UIImage()
         
         return cell
