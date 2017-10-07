@@ -29,7 +29,7 @@ class DAO {
         let parameters:[String: Any] = ["nome": name, "password": password, "serie": serie, "email": email]
         
         guard let url = URL(string: self.apiUrl + "/escolas/\(escola.id)/alunos/signup") else { return }
-        self.sendRequest(url: url, parameters: parameters, method: Methods.post, completion: { (dict,abc,def) in
+        self.sendRequest(url: url, parameters: parameters, method: Methods.post, completion: { (dict, abc, def) in
             guard var jsonDict = dict as? [String:Any] else { return }
             
 //            jsonDict["avatar"] = avatar
@@ -68,7 +68,7 @@ class DAO {
         let parameters = ["email": email, "password": password]
         guard let url = URL(string: apiUrl + "/alunos/login") else { return }
         
-        sendRequest(url: url, parameters: parameters, method: Methods.post, completion: { (dict,abc,def) in
+        sendRequest(url: url, parameters: parameters, method: Methods.post, completion: { (dict, abc, def) in
             guard let jsonDict = dict as? [String: Any] else { return }
             
             if jsonDict["message"] == nil {
@@ -112,7 +112,7 @@ class DAO {
     func deleteAviso(idAviso: Int, completion: @escaping (String) -> Void) {
         guard let url = URL(string: self.apiUrl + "/alunos/\(aluno!.id!)/avisos/\(idAviso)") else { return }
         
-        self.sendRequest(url: url, parameters: nil, method: Methods.delete, completion: {  (dict,abc,def) in
+        self.sendRequest(url: url, parameters: nil, method: Methods.delete, completion: {  (dict, abc, def) in
             guard let jsonDict = dict as? [String:Any] else { return }
             
             if jsonDict["error"] != nil {
@@ -128,9 +128,9 @@ class DAO {
     
     /* Denuncias */
     public func getDenuncias(forAluno aluno: Aluno, completion: @escaping ([Denuncia]) -> Void) {
-        guard let url = URL(string: self.apiUrl + "/escolas/\(aluno.escola_id)/alunos/\(aluno.id!)/denuncias") else { return }
+        guard let url = URL(string: self.apiUrl + "/escolas/\(aluno.escola_id)/alunos/\(aluno.id!)/reports") else { return }
         
-        self.sendRequest(url: url, parameters: nil, method: Methods.get, completion: { (dict,imgsDict,videosDict) in
+        self.sendRequest(url: url, parameters: nil, method: Methods.get, completion: { (dict, imgsDict, videosDict) in
             guard let jsonDictArray = dict as? NSArray else { return }
             var arrayDenuncias: [Denuncia] = []
             
@@ -153,7 +153,7 @@ class DAO {
         //print("params: \(params)")
         //params["Authorization"] = aluno!.token
         
-        self.sendRequest(url: url, parameters: params, method: Methods.post, completion: { (dict,imgsDict,videosDict) in
+        self.sendRequest(url: url, parameters: params, method: Methods.post, completion: { (dict, imgsDict, videosDict) in
             print("dict fuck: \(dict)")
             
             guard let jsonDict = dict as? [String:Any] else { return }
@@ -169,7 +169,7 @@ class DAO {
     public func getEscolas(completion: @escaping ([Escola]) -> Void) {
         guard let url  = URL(string: self.apiUrl + "/escolas") else { return }
         print("method: \(Methods.get)")
-        self.sendRequest(url: url, parameters: nil, method: Methods.get, completion: { (dict,imgsDict,nil) in
+        self.sendRequest(url: url, parameters: nil, method: Methods.get, completion: { (dict, imgsDict, nil) in
             var arrayEscola: [Escola] = []
             guard let jsonDictArray = dict as? NSArray else { print("scheisse"); return }
             
@@ -193,6 +193,7 @@ class DAO {
         
         if parameters != nil {
             request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
+            
             do {
                 request.httpBody = try JSONSerialization.data(withJSONObject: parameters as Any, options: .prettyPrinted)
                 

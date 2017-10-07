@@ -18,6 +18,7 @@ class AnnouncementsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("Ola")
         
         getAvisosArray()
         self.tableViewSetup()
@@ -36,7 +37,7 @@ class AnnouncementsViewController: UIViewController {
     
     //MARK: - Aux Methods
     private func tableViewSetup() {
-        let tableViewRect = CGRect(x: 0, y: 120, width: width, height: height)
+        let tableViewRect = CGRect(x: 0, y: height / 4.73, width: width, height: height)
         let tableViewCellNib = UINib(nibName: "AnnouncementsTableViewCell", bundle: nil)
         
         self.tableView = UITableView(frame: tableViewRect , style: .plain)

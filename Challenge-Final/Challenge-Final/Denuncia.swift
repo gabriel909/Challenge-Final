@@ -55,16 +55,21 @@ class Denuncia {
         
         
         self.categoria = Categoria(rawValue: jsonDenuncia["categoria"] as! String)!
-        self.date = jsonDenuncia["created_at"] as! String
+//        self.date = jsonDenuncia["created_at"] as! String
+        //MARK: - TODO Add date column on rails
+        self.date = ""
         self.descricao = jsonDenuncia["descricao"] as! String
         let status = jsonDenuncia["status"] as! String
+        
         switch status {
-        case "andamento":
-            self.status = Status.andamento
-        case "resolvido":
-            self.status = Status.resolvido
-        default:
-            self.status = Status.nao_resolvido
+            case "andamento":
+                self.status = Status.andamento
+            
+            case "resolvido":
+                self.status = Status.resolvido
+            
+            default:
+                self.status = Status.nao_resolvido
         }
         
         self.images = imgUrls as? [String]

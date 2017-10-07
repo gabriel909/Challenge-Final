@@ -27,7 +27,7 @@ class ReportsViewController: UIViewController {
         newBtnOutlet.layer.zPosition = 1000
         
         self.tableViewSetup()
-        self.tableView.delegate = self
+        self.getReportsArray()
     }
     
     override func didReceiveMemoryWarning() {
@@ -45,9 +45,9 @@ class ReportsViewController: UIViewController {
         let tableViewRect = CGRect(x: 0, y: height / 4.73, width: width, height: height / 1.46)
         let tableViewCellNib = UINib(nibName: "ReportsTableViewCell", bundle: nil)
         
-        
         self.tableView = UITableView(frame: tableViewRect , style: .plain)
         self.tableView.dataSource = self
+        self.tableView.delegate = self
         self.tableView.backgroundColor = .clear
         self.tableView.separatorStyle = .none
         self.tableView.rowHeight = height / 5

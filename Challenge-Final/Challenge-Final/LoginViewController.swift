@@ -45,11 +45,6 @@ class LoginViewController: UIViewController {
 //
         
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = true
-        
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -63,21 +58,19 @@ class LoginViewController: UIViewController {
         } else {
             self.view.endEditing(true)
             
-            self.performSegue(withIdentifier: "login_to_main", sender: self)
-            
-//            sharedDAO.loginAluno(email: email_label.text!, password: password_label.text!, completion: { (aluno, error) in
-//                if error == nil && aluno != nil {
-//                    self.sharedDAO.aluno = aluno
-//
-//                    DispatchQueue.main.async {
-//                        self.performSegue(withIdentifier: "login_to_main", sender: self)
-//                    }
-//
-//                } else {
-//                    message("Atenção", desc: "Deu Merda", view: self)
-//
-//                }
-//            })
+            sharedDAO.loginAluno(email: email_label.text!, password: password_label.text!, completion: { (aluno, error) in
+                if error == nil && aluno != nil {
+                    self.sharedDAO.aluno = aluno
+
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "login_to_main", sender: self)
+                    }
+
+                } else {
+                    message("Atenção", desc: "Deu Merda", view: self)
+
+                }
+            })
         }
     }
 }

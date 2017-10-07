@@ -11,7 +11,7 @@ import Foundation
 enum Categoria: String {
     case Infraestrutura = "Infraestrutura"
     case Colegas = "Colegas"
-    case Limpeza = "Limpeza"
+    case Higiene = "Higiene"
     case Funcionarios = "Funcionarios"
     case Professores = "Professores"
     case Acessibilidade = "Acessibilidade"
