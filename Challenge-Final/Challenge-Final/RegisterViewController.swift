@@ -54,9 +54,9 @@ class RegisterViewController: UIViewController {
         let sourceVC = sender.source as! SchoolListViewController
         self.chosenSchool = sourceVC.selected
         self.schoolTextField.text = chosenSchool
-        print(chosenSchool)
 
     }
+    
     @IBAction func signupButton(_ sender: Any) {
         if (schoolTextField.text?.isEmpty)! ||
            (nameTextField.text?.isEmpty)! ||

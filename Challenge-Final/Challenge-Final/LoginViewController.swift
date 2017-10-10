@@ -60,7 +60,8 @@ class LoginViewController: UIViewController {
             
             sharedDAO.loginAluno(email: email_label.text!, password: password_label.text!, completion: { (aluno, error) in
                 if error == nil && aluno != nil {
-                    self.sharedDAO.aluno = aluno
+                    self.sharedDAO.set(aluno: aluno!)
+                    print(aluno?.escola_id)
 
                     DispatchQueue.main.async {
                         self.performSegue(withIdentifier: "login_to_main", sender: self)
@@ -68,7 +69,7 @@ class LoginViewController: UIViewController {
 
                 } else {
                     message("Atenção", desc: "Deu Merda", view: self)
-
+                    
                 }
             })
         }

@@ -143,7 +143,6 @@ extension SchoolListViewController: UITableViewDataSource {
 
 //MARK: - Table View Delegate
 extension SchoolListViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! SchoolsTableViewCell
         gambi = self.findSchool(withName: cell.schoolName.text!).first
