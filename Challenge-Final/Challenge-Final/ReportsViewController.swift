@@ -25,10 +25,8 @@ class ReportsViewController: UIViewController {
         super.viewDidLoad()
         
         newBtnOutlet.layer.zPosition = 1000
-        
-        self.tableViewSetup()
-        self.getReportsArray()
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -38,6 +36,9 @@ class ReportsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.navigationBar.transparentNavigationBar()
+        
+        self.tableViewSetup()
+        self.getReportsArray()
     }
     
     //MARK: - Aux Methods

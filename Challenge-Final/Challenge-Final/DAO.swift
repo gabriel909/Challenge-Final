@@ -136,9 +136,15 @@ class DAO {
             
             for denuncia in jsonDictArray {
                 guard let jsonDenuncia = denuncia as? [String: Any] else { return }
-                let newDenuncia = Denuncia(parameters: jsonDenuncia, imgsArray: nil, videosArray: nil)
+                print("json denuncia \(jsonDenuncia)")
+                var newDenuncia: Denuncia? = nil
+                if let imgArray = jsonDenuncia["image_data"] as? NSArray {
+                    newDenuncia = Denuncia(parameters: jsonDenuncia, imgsArray: imgArray, videosArray: nil)
+                } else {
+                    newDenuncia = Denuncia(parameters: jsonDenuncia, imgsArray: nil, videosArray: nil)
+                }
     
-                arrayDenuncias.append(newDenuncia)
+                arrayDenuncias.append(newDenuncia!)
             }
             
             self.aluno!.denuncias = arrayDenuncias

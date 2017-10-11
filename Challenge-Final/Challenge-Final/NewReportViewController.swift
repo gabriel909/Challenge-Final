@@ -72,24 +72,13 @@ class NewReportViewController: UIViewController {
     
     @IBAction func sendButtonAction(_ sender: UIButton) {
         if !descricaoTextView.text.isEmpty {
-            let denuncia = Denuncia(categoria: .Acessibilidade, descricao: descricaoTextView.text!, date: "", status: .andamento, images: getBase64Array(), videos: nil)
+            let base64Array = Base64Enconder.encode(imgs: photoCollectionArray)
+            let denuncia = Denuncia(categoria: .Acessibilidade, descricao: descricaoTextView.text!, date: "", status: .andamento, images: base64Array, videos: nil)
             
             let aluno = sharedDAO.aluno!
         
             sharedDAO.sendDenuncia(denuncia: denuncia, idAluno: aluno.id!, idEscola: aluno.escola_id, completion: { denuncia in })
         }
-    }
-    
-    private func getBase64Array() -> [String] {
-        var array: [String] = []
-        
-        for image in photoCollectionArray {
-            let data = UIImagePNGRepresentation(image)
-            
-            array.append((data?.base64EncodedString())!)
-        }
-        
-        return array
     }
 }
 

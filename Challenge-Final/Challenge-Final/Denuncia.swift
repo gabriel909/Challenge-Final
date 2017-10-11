@@ -39,6 +39,7 @@ class Denuncia {
         if imgsArray != nil {
             
             for img in imgsArray! {
+                print("img do kct\(img)")
                 let url = Denuncia.convertJsonMedia(json: img)
                 imgUrls = imgUrls.adding(url) as NSArray
             }
