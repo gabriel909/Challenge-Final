@@ -97,7 +97,7 @@ class Denuncia {
     
     static private func convertJsonMedia(json: Any) -> Any {
         let jsonDict = json as! [String:Any]
-        let base64Data = jsonDict["base64Data"] as! [String:Any]
+        let base64Data = jsonDict["image_data"] as! [String:Any]
         return base64Data["url"]
     }
     

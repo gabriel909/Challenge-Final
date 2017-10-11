@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dDb-0Q-25a">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3hs-8V-abz">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -993,25 +993,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="b4w-Ib-rps">
-                                <rect key="frame" x="36" y="374" width="248" height="70"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PVh-1B-yK4">
-                                        <rect key="frame" x="0.0" y="0.0" width="76" height="70"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NFL-Ob-mYr">
-                                        <rect key="frame" x="86" y="0.0" width="76" height="70"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kt2-If-4Dv">
-                                        <rect key="frame" x="172" y="0.0" width="76" height="70"/>
-                                    </imageView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="qdT-xD-2vo"/>
-                                </constraints>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="vm7-JA-bGq">
-                                <rect key="frame" x="36" y="484" width="248" height="23.5"/>
+                                <rect key="frame" x="36" y="504.5" width="248" height="23.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dac-lw-YnG">
                                         <rect key="frame" x="0.0" y="0.0" width="103" height="23.5"/>
@@ -1037,14 +1020,11 @@
                             <constraint firstItem="hKe-oz-AC3" firstAttribute="height" secondItem="dBw-sN-sD7" secondAttribute="height" multiplier="0.35" id="3p3-JG-KXW"/>
                             <constraint firstItem="PvX-nP-Ata" firstAttribute="leading" secondItem="dBw-sN-sD7" secondAttribute="leadingMargin" constant="20" id="Clp-Vk-Vg3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hKe-oz-AC3" secondAttribute="trailing" constant="20" id="CtS-HA-dmW"/>
-                            <constraint firstItem="b4w-Ib-rps" firstAttribute="leading" secondItem="dBw-sN-sD7" secondAttribute="leadingMargin" constant="20" id="EKa-6G-NsU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="POR-fZ-pvn" secondAttribute="trailing" constant="20" id="HKr-TK-cqF"/>
-                            <constraint firstItem="vm7-JA-bGq" firstAttribute="top" secondItem="b4w-Ib-rps" secondAttribute="bottom" constant="40" id="Kdd-Ug-3fd"/>
-                            <constraint firstItem="b4w-Ib-rps" firstAttribute="top" secondItem="hKe-oz-AC3" secondAttribute="bottom" constant="30" id="MGU-DK-5rw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PvX-nP-Ata" secondAttribute="trailing" constant="20" id="Qwz-st-v8N"/>
                             <constraint firstItem="POR-fZ-pvn" firstAttribute="leading" secondItem="dBw-sN-sD7" secondAttribute="leadingMargin" constant="20" id="R4X-Aj-DdR"/>
                             <constraint firstItem="hKe-oz-AC3" firstAttribute="top" secondItem="POR-fZ-pvn" secondAttribute="bottom" constant="20" id="W7i-nT-bhB"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="b4w-Ib-rps" secondAttribute="trailing" constant="20" id="ZJO-M8-hy5"/>
+                            <constraint firstItem="oKt-ez-08Q" firstAttribute="top" secondItem="vm7-JA-bGq" secondAttribute="bottom" constant="40" id="WdD-x3-iWA"/>
                             <constraint firstItem="hKe-oz-AC3" firstAttribute="leading" secondItem="dBw-sN-sD7" secondAttribute="leadingMargin" constant="20" id="dtO-91-1Fp"/>
                             <constraint firstItem="POR-fZ-pvn" firstAttribute="top" secondItem="PvX-nP-Ata" secondAttribute="bottom" id="l0g-t0-iFl"/>
                             <constraint firstItem="vm7-JA-bGq" firstAttribute="leading" secondItem="dBw-sN-sD7" secondAttribute="leadingMargin" constant="20" id="nuK-tP-6I7"/>
