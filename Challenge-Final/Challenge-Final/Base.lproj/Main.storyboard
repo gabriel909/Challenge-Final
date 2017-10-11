@@ -1073,6 +1073,7 @@
                     </view>
                     <connections>
                         <outlet property="descTextView" destination="hKe-oz-AC3" id="oyR-qI-x9E"/>
+                        <outlet property="statusLabel" destination="1Zu-Ke-67T" id="p6U-ys-kyP"/>
                         <outlet property="titleLabel" destination="PvX-nP-Ata" id="SeK-yB-rZF"/>
                         <segue destination="wvc-0X-2Ot" kind="unwind" unwindAction="unWindToViewControllerWithSender:" id="y7F-H2-UW9"/>
                     </connections>
@@ -1117,6 +1118,7 @@
                     </view>
                     <connections>
                         <segue destination="RWm-sl-ThK" kind="unwind" unwindAction="unWindToViewControllerWithSender:" id="nG5-GE-71m"/>
+                        <segue destination="dDb-0Q-25a" kind="show" identifier="catToNew" id="J8H-5f-i5T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HnO-j6-iQQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1229,7 +1231,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C2C-06-Va5">
-                                <rect key="frame" x="0.0" y="20" width="320" height="680"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="636"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sVA-dc-DCF" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="680"/>
@@ -1334,6 +1336,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <action selector="sendButtonAction:" destination="dDb-0Q-25a" eventType="touchUpInside" id="aPO-qE-HcN"/>
                                                     <action selector="signupButton:" destination="qH6-vk-sPU" eventType="touchUpInside" id="guQ-v6-QHN"/>
                                                 </connections>
                                             </button>
@@ -1439,7 +1442,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gv5-Wd-B8i" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="HCS-nD-VbX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4235.625" y="60.2112676056338"/>
+            <point key="canvasLocation" x="4373" y="18"/>
         </scene>
     </scenes>
     <resources>

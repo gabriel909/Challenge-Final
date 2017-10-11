@@ -15,14 +15,22 @@ class NewReportViewController: UIViewController {
     fileprivate var plusIndex: Int = 0
     fileprivate var photoCollectionArray: [UIImage] = []
     fileprivate let picker: UIImagePickerController? = UIImagePickerController()
+    fileprivate var tap = UITapGestureRecognizer()
+    fileprivate var placeholder: String!
+    
+    fileprivate let sharedDAO = DAO.sharedDAO
     
     fileprivate var collectionView: UICollectionView!
+    
+    var category: String! = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         picker?.delegate = self
+        descricaoTextView.delegate = self
         self.collectionSetup()
+        self.setTextViewPlaceholder()
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,12 +62,40 @@ class NewReportViewController: UIViewController {
         
         return layout
     }
+    
+    private func setTextViewPlaceholder() {
+        placeholder = "Digite aqui a descrição..."
+        descricaoTextView.delegate = self
+        descricaoTextView.text = placeholder
+        descricaoTextView.textColor = UIColor.lightGray
+    }
+    
+    @IBAction func sendButtonAction(_ sender: UIButton) {
+        if !descricaoTextView.text.isEmpty {
+            let denuncia = Denuncia(categoria: .Acessibilidade, descricao: descricaoTextView.text!, date: "", status: .andamento, images: getBase64Array(), videos: nil)
+            
+            let aluno = sharedDAO.aluno!
+        
+            sharedDAO.sendDenuncia(denuncia: denuncia, idAluno: aluno.id!, idEscola: aluno.escola_id, completion: { denuncia in })
+        }
+    }
+    
+    private func getBase64Array() -> [String] {
+        var array: [String] = []
+        
+        for image in photoCollectionArray {
+            let data = UIImagePNGRepresentation(image)
+            
+            array.append((data?.base64EncodedString())!)
+        }
+        
+        return array
+    }
 }
 
 //MARK: - Extensions
 //MARK: - Table View Data Source
 extension NewReportViewController: UICollectionViewDataSource {
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoCollectionArray.count + 1
     }
@@ -141,6 +177,30 @@ extension NewReportViewController: UIImagePickerControllerDelegate, UINavigation
         photoCollectionArray.append(image!)
         plusIndex += 1
         self.collectionView.reloadData()
+    }
+}
 
+extension NewReportViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textField: UITextView) {
+        if textField.textColor == UIColor.lightGray {
+            textField.text = nil
+            textField.textColor = UIColor.black
+        }
+        
+        tap = UITapGestureRecognizer(target: self, action: #selector(self.tapped))
+        self.contentView.addGestureRecognizer(tap)
+    }
+    
+    func textViewDidEndEditing(_ textField: UITextView) {
+        if textField.text.isEmpty {
+            textField.text = placeholder
+            textField.textColor = UIColor.lightGray
+        }
+        
+        self.contentView.removeGestureRecognizer(tap)
+    }
+    
+    @objc private func tapped(){
+        contentView.endEditing(true)
     }
 }

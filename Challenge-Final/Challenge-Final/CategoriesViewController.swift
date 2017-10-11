@@ -12,7 +12,7 @@ class CategoriesViewController: UIViewController {
 
     private var collectionview: UICollectionView!
     fileprivate var catTitle = ["Manutenção", "Higiene", "Funcionários", "Colegas","Acessibilidade", "Professores"]
-    var selected: String!
+    fileprivate var selectedIndex: Int! = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,5 +80,17 @@ extension CategoriesViewController: UICollectionViewDataSource {
 
 //MARK: - Table View Delegate
 extension CategoriesViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedIndex = indexPath.row
+        self.performSegue(withIdentifier: "catToNew", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "" {
+            let destViewController = segue.destination as! NewReportViewController
+            
+            destViewController.category = catTitle[selectedIndex]
+        }
+    }
     
 }

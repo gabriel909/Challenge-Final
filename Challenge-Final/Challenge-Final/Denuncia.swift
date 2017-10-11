@@ -62,10 +62,10 @@ class Denuncia {
         let status = jsonDenuncia["status"] as! String
         
         switch status {
-            case "andamento":
+            case "Em Andamento":
                 self.status = Status.andamento
             
-            case "resolvido":
+            case "Resolvido":
                 self.status = Status.resolvido
             
             default:

@@ -12,6 +12,7 @@ class DetailsReportsViewController: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descTextView: UITextView!
+    @IBOutlet weak var statusLabel: UILabel!
     
     var report: Denuncia!
     
@@ -27,7 +28,6 @@ class DetailsReportsViewController: UIViewController {
     private func loadLabels() {
         titleLabel.text = report.categoria.rawValue
         descTextView.text = report.descricao
-        
-        //MARK: - TODO Mid-end
+        statusLabel.text = report.status.rawValue
     }
 }

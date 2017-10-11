@@ -156,7 +156,7 @@ class DAO {
         self.sendRequest(url: url, parameters: params, method: Methods.post, completion: { (dict, imgsDict, videosDict) in
             print("dict fuck: \(dict)")
             
-            guard let jsonDict = dict as? [String:Any] else { return }
+            guard let jsonDict = dict as? [String : Any] else { return }
             guard let imgsArray = imgsDict as? NSArray else { return }
             guard let videosArray = videosDict as? NSArray else { return }
             
