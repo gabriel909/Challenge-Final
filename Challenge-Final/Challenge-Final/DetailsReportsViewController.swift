@@ -65,14 +65,16 @@ class DetailsReportsViewController: UIViewController {
     private func getImageArray() -> [UIImage] {
         var array: [UIImage] = []
         
-        print("IMAGES ARRAY \(report.images!.count)")
+//        print("IMAGES ARRAY \(report.images!.count)")
         
-        for urlString in report.images! {
-            let url = URL(string: urlString)
-            let data = try? Data(contentsOf: url!)
-            let image: UIImage = UIImage(data: data!)!
-            
-            array.append(image)
+        if report.images != nil {
+            for urlString in report.images! {
+                let url = URL(string: "http://localhost:3000/\(urlString)")
+                let data = try? Data(contentsOf: url!)
+                let image: UIImage = UIImage(data: data!)!
+                
+                array.append(image)
+            }
         }
         
         return array
@@ -85,7 +87,6 @@ extension DetailsReportsViewController: UICollectionViewDelegate {
 
 extension DetailsReportsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(photoCollectionArray.count)
         return photoCollectionArray.count
     }
     

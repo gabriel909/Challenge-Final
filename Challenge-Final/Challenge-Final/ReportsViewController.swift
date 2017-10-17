@@ -24,7 +24,8 @@ class ReportsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        newBtnOutlet.layer.zPosition = 1000
+        self.tableViewSetup()
+        self.getReportsArray()
     }
     
     
@@ -37,8 +38,8 @@ class ReportsViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.navigationBar.transparentNavigationBar()
         
-        self.tableViewSetup()
-        self.getReportsArray()
+//        self.tableViewSetup()
+//        self.getReportsArray()
     }
     
     //MARK: - Aux Methods

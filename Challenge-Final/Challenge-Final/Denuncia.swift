@@ -76,13 +76,13 @@ class Denuncia {
         self.images = imgUrls as? [String]
         self.videos = videoUrls as? [String]
         
-        for image in self.images! {
-            print("url: \(image)")
-        }
-        
-        for video in self.videos! {
-            print("videoUrl: \(video)")
-        }
+//        for image in self.images! {
+//            print("url: \(image)")
+//        }
+//        
+//        for video in self.videos! {
+//            print("videoUrl: \(video)")
+//        }
         
     }
     

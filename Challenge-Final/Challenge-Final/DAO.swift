@@ -131,17 +131,23 @@ class DAO {
         guard let url = URL(string: self.apiUrl + "/escolas/\(aluno.escola_id)/alunos/\(aluno.id!)/reports") else { return }
         
         self.sendRequest(url: url, parameters: nil, method: Methods.get, completion: { (dict, imgsDict, videosDict) in
+            print("Json 1 \(dict)")
             guard let jsonDictArray = dict as? NSArray else { return }
+            print("Json \(jsonDictArray)")
             var arrayDenuncias: [Denuncia] = []
             
             for denuncia in jsonDictArray {
+                print("Json \(arrayDenuncias)")
                 guard let jsonDenuncia = denuncia as? [String: Any] else { return }
                 print("json denuncia \(jsonDenuncia)")
                 var newDenuncia: Denuncia? = nil
-                if let imgArray = jsonDenuncia["image_data"] as? NSArray {
-                    newDenuncia = Denuncia(parameters: jsonDenuncia, imgsArray: imgArray, videosArray: nil)
+                
+                if let imgArray = jsonDenuncia["image"] as? NSArray {
+                    newDenuncia = Denuncia(parameters: jsonDenuncia["report"] as! [String : Any], imgsArray: imgArray, videosArray: nil)
+                    
                 } else {
                     newDenuncia = Denuncia(parameters: jsonDenuncia, imgsArray: nil, videosArray: nil)
+                    
                 }
     
                 arrayDenuncias.append(newDenuncia!)
