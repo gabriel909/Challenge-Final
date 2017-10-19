@@ -11,6 +11,7 @@ import UIKit
 class NewReportViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var descricaoTextView: UITextView!
+    @IBOutlet weak var cancelButtonOutlet: CustomButton!
     
     fileprivate var plusIndex: Int = 0
     fileprivate var photoCollectionArray: [UIImage] = []
@@ -31,6 +32,9 @@ class NewReportViewController: UIViewController {
         descricaoTextView.delegate = self
         self.collectionSetup()
         self.setTextViewPlaceholder()
+        self.descriptionLabelSetup()
+        
+        self.cancelButtonOutlet.borderWidth = 1
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,7 +43,7 @@ class NewReportViewController: UIViewController {
     
     //MARK: - Aux Methods
     private func collectionSetup() {
-        let collectionViewRect = CGRect(x: 0, y: 439, width: width, height: 110)
+        let collectionViewRect = CGRect(x: 0, y: 429, width: width, height: 120)
         let collectionViewCellNib = UINib(nibName: "NewReportCollectionViewCell", bundle: nil)
         
         self.collectionView = UICollectionView(frame: collectionViewRect, collectionViewLayout: createLayout())
@@ -52,24 +56,31 @@ class NewReportViewController: UIViewController {
         self.contentView.addSubview(collectionView)
     }
     
+    private func descriptionLabelSetup() {
+        self.descricaoTextView.cornerRadius = 10
+        self.descricaoTextView.borderWidth = 1
+        self.descricaoTextView.layer.borderColor = UIColor.white.cgColor
+    }
+    
     private func createLayout() -> UICollectionViewFlowLayout {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         let top_bottom = width / 10.76
         let right_left = width / 13
         layout.sectionInset = UIEdgeInsets(top: top_bottom, left: right_left, bottom: top_bottom, right: right_left)
-        layout.itemSize = CGSize(width: width / 2.46, height: height / 4.46)
+        layout.itemSize = CGSize(width: width / 2.9, height: height / 5)
         layout.scrollDirection = .horizontal
         
         return layout
     }
     
     private func setTextViewPlaceholder() {
-        placeholder = "Digite aqui a descrição..."
+        placeholder = " Digite aqui a descrição..."
         descricaoTextView.delegate = self
         descricaoTextView.text = placeholder
-        descricaoTextView.textColor = UIColor.lightGray
+        descricaoTextView.textColor = UIColor.white
     }
     
+    //MARK: - Actions
     @IBAction func sendButtonAction(_ sender: UIButton) {
         if !descricaoTextView.text.isEmpty {
             let base64Array = Base64Enconder.encode(imgs: photoCollectionArray)
@@ -98,11 +109,11 @@ extension NewReportViewController: UICollectionViewDataSource {
         
         cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newReportCell", for: indexPath as IndexPath) as! NewReportCollectionViewCell
         
-        if plusIndex == indexPath.row {
+        if indexPath.row == 0 {
             //MARK: - TODO Set Plus image
             
         } else {
-            cell.imagem.image = photoCollectionArray[indexPath.row]
+            cell.imagem.image = photoCollectionArray[indexPath.row - 1]
             
         }
         
@@ -175,9 +186,9 @@ extension NewReportViewController: UIImagePickerControllerDelegate, UINavigation
 
 extension NewReportViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textField: UITextView) {
-        if textField.textColor == UIColor.lightGray {
+        if textField.text == placeholder {
             textField.text = nil
-            textField.textColor = UIColor.black
+            textField.textColor = UIColor.white
         }
         
         tap = UITapGestureRecognizer(target: self, action: #selector(self.tapped))
@@ -187,7 +198,7 @@ extension NewReportViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textField: UITextView) {
         if textField.text.isEmpty {
             textField.text = placeholder
-            textField.textColor = UIColor.lightGray
+            textField.textColor = UIColor.white
         }
         
         self.contentView.removeGestureRecognizer(tap)

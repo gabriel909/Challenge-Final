@@ -28,6 +28,7 @@
 		4EDD3BF51F547E180012117C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EDD3BF31F547E180012117C /* Main.storyboard */; };
 		4EDD3BF71F547E180012117C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EDD3BF61F547E180012117C /* Assets.xcassets */; };
 		4EDD3BFA1F547E180012117C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EDD3BF81F547E180012117C /* LaunchScreen.storyboard */; };
+		4EE15EE91F978A0C00B9A2CE /* NSCodingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE15EE81F978A0C00B9A2CE /* NSCodingManager.swift */; };
 		4EEE4C781F8D015E002EAAB0 /* NewReportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EEE4C761F8D015E002EAAB0 /* NewReportCollectionViewCell.swift */; };
 		4EEE4C791F8D015E002EAAB0 /* NewReportCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EEE4C771F8D015E002EAAB0 /* NewReportCollectionViewCell.xib */; };
 		54A08B10364E3F07A3AE7D13 /* Pods_Challenge_Final.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0453924069ED25118C3CDB /* Pods_Challenge_Final.framework */; };
@@ -72,6 +73,7 @@
 		4EDD3BF61F547E180012117C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4EDD3BF91F547E180012117C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EDD3BFB1F547E180012117C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EE15EE81F978A0C00B9A2CE /* NSCodingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCodingManager.swift; sourceTree = "<group>"; };
 		4EEE4C761F8D015E002EAAB0 /* NewReportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReportCollectionViewCell.swift; sourceTree = "<group>"; };
 		4EEE4C771F8D015E002EAAB0 /* NewReportCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewReportCollectionViewCell.xib; sourceTree = "<group>"; };
 		AE0453924069ED25118C3CDB /* Pods_Challenge_Final.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Challenge_Final.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +160,7 @@
 				4EDD3BEF1F547E180012117C /* AppDelegate.swift */,
 				2BC43C771F7041B000A84A7F /* DAO.swift */,
 				E5970D4A1F79BB7C009973E7 /* Base64Enconder.swift */,
+				4EE15EE81F978A0C00B9A2CE /* NSCodingManager.swift */,
 			);
 			name = Other;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				2B787D771F7AAE95009B28A2 /* NewReportViewController.swift in Sources */,
 				2BC43C741F70271400A84A7F /* SchoolsTableViewCell.swift in Sources */,
 				2B787D751F7AAD8C009B28A2 /* DetailsAnnouncementsViewController.swift in Sources */,
+				4EE15EE91F978A0C00B9A2CE /* NSCodingManager.swift in Sources */,
 				EBDCDD811F768FB800D8F41E /* ReportsTableViewCell.swift in Sources */,
 				E5970D4B1F79BB7C009973E7 /* Base64Enconder.swift in Sources */,
 				2BC43C7A1F7041E200A84A7F /* Escola.swift in Sources */,

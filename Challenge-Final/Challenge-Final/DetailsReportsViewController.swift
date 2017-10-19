@@ -65,8 +65,6 @@ class DetailsReportsViewController: UIViewController {
     private func getImageArray() -> [UIImage] {
         var array: [UIImage] = []
         
-//        print("IMAGES ARRAY \(report.images!.count)")
-        
         if report.images != nil {
             for urlString in report.images! {
                 let url = URL(string: "http://localhost:3000/\(urlString)")

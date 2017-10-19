@@ -12,38 +12,28 @@ import SkyFloatingLabelTextField
 class LoginViewController: UIViewController {
     @IBOutlet weak var email_label: SkyFloatingLabelTextField!
     @IBOutlet weak var password_label: SkyFloatingLabelTextField!
-    
     @IBOutlet weak var cadastroBtn: CustomButton!
-    fileprivate let sharedDAO = DAO.sharedDAO
+    
+    private let sharedDAO = DAO.sharedDAO
+    private let sharedCodingManager = NSCodingManager.sharedCodingManager
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         cadastroBtn.layer.borderWidth = 1
         
-        print("\(width) \(height)")
-//        var images:[UIImage] = []
-//        var videos:[String] = []
-//        images.append(#imageLiteral(resourceName: "teste"))
-//
-//
-//        let documentsFolder = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-//        let videoUrl = documentsFolder.appendingPathComponent("FinalVideo2.mov")
-//
-//
-//        let videoData = try! Data(contentsOf: videoUrl)
-//
-//        let videoDataString = videoData.base64EncodedString(options: .lineLength64Characters)
-//
-//
-//
-//        videos.append(videoDataString)
-//        videos.append(videoDataString)
-//
-//        videos = Base64Enconder.encode(videos: videos)
-//
-//
+        self.checkIfUserIsLoggedIn()
         
+        print("\(width) \(height)")
+        
+    }
+    
+    private func checkIfUserIsLoggedIn() {
+        let aluno = sharedDAO.getLoggedAluno()
+        
+        if aluno != nil {
+            self.performSegue(withIdentifier: "login_to_main", sender: self)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,6 +51,7 @@ class LoginViewController: UIViewController {
             sharedDAO.loginAluno(email: email_label.text!, password: password_label.text!, completion: { (aluno, error) in
                 if error == nil && aluno != nil {
                     self.sharedDAO.set(aluno: aluno!)
+                    print(aluno?.escola_id)
 
                     DispatchQueue.main.async {
                         self.performSegue(withIdentifier: "login_to_main", sender: self)

@@ -17,11 +17,20 @@ class DAO {
     let apiUrl = "http://localhost:3000"
     var aluno: Aluno? = nil
     
+    private let archiver = NSCodingManager.sharedCodingManager
+    
     private init() { }
     
     /* Aluno */
     func set(aluno: Aluno) {
         self.aluno = aluno
+        print(archiver.save(aluno, withPath: "aluno"))
+    }
+    
+    func getLoggedAluno() -> Aluno? {
+        aluno = archiver.getAny(withPath: "aluno") as? Aluno
+        
+        return aluno
     }
     
     public func createAluno(name: String, password: String, serie: String, email: String,avatar: Int, escola: Escola, completion: @escaping (Aluno) -> Void) {
@@ -65,11 +74,13 @@ class DAO {
     }
     
     public func loginAluno(email: String, password: String, completion: @escaping (Aluno?, String?) -> Void) {
-        let parameters = ["email": email, "password": password]
+        var parameters = ["email": email, "password": password]
         guard let url = URL(string: apiUrl + "/alunos/login") else { return }
         
+        parameters["header"] = aluno?.token
+        
         sendRequest(url: url, parameters: parameters, method: Methods.post, completion: { (dict, abc, def) in
-            guard let jsonDict = dict as? [String: Any] else { return }
+            guard let jsonDict = dict as? [String : Any] else { return }
             
             if jsonDict["message"] == nil {
                 self.aluno = Aluno(parameters: jsonDict)
@@ -87,7 +98,9 @@ class DAO {
     public func getAvisos(forAluno aluno: Aluno, completion: @escaping ([Aviso]) -> Void) {
         guard let url = URL(string: self.apiUrl + "/escolas/\(aluno.escola_id)/alunos/\(aluno.id!)/avisos") else { return }
         
-        self.sendRequest(url: url, parameters: nil, method: Methods.get, completion: { (dict, abc, def) in
+        let parameters: [String : Any] = ["header" : aluno.token as Any]
+        
+        self.sendRequest(url: url, parameters: parameters, method: Methods.get, completion: { (dict, abc, def) in
             
             guard let jsonDictArray = dict as? NSArray else { return }
             
@@ -95,11 +108,19 @@ class DAO {
             
             for aviso in jsonDictArray {
                 
-                guard let jsonAviso = aviso as? [String: Any] else { return }
+                guard let jsonAviso = aviso as? [String : Any] else { return }
                 
-                let newAviso = Aviso(parameters: jsonAviso)
+                var newAviso: Aviso? = nil
                 
-                arrayAviso.append(newAviso)
+                if let imgArray = jsonAviso["image"] as? NSArray {
+                    newAviso = Aviso(parameters: jsonAviso["aviso"] as! [String : Any], imgsArray: imgArray)
+                    
+                } else {
+                    newAviso = Aviso(parameters: jsonAviso, imgsArray: nil)
+                    
+                }
+                
+                arrayAviso.append(newAviso!)
             }
             
             self.aluno!.avisos = arrayAviso
@@ -112,7 +133,9 @@ class DAO {
     func deleteAviso(idAviso: Int, completion: @escaping (String) -> Void) {
         guard let url = URL(string: self.apiUrl + "/alunos/\(aluno!.id!)/avisos/\(idAviso)") else { return }
         
-        self.sendRequest(url: url, parameters: nil, method: Methods.delete, completion: {  (dict, abc, def) in
+        let parameters: [String : Any] = ["header" : aluno?.token as Any]
+        
+        self.sendRequest(url: url, parameters: parameters, method: Methods.delete, completion: {  (dict, abc, def) in
             guard let jsonDict = dict as? [String:Any] else { return }
             
             if jsonDict["error"] != nil {
@@ -130,16 +153,14 @@ class DAO {
     public func getDenuncias(forAluno aluno: Aluno, completion: @escaping ([Denuncia]) -> Void) {
         guard let url = URL(string: self.apiUrl + "/escolas/\(aluno.escola_id)/alunos/\(aluno.id!)/reports") else { return }
         
-        self.sendRequest(url: url, parameters: nil, method: Methods.get, completion: { (dict, imgsDict, videosDict) in
-            print("Json 1 \(dict)")
+        let parameters: [String : Any] = ["header" : aluno.token as Any]
+        
+        self.sendRequest(url: url, parameters: parameters, method: Methods.get, completion: { (dict, imgsDict, videosDict) in
             guard let jsonDictArray = dict as? NSArray else { return }
-            print("Json \(jsonDictArray)")
             var arrayDenuncias: [Denuncia] = []
             
             for denuncia in jsonDictArray {
-                print("Json \(arrayDenuncias)")
                 guard let jsonDenuncia = denuncia as? [String: Any] else { return }
-                print("json denuncia \(jsonDenuncia)")
                 var newDenuncia: Denuncia? = nil
                 
                 if let imgArray = jsonDenuncia["image"] as? NSArray {
@@ -161,13 +182,10 @@ class DAO {
     public func sendDenuncia(denuncia: Denuncia, idAluno: Int, idEscola: Int, completion: @escaping (Denuncia) -> Void) {
         guard let url = URL(string: self.apiUrl + "/escolas/\(idEscola)/alunos/\(idAluno)/denuncias") else { return }
         
-        let params = denuncia.json
-        //print("params: \(params)")
-        //params["Authorization"] = aluno!.token
+        var params = denuncia.json
+        params["header"] = aluno?.token
         
         self.sendRequest(url: url, parameters: params, method: Methods.post, completion: { (dict, imgsDict, videosDict) in
-            print("dict fuck: \(dict)")
-            
             guard let jsonDict = dict as? [String : Any] else { return }
             guard let imgsArray = imgsDict as? NSArray else { return }
             guard let videosArray = videosDict as? NSArray else { return }
@@ -176,12 +194,14 @@ class DAO {
         })
     }
     
-    
     /* Escola */
     public func getEscolas(completion: @escaping ([Escola]) -> Void) {
         guard let url  = URL(string: self.apiUrl + "/escolas") else { return }
         print("method: \(Methods.get)")
-        self.sendRequest(url: url, parameters: nil, method: Methods.get, completion: { (dict, imgsDict, nil) in
+        
+        let parameters: [String : Any] = ["header" : aluno?.token as Any]
+        
+        self.sendRequest(url: url, parameters: parameters, method: Methods.get, completion: { (dict, imgsDict, nil) in
             var arrayEscola: [Escola] = []
             guard let jsonDictArray = dict as? NSArray else { print("scheisse"); return }
             
@@ -197,7 +217,7 @@ class DAO {
     }
     
     /* Request Sender */
-    public func sendRequest(url: URL, parameters: [String:Any]?, method: Methods, completion: @escaping (Any, Any?, Any?) -> Void) {
+    public func sendRequest(url: URL, parameters: [String : Any]?, method: Methods, completion: @escaping (Any, Any?, Any?) -> Void) {
         let session = URLSession.shared
         print("url \(url)")
         var request = URLRequest(url: url)
@@ -206,12 +226,18 @@ class DAO {
         if parameters != nil {
             request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
             
-            do {
-                request.httpBody = try JSONSerialization.data(withJSONObject: parameters as Any, options: .prettyPrinted)
-                
-            } catch let error {
-                print(error.localizedDescription)
-                
+            if parameters!["header"] != nil {
+                request.setValue((parameters!["header"] as! String), forHTTPHeaderField: "Authorization")
+            }
+            
+            if method == Methods.post {
+                do {
+                    request.httpBody = try JSONSerialization.data(withJSONObject: parameters as Any, options: .prettyPrinted)
+                    
+                } catch let error {
+                    print(error.localizedDescription)
+                    
+                }
             }
         }
         

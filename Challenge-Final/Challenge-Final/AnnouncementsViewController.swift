@@ -18,7 +18,6 @@ class AnnouncementsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Ola")
         
         getAvisosArray()
         self.tableViewSetup()

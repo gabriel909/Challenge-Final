@@ -10,12 +10,15 @@ import UIKit
 
 class NewReportCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imagem: UIImageView!
+    @IBOutlet weak var viewCell: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.layer.borderColor = UIColor.white.cgColor
-        self.layer.borderWidth = 2
+        imagem.clipsToBounds = true
+        imagem.layer.masksToBounds = true
+        
+//        imagem.layer.cornerRadius = 15
     }
 
 }

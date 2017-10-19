@@ -19,16 +19,40 @@
                 <rect key="frame" x="0.0" y="0.0" width="126" height="124"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qpg-LN-OFk">
+                    <view alpha="0.55000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9hx-kL-02b">
                         <rect key="frame" x="0.0" y="0.0" width="126" height="124"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="spatial" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qpg-LN-OFk">
+                        <rect key="frame" x="0.0" y="0.0" width="126" height="124"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                 </subviews>
             </view>
+            <constraints>
+                <constraint firstItem="9hx-kL-02b" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="5FL-a6-A3K"/>
+                <constraint firstAttribute="trailing" secondItem="qpg-LN-OFk" secondAttribute="trailing" id="6AO-w2-CTQ"/>
+                <constraint firstItem="qpg-LN-OFk" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="I5K-8y-MTA"/>
+                <constraint firstAttribute="bottom" secondItem="9hx-kL-02b" secondAttribute="bottom" id="QGy-l1-kEY"/>
+                <constraint firstAttribute="trailing" secondItem="9hx-kL-02b" secondAttribute="trailing" id="hjW-kz-CUy"/>
+                <constraint firstItem="qpg-LN-OFk" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="jVd-BJ-jxY"/>
+                <constraint firstAttribute="bottom" secondItem="qpg-LN-OFk" secondAttribute="bottom" id="nVC-wa-Zum"/>
+                <constraint firstItem="9hx-kL-02b" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="s0d-1p-haN"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="126" height="124"/>
             <connections>
                 <outlet property="imagem" destination="qpg-LN-OFk" id="rUQ-ac-kPv"/>
+                <outlet property="viewCell" destination="9hx-kL-02b" id="AWg-aL-ogT"/>
             </connections>
             <point key="canvasLocation" x="73" y="91"/>
         </collectionViewCell>

@@ -17,7 +17,6 @@ class Denuncia {
     let images: [String]?
     let videos: [String]?
     
-    
     init(categoria: Categoria, descricao: String, date: String, status: Status, images: [String]?, videos: [String]?) {
         self.categoria = categoria
         self.descricao = descricao
@@ -27,17 +26,13 @@ class Denuncia {
         self.videos = videos
     }
     
-    init(parameters: [String:Any], imgsArray: NSArray?, videosArray: NSArray?) {
+    init(parameters: [String : Any], imgsArray: NSArray?, videosArray: NSArray?) {
         let jsonDenuncia = parameters
         
         var imgUrls: NSArray = []
         var videoUrls: NSArray = []
         
-        
-        print("json jesus")
-        
         if imgsArray != nil {
-            
             for img in imgsArray! {
                 print("img do kct\(img)")
                 let url = Denuncia.convertJsonMedia(json: img)
@@ -46,14 +41,11 @@ class Denuncia {
         }
         
         if videosArray != nil {
-            
             for video in videosArray! {
                 let url = Denuncia.convertJsonMedia(json: video)
                 videoUrls = videoUrls.adding(url) as NSArray
             }
-            
         }
-        
         
         self.categoria = Categoria(rawValue: jsonDenuncia["categoria"] as! String)!
 //        self.date = jsonDenuncia["created_at"] as! String
@@ -75,15 +67,6 @@ class Denuncia {
         
         self.images = imgUrls as? [String]
         self.videos = videoUrls as? [String]
-        
-//        for image in self.images! {
-//            print("url: \(image)")
-//        }
-//        
-//        for video in self.videos! {
-//            print("videoUrl: \(video)")
-//        }
-        
     }
     
     var json: [String:Any] {

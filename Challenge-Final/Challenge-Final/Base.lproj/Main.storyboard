@@ -1286,7 +1286,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anexar" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KM3-ig-dUv">
-                                                <rect key="frame" x="28" y="399" width="264" height="30"/>
+                                                <rect key="frame" x="28" y="389" width="264" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="gax-IU-UW4"/>
                                                 </constraints>
@@ -1326,7 +1326,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="7PN-8V-UN0"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                                <state key="normal" title="Cadastro">
+                                                <state key="normal" title="Cancelar">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>
@@ -1350,7 +1350,7 @@
                                             <constraint firstItem="Dme-YH-q4t" firstAttribute="leading" secondItem="sVA-dc-DCF" secondAttribute="leadingMargin" constant="20" id="4Cr-aR-8dv"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="xuP-jY-1ly" secondAttribute="trailing" constant="20" id="7Fl-l1-qAe"/>
                                             <constraint firstAttribute="height" constant="680" id="9AN-a5-O1L"/>
-                                            <constraint firstItem="KM3-ig-dUv" firstAttribute="top" secondItem="Dme-YH-q4t" secondAttribute="bottom" constant="30" id="9qn-5t-Fir"/>
+                                            <constraint firstItem="KM3-ig-dUv" firstAttribute="top" secondItem="Dme-YH-q4t" secondAttribute="bottom" constant="20" id="9qn-5t-Fir"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="kO7-QL-gSy" secondAttribute="trailing" constant="20" id="Ckv-jt-PRW"/>
                                             <constraint firstItem="kO7-QL-gSy" firstAttribute="leading" secondItem="sVA-dc-DCF" secondAttribute="leadingMargin" constant="20" id="Cp1-v5-gJy"/>
                                             <constraint firstItem="jiB-qf-uni" firstAttribute="top" secondItem="kO7-QL-gSy" secondAttribute="bottom" constant="20" id="GV6-0L-W9G"/>
@@ -1414,6 +1414,7 @@
                     </view>
                     <size key="freeformSize" width="320" height="700"/>
                     <connections>
+                        <outlet property="cancelButtonOutlet" destination="jiB-qf-uni" id="KXs-bG-RGe"/>
                         <outlet property="contentView" destination="sVA-dc-DCF" id="IFl-y4-eZs"/>
                         <outlet property="descricaoTextView" destination="Dme-YH-q4t" id="Xfy-PH-puZ"/>
                         <segue destination="HCS-nD-VbX" kind="unwind" unwindAction="unWindToViewControllerWithSender:" id="dSb-pb-NZI"/>
