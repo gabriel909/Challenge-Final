@@ -12,12 +12,20 @@ class NewReportViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var descricaoTextView: UITextView!
     @IBOutlet weak var cancelButtonOutlet: CustomButton!
+    @IBOutlet weak var categoryButtonOutlet: CustomButton!
     
     fileprivate var plusIndex: Int = 0
+    fileprivate var selectedIndex: Int = 0
     fileprivate var photoCollectionArray: [UIImage] = []
     fileprivate let picker: UIImagePickerController? = UIImagePickerController()
     fileprivate var tap = UITapGestureRecognizer()
     fileprivate var placeholder: String!
+    
+    fileprivate var new: Bool {
+        get {
+            return selectedIndex == 0
+        }
+    }
     
     fileprivate let sharedDAO = DAO.sharedDAO
     
@@ -27,14 +35,10 @@ class NewReportViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        picker?.delegate = self
-        descricaoTextView.delegate = self
+
         self.collectionSetup()
         self.setTextViewPlaceholder()
-        self.descriptionLabelSetup()
-        
-        self.cancelButtonOutlet.borderWidth = 1
+        self.elementsSetup()
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,7 +60,14 @@ class NewReportViewController: UIViewController {
         self.contentView.addSubview(collectionView)
     }
     
-    private func descriptionLabelSetup() {
+    private func elementsSetup() {
+        self.cancelButtonOutlet.borderWidth = 1
+        
+        self.categoryButtonOutlet.setTitle(" \(category!)", for: .normal)
+        
+        self.picker?.delegate = self
+        
+        self.descricaoTextView.delegate = self
         self.descricaoTextView.cornerRadius = 10
         self.descricaoTextView.borderWidth = 1
         self.descricaoTextView.layer.borderColor = UIColor.white.cgColor
@@ -84,7 +95,7 @@ class NewReportViewController: UIViewController {
     @IBAction func sendButtonAction(_ sender: UIButton) {
         if !descricaoTextView.text.isEmpty {
             let base64Array = Base64Enconder.encode(imgs: photoCollectionArray)
-            let denuncia = Denuncia(categoria: .Acessibilidade, descricao: descricaoTextView.text!, date: "", status: .andamento, images: base64Array, videos: nil)
+            let denuncia = Denuncia(categoria: Categoria(rawValue: category)!, descricao: descricaoTextView.text!, date: "", status: .andamento, images: base64Array, videos: nil)
             
             let aluno = sharedDAO.aluno!
         
@@ -94,6 +105,10 @@ class NewReportViewController: UIViewController {
                 }
             })
         }
+    }
+    
+    @IBAction func cancelButtonAction(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -124,6 +139,7 @@ extension NewReportViewController: UICollectionViewDataSource {
 //MARK: - Table View Delegate
 extension NewReportViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.selectedIndex = indexPath.row
         self.openGalleryAlert()
     }
     
@@ -178,8 +194,17 @@ extension NewReportViewController: UIImagePickerControllerDelegate, UINavigation
         
         picker.dismiss(animated: true, completion: nil)
         
-        photoCollectionArray.append(image!)
-        plusIndex += 1
+        print("NEW \(new)")
+        
+        if new {
+            photoCollectionArray.append(image!)
+            
+        } else {
+            print("SELECTED INDEX \(selectedIndex)")
+            photoCollectionArray[selectedIndex - 1] = image!
+            
+        }
+        
         self.collectionView.reloadData()
     }
 }
@@ -188,7 +213,6 @@ extension NewReportViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textField: UITextView) {
         if textField.text == placeholder {
             textField.text = nil
-            textField.textColor = UIColor.white
         }
         
         tap = UITapGestureRecognizer(target: self, action: #selector(self.tapped))
@@ -198,7 +222,6 @@ extension NewReportViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textField: UITextView) {
         if textField.text.isEmpty {
             textField.text = placeholder
-            textField.textColor = UIColor.white
         }
         
         self.contentView.removeGestureRecognizer(tap)

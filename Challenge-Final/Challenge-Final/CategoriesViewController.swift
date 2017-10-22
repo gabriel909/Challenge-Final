@@ -11,7 +11,7 @@ import UIKit
 class CategoriesViewController: UIViewController {
 
     private var collectionview: UICollectionView!
-    fileprivate var catTitle = ["Manutenção", "Higiene", "Funcionários", "Colegas","Acessibilidade", "Professores"]
+    fileprivate var catTitle = ["Manutenção", "Higiene", "Funcionários", "Colegas", "Acessibilidade", "Professores"]
     fileprivate var selectedIndex: Int! = 0
     
     override func viewDidLoad() {
@@ -19,7 +19,6 @@ class CategoriesViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         self.collectionSetup()
-        self.collectionview.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,6 +38,7 @@ class CategoriesViewController: UIViewController {
         
         self.collectionview = UICollectionView(frame: collectionViewRect, collectionViewLayout: createLayout())
         self.collectionview.dataSource = self
+        self.collectionview.delegate = self
         self.collectionview.backgroundColor = .clear
         self.collectionview.register(collectionViewCellNib, forCellWithReuseIdentifier: "idCatCell")
         self.collectionview.clipsToBounds = true
@@ -68,11 +68,15 @@ extension CategoriesViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell: CollectionViewCell
+        var title = catTitle[indexPath.row]
         
         cell = collectionview.dequeueReusableCell(withReuseIdentifier: "idCatCell", for: indexPath as IndexPath) as! CollectionViewCell
         cell.backgroundColor = .clear
-        cell.titleLabel.text = catTitle[indexPath.row]
-        cell.img.image = UIImage()
+        cell.titleLabel.text = title
+        
+        title = title.folding(options: .diacriticInsensitive, locale: .current)
+        
+        cell.img.image = UIImage(named: title)
         
         return cell
     }
@@ -86,11 +90,10 @@ extension CategoriesViewController: UICollectionViewDelegate {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "" {
+        if segue.identifier == "catToNew" {
             let destViewController = segue.destination as! NewReportViewController
             
             destViewController.category = catTitle[selectedIndex]
         }
     }
-    
 }

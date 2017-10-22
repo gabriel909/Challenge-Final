@@ -32,13 +32,30 @@ class LoginViewController: UIViewController {
         let aluno = sharedDAO.getLoggedAluno()
         
         if aluno != nil {
-            self.performSegue(withIdentifier: "login_to_main", sender: self)
+            login(email: (aluno?.email)!, password: (aluno?.password)!)
         }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    private func login(email: String, password: String) {
+        sharedDAO.loginAluno(email: email_label.text!, password: password_label.text!, completion: { (aluno, error) in
+            if error == nil && aluno != nil {
+                self.sharedDAO.set(aluno: aluno!)
+                print(aluno?.token)
+                
+                DispatchQueue.main.async {
+                    self.performSegue(withIdentifier: "login_to_main", sender: self)
+                }
+                
+            } else {
+                message("Atenção", desc: "Deu Merda", view: self)
+                
+            }
+        })
     }
     
     @IBAction func next_button_action(_ sender: Any) {
@@ -48,20 +65,7 @@ class LoginViewController: UIViewController {
         } else {
             self.view.endEditing(true)
             
-            sharedDAO.loginAluno(email: email_label.text!, password: password_label.text!, completion: { (aluno, error) in
-                if error == nil && aluno != nil {
-                    self.sharedDAO.set(aluno: aluno!)
-                    print(aluno?.escola_id)
-
-                    DispatchQueue.main.async {
-                        self.performSegue(withIdentifier: "login_to_main", sender: self)
-                    }
-
-                } else {
-                    message("Atenção", desc: "Deu Merda", view: self)
-                    
-                }
-            })
+            login(email: email_label.text!, password: password_label.text!)
         }
     }
 }

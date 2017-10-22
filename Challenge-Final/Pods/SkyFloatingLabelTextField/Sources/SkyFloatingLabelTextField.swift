@@ -20,7 +20,7 @@ open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this ty
      A Boolean value that determines if the language displayed is LTR. 
      Default value set automatically from the application language settings.
      */
-    open var isLTRLanguage = UIApplication.shared.userInterfaceLayoutDirection == .leftToRight {
+    open var isLTRLanguage: Bool = UIApplication.shared.userInterfaceLayoutDirection == .leftToRight {
         didSet {
            updateTextAligment()
         }
@@ -75,10 +75,19 @@ open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this ty
 
     fileprivate func updatePlaceholder() {
         if let placeholder = placeholder, let font = placeholderFont ?? font {
+            #if swift(>=4.0)
                 attributedPlaceholder = NSAttributedString(
                     string: placeholder,
-                    attributes: [NSAttributedStringKey.foregroundColor: placeholderColor, NSAttributedStringKey.font: font]
+                    attributes: [
+                        NSAttributedStringKey.foregroundColor: placeholderColor, NSAttributedStringKey.font: font
+                    ]
                 )
+            #else
+                attributedPlaceholder = NSAttributedString(
+                    string: placeholder,
+                    attributes: [NSForegroundColorAttributeName: placeholderColor, NSFontAttributeName: font]
+                )
+            #endif
         }
     }
 
@@ -182,7 +191,7 @@ open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this ty
     }
 
     /// The backing property for the highlighted property
-    fileprivate var _highlighted = false
+    fileprivate var _highlighted: Bool = false
 
     /**
      A Boolean value that determines whether the receiver is highlighted.
@@ -345,7 +354,7 @@ open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this ty
      */
     @discardableResult
     override open func resignFirstResponder() -> Bool {
-        let result =  super.resignFirstResponder()
+        let result = super.resignFirstResponder()
         updateControl(true)
         return result
     }
@@ -425,7 +434,7 @@ open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this ty
         updateTitleVisibility(animated)
     }
 
-    fileprivate var _titleVisible = false
+    fileprivate var _titleVisible: Bool = false
 
     /*
     *   Set this value to make the title visible

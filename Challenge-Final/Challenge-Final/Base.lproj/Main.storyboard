@@ -901,7 +901,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avisos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmj-Ql-27S">
-                                <rect key="frame" x="36" y="84" width="248" height="40"/>
+                                <rect key="frame" x="36" y="104" width="248" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="fqZ-II-ZeO"/>
                                 </constraints>
@@ -910,7 +910,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Leo-S5-WbO">
-                                <rect key="frame" x="36" y="124" width="248" height="1"/>
+                                <rect key="frame" x="36" y="144" width="248" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="mto-J7-0U7"/>
@@ -1340,6 +1340,9 @@
                                                         <real key="value" value="20"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="cancelButtonAction:" destination="dDb-0Q-25a" eventType="touchUpInside" id="u71-vg-oIj"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1415,6 +1418,7 @@
                     <size key="freeformSize" width="320" height="700"/>
                     <connections>
                         <outlet property="cancelButtonOutlet" destination="jiB-qf-uni" id="KXs-bG-RGe"/>
+                        <outlet property="categoryButtonOutlet" destination="Dyw-y3-Fqn" id="Nlh-Pz-BT8"/>
                         <outlet property="contentView" destination="sVA-dc-DCF" id="IFl-y4-eZs"/>
                         <outlet property="descricaoTextView" destination="Dme-YH-q4t" id="Xfy-PH-puZ"/>
                         <segue destination="HCS-nD-VbX" kind="unwind" unwindAction="unWindToViewControllerWithSender:" id="dSb-pb-NZI"/>

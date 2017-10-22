@@ -26,44 +26,40 @@
                 <subviews>
                     <view alpha="0.55000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B2n-it-iqu">
                         <rect key="frame" x="0.0" y="0.0" width="140" height="150"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VkE-qH-U7r">
-                                <rect key="frame" x="0.0" y="120" width="140" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="6Gr-IY-khv"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jlQ-lx-8F5">
-                                <rect key="frame" x="0.0" y="0.0" width="140" height="120"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="jlQ-lx-8F5" secondAttribute="trailing" id="6jm-lr-XGK"/>
-                            <constraint firstItem="jlQ-lx-8F5" firstAttribute="top" secondItem="B2n-it-iqu" secondAttribute="top" id="GJb-ow-HFv"/>
-                            <constraint firstItem="jlQ-lx-8F5" firstAttribute="leading" secondItem="B2n-it-iqu" secondAttribute="leading" id="VbS-Iy-hAx"/>
-                            <constraint firstItem="VkE-qH-U7r" firstAttribute="top" secondItem="jlQ-lx-8F5" secondAttribute="bottom" id="ae5-XS-fOW"/>
-                            <constraint firstAttribute="bottom" secondItem="VkE-qH-U7r" secondAttribute="bottom" id="eKR-fs-d34"/>
-                            <constraint firstAttribute="trailing" secondItem="VkE-qH-U7r" secondAttribute="trailing" id="gQY-b4-c5z"/>
-                            <constraint firstItem="VkE-qH-U7r" firstAttribute="leading" secondItem="B2n-it-iqu" secondAttribute="leading" id="yuu-q0-T6T"/>
-                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="20"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jlQ-lx-8F5">
+                        <rect key="frame" x="0.0" y="0.0" width="140" height="110"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VkE-qH-U7r">
+                        <rect key="frame" x="0.0" y="110" width="140" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="6Gr-IY-khv"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="jlQ-lx-8F5" secondAttribute="trailing" id="0L3-Q0-2BB"/>
+                <constraint firstAttribute="trailing" secondItem="VkE-qH-U7r" secondAttribute="trailing" id="DXC-hV-ouT"/>
                 <constraint firstAttribute="trailing" secondItem="B2n-it-iqu" secondAttribute="trailing" id="GDO-bG-WHa"/>
+                <constraint firstItem="VkE-qH-U7r" firstAttribute="top" secondItem="jlQ-lx-8F5" secondAttribute="bottom" id="Mha-2d-Zrg"/>
                 <constraint firstItem="B2n-it-iqu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="R9i-nj-9rQ"/>
+                <constraint firstItem="VkE-qH-U7r" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="WHu-hi-3r0"/>
                 <constraint firstAttribute="bottom" secondItem="B2n-it-iqu" secondAttribute="bottom" id="eFK-5Q-dBY"/>
                 <constraint firstItem="B2n-it-iqu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="hPl-cp-dd9"/>
+                <constraint firstItem="jlQ-lx-8F5" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="pfK-qL-t9L"/>
+                <constraint firstItem="jlQ-lx-8F5" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rqX-4c-rnA"/>
+                <constraint firstAttribute="bottom" secondItem="VkE-qH-U7r" secondAttribute="bottom" constant="10" id="x4z-Km-yIz"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="140" height="150"/>
