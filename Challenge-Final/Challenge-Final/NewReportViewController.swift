@@ -125,7 +125,7 @@ extension NewReportViewController: UICollectionViewDataSource {
         cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newReportCell", for: indexPath as IndexPath) as! NewReportCollectionViewCell
         
         if indexPath.row == 0 {
-            //MARK: - TODO Set Plus image
+            cell.imagem.image = UIImage()
             
         } else {
             cell.imagem.image = photoCollectionArray[indexPath.row - 1]
