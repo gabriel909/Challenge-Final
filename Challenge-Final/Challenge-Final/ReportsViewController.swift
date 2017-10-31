@@ -14,18 +14,51 @@ class ReportsViewController: UIViewController {
         print("btn pressed")
     }
     
-    private var tableView: UITableView!
+    lazy var tableView: UITableView! = {
+        let tableViewCellNib = UINib(nibName: "ReportsTableViewCell", bundle: nil)
+        
+        let tableview = UITableView()
+        tableview.translatesAutoresizingMaskIntoConstraints = false
+        tableview.dataSource = self
+        tableview.delegate = self
+        tableview.backgroundColor = .clear
+        tableview.separatorStyle = .none
+        tableview.rowHeight = height / 5
+        tableview.register(tableViewCellNib, forCellReuseIdentifier: "idReportCell")
+        tableview.clipsToBounds = true
+        
+        return tableview
+    }()
+    
     fileprivate var tableViewSectionsTitle: [String] = []
     fileprivate var selectedIndex: Int!
     fileprivate var arrayDenuncias: [Denuncia] = []
+    
+    var tableConstraints: [NSLayoutConstraint]  {
+        var constraints = [NSLayoutConstraint]()
+        constraints.append(NSLayoutConstraint(item: self.tableView, attribute: .left, relatedBy: .equal, toItem: self.view, attribute: .left, multiplier: 1.0, constant: 1.0))
+        constraints.append(NSLayoutConstraint(item: self.tableView, attribute: .right, relatedBy: .equal, toItem: self.view, attribute: .right, multiplier: 1.0, constant: 1.0))
+        constraints.append(NSLayoutConstraint(item: self.tableView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: 1.0))
+        constraints.append(NSLayoutConstraint(item: self.tableView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 1.0))
+        return constraints
+    }
     
     fileprivate let sharedDAO = DAO.sharedDAO
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableViewSetup()
         self.getReportsArray()
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+            UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        }
+        
+        title = "Echo"
+        
+        self.view.addSubview(tableView)
+        NSLayoutConstraint.activate(tableConstraints)
     }
     
     
@@ -36,35 +69,10 @@ class ReportsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
-//        self.navigationController?.navigationBar.transparentNavigationBar()
-        self.navigationController?.navigationItem.title = "Echo"
-        if #available(iOS 11.0, *) {
-            self.navigationController?.navigationBar.prefersLargeTitles = true
-        }
-        
-        
-//        self.tableViewSetup()
-//        self.getReportsArray()
+        navigationController?.navigationBar.barStyle = .black
     }
     
     //MARK: - Aux Methods
-    private func tableViewSetup() {
-        let tableViewRect = CGRect(x: 0, y: height / 4.73, width: width, height: height / 1.46)
-        let tableViewCellNib = UINib(nibName: "ReportsTableViewCell", bundle: nil)
-        
-        self.tableView = UITableView(frame: tableViewRect , style: .plain)
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
-        self.tableView.backgroundColor = .clear
-        self.tableView.separatorStyle = .none
-        self.tableView.rowHeight = height / 5
-        self.tableView.register(tableViewCellNib, forCellReuseIdentifier: "idReportCell")
-        self.tableView.clipsToBounds = true
-        self.tableView.layer.zPosition = -100
-        
-        self.view.addSubview(tableView)
-    }
-    
     private func getReportsArray() {
         var aluno = Aluno()
         

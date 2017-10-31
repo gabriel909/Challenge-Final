@@ -23,7 +23,8 @@ class LoginViewController: UIViewController {
         cadastroBtn.layer.borderWidth = 1
         
         self.checkIfUserIsLoggedIn()
-        
+        self.hideKeyboardWhenTappedAround()
+    
         print("\(width) \(height)")
         
     }

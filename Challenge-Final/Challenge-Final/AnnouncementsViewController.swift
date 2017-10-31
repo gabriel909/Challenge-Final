@@ -9,19 +9,51 @@
 import UIKit
 
 class AnnouncementsViewController: UIViewController {
+    lazy var tableView: UITableView! = {
+        let tableViewCellNib = UINib(nibName: "AnnouncementsTableViewCell", bundle: nil)
+        
+        let tableview = UITableView()
+        tableview.translatesAutoresizingMaskIntoConstraints = false
+        tableview.dataSource = self
+        tableview.delegate = self
+        tableview.backgroundColor = .clear
+        tableview.separatorStyle = .none
+        tableview.rowHeight = height / 5
+        tableview.register(tableViewCellNib, forCellReuseIdentifier: "idAnnouncCell")
+        tableview.clipsToBounds = true
+        
+        return tableview
+    }()
     
-    private var tableView: UITableView!
     fileprivate var arrayAvisos: [Aviso] = []
     fileprivate var selectedIndex: Int!
     
     fileprivate let sharedDAO = DAO.sharedDAO
     
+    var tableConstraints: [NSLayoutConstraint]  {
+        var constraints = [NSLayoutConstraint]()
+        constraints.append(NSLayoutConstraint(item: self.tableView, attribute: .left, relatedBy: .equal, toItem: self.view, attribute: .left, multiplier: 1.0, constant: 1.0))
+        constraints.append(NSLayoutConstraint(item: self.tableView, attribute: .right, relatedBy: .equal, toItem: self.view, attribute: .right, multiplier: 1.0, constant: 1.0))
+        constraints.append(NSLayoutConstraint(item: self.tableView, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1.0, constant: 1.0))
+        constraints.append(NSLayoutConstraint(item: self.tableView, attribute: .bottom, relatedBy: .equal, toItem: self.view, attribute: .bottom, multiplier: 1.0, constant: 1.0))
+        return constraints
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        getAvisosArray()
-        self.tableViewSetup()
-        self.tableView.delegate = self
+        self.getAvisosArray()
+//        self.tableViewSetup()
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+            UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        }
+        
+        title = "Avisos"
+        
+        self.view.addSubview(tableView)
+        NSLayoutConstraint.activate(tableConstraints)
     }
     
     override func didReceiveMemoryWarning() {
@@ -31,7 +63,8 @@ class AnnouncementsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
-        self.navigationController?.navigationBar.transparentNavigationBar()
+//        self.navigationController?.navigationBar.transparentNavigationBar()
+        navigationController?.navigationBar.barStyle = .black
     }
     
     //MARK: - Aux Methods

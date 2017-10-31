@@ -18,8 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         UINavigationBar.appearance().tintColor = UIColor.white
-        UINavigationBar.appearance().backgroundColor = UIColor(red: 0x38, green: 0x50, blue: 0x78)
+//        UINavigationBar.appearance().backgroundColor = UIColor(red: 0x38, green: 0x50, blue: 0x78)
 //        UINavigationBar.appearance().backgroundColor = .clear
+//        UINavigationBar.appearance().backgroundColor = .red
+        UINavigationBar.appearance().barTintColor = UIColor(red: 0x4b, green: 0x6b, blue: 0x9f)
         UINavigationBar.appearance().isHidden = true
         
         return true

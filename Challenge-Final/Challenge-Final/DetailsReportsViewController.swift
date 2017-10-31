@@ -9,8 +9,6 @@
 import UIKit
 
 class DetailsReportsViewController: UIViewController {
-
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var statusLabel: UILabel!
     
@@ -23,6 +21,8 @@ class DetailsReportsViewController: UIViewController {
         super.viewDidLoad()
         self.loadLabels()
         self.collectionSetup()
+        
+        title = report.categoria.rawValue
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,7 +30,6 @@ class DetailsReportsViewController: UIViewController {
     }
     
     private func loadLabels() {
-        titleLabel.text = report.categoria.rawValue
         descTextView.text = report.descricao
         statusLabel.text = report.status.rawValue
     }
