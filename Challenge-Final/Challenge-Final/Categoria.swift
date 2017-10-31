@@ -15,4 +15,5 @@ enum Categoria: String {
     case Funcionarios = "Funcionarios"
     case Professores = "Professores"
     case Acessibilidade = "Acessibilidade"
+    case Manutencao = "Manutencao"
 }
