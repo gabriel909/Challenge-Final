@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3hs-8V-abz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="jCL-pO-GkS">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -791,6 +791,8 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
+                        <outlet property="avisobtn" destination="JEF-KF-FNM" id="b4t-Mw-dpp"/>
+                        <outlet property="echobtn" destination="oHz-js-DeL" id="LkZ-H1-ERg"/>
                         <outlet property="nameLabel" destination="eBJ-NR-dAT" id="Xge-Qc-5Cj"/>
                         <outlet property="serieLabel" destination="Yhk-Xd-s07" id="DlA-uK-SOt"/>
                         <segue destination="Kz8-Am-8Hf" kind="unwind" unwindAction="unWindToViewControllerWithSender:" id="bGg-Ql-GaZ"/>
@@ -901,7 +903,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Avisos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dmj-Ql-27S">
-                                <rect key="frame" x="36" y="104" width="248" height="40"/>
+                                <rect key="frame" x="36" y="84" width="248" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="fqZ-II-ZeO"/>
                                 </constraints>
@@ -910,7 +912,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Leo-S5-WbO">
-                                <rect key="frame" x="36" y="144" width="248" height="1"/>
+                                <rect key="frame" x="36" y="124" width="248" height="1"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="mto-J7-0U7"/>

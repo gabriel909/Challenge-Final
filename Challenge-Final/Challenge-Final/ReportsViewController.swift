@@ -36,7 +36,12 @@ class ReportsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
-        self.navigationController?.navigationBar.transparentNavigationBar()
+//        self.navigationController?.navigationBar.transparentNavigationBar()
+        self.navigationController?.navigationItem.title = "Echo"
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+        }
+        
         
 //        self.tableViewSetup()
 //        self.getReportsArray()

@@ -11,11 +11,17 @@ import UIKit
 class MainViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var serieLabel: UILabel!
+    @IBOutlet weak var echobtn: CustomButton!
+    @IBOutlet weak var avisobtn: CustomButton!
     
     fileprivate let sharedDAO = DAO.sharedDAO
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        echobtn.layer.borderWidth = 1
+        avisobtn.layer.borderWidth = 1
+
         
         self.setLabels()
     }
