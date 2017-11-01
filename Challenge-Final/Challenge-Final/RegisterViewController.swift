@@ -104,7 +104,7 @@ extension RegisterViewController: UITextFieldDelegate {
             performSegue(withIdentifier: "toSchoolList", sender: self)
         
         } else {
-            animateViewMoving(true, moveValue: 150)
+            animateViewMoving(true, moveValue: 100)
             
         }
     }
@@ -115,7 +115,7 @@ extension RegisterViewController: UITextFieldDelegate {
             textField.text = chosenSchool
         
         } else {
-            animateViewMoving(false, moveValue: 150)
+            animateViewMoving(false, moveValue: 100)
         
         }
     }

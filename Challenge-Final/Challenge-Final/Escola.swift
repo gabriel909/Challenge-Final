@@ -15,15 +15,15 @@ class Escola {
     
     var json: [String:Any] {
         get {
-            let parameters:[String:Any] = ["unidade": self.unidade,"nomeEscola": self.nomeEscola]
+            let parameters:[String:Any] = ["unidade": self.unidade, "nomeEscola": self.nomeEscola]
             return parameters
         }
     }
     
     
     init(parameters: [String:Any]) {
-        self.unidade = parameters["unidade"] as! String
-        self.nomeEscola = parameters["nome"] as! String
+        self.unidade = parameters["unidade"] as? String ?? ""
+        self.nomeEscola = parameters["nome"] as? String ?? ""
         self.id = parameters["id"] as! Int
     }
     

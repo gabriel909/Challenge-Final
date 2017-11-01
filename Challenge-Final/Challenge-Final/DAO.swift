@@ -199,9 +199,11 @@ class DAO {
         guard let url  = URL(string: self.apiUrl + "/escolas") else { return }
         print("method: \(Methods.get)")
         
-        let parameters: [String : Any] = ["header" : aluno?.token as Any]
+//        let parameters: [String : Any] = ["header" : aluno?.token as Any]
+//
+//        print("ALUNO TOKEN \(aluno?.token)")
         
-        self.sendRequest(url: url, parameters: parameters, method: Methods.get, completion: { (dict, imgsDict, nil) in
+        self.sendRequest(url: url, parameters: nil, method: Methods.get, completion: { (dict, imgsDict, nil) in
             var arrayEscola: [Escola] = []
             guard let jsonDictArray = dict as? NSArray else { print("scheisse"); return }
             

@@ -22,7 +22,7 @@ class LoginViewController: UIViewController {
         
         cadastroBtn.layer.borderWidth = 1
         
-        self.checkIfUserIsLoggedIn()
+//        self.checkIfUserIsLoggedIn()
         self.hideKeyboardWhenTappedAround()
     
         print("\(width) \(height)")
@@ -46,7 +46,6 @@ class LoginViewController: UIViewController {
         sharedDAO.loginAluno(email: email_label.text!, password: password_label.text!, completion: { (aluno, error) in
             if error == nil && aluno != nil {
                 self.sharedDAO.set(aluno: aluno!)
-                print(aluno?.token)
                 
                 DispatchQueue.main.async {
                     self.performSegue(withIdentifier: "login_to_main", sender: self)
