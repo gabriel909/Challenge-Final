@@ -703,6 +703,9 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="joT-xr-DL3">
                                         <rect key="frame" x="0.0" y="0.0" width="248" height="113.5"/>
+                                        <connections>
+                                            <action selector="profileEdit:" destination="Q8z-5s-6AC" eventType="touchUpInside" id="CUx-MN-IYr"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar2" translatesAutoresizingMaskIntoConstraints="NO" id="cfB-KC-woS">
                                         <rect key="frame" x="0.0" y="29" width="55.5" height="55.5"/>
@@ -838,6 +841,7 @@
                     <connections>
                         <segue destination="RqA-UR-LIr" kind="unwind" unwindAction="unWindToViewControllerWithSender:" id="ngW-UA-Tqr"/>
                         <segue destination="Gg9-Kh-SWv" kind="show" identifier="toDetailsReport" id="7V3-Wk-K1G"/>
+                        <segue destination="5Lb-di-r3L" kind="show" identifier="toCatVC" id="vOB-e6-rwn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eYe-Aa-nHN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -900,8 +904,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hKe-oz-AC3">
-                                <rect key="frame" x="36" y="145" width="248" height="199"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hKe-oz-AC3">
+                                <rect key="frame" x="36" y="145" width="248" height="341"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -932,8 +936,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="vm7-JA-bGq" secondAttribute="trailing" constant="20" id="0Kh-pR-sIK"/>
-                            <constraint firstItem="hKe-oz-AC3" firstAttribute="height" secondItem="dBw-sN-sD7" secondAttribute="height" multiplier="0.35" id="3p3-JG-KXW"/>
+                            <constraint firstItem="hKe-oz-AC3" firstAttribute="height" secondItem="dBw-sN-sD7" secondAttribute="height" multiplier="0.6" id="3p3-JG-KXW"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hKe-oz-AC3" secondAttribute="trailing" constant="20" id="CtS-HA-dmW"/>
+                            <constraint firstItem="hKe-oz-AC3" firstAttribute="top" secondItem="jf0-sr-vRt" secondAttribute="bottom" constant="81" id="VZJ-g0-yje"/>
                             <constraint firstItem="oKt-ez-08Q" firstAttribute="top" secondItem="vm7-JA-bGq" secondAttribute="bottom" constant="40" id="WdD-x3-iWA"/>
                             <constraint firstItem="hKe-oz-AC3" firstAttribute="leading" secondItem="dBw-sN-sD7" secondAttribute="leadingMargin" constant="20" id="dtO-91-1Fp"/>
                             <constraint firstItem="vm7-JA-bGq" firstAttribute="leading" secondItem="dBw-sN-sD7" secondAttribute="leadingMargin" constant="20" id="nuK-tP-6I7"/>
@@ -1343,6 +1348,6 @@
         <image name="logo" width="261" height="113"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3tY-Rw-f85"/>
+        <segue reference="HHd-ok-M42"/>
     </inferredMetricsTieBreakers>
 </document>

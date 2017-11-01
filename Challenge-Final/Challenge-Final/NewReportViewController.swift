@@ -95,7 +95,7 @@ class NewReportViewController: UIViewController {
     @IBAction func sendButtonAction(_ sender: UIButton) {
         if !descricaoTextView.text.isEmpty {
             let base64Array = Base64Enconder.encode(imgs: photoCollectionArray)
-            let denuncia = Denuncia(categoria: Categoria(rawValue: category)!, descricao: descricaoTextView.text!, date: "", status: .andamento, images: base64Array, videos: nil)
+            let denuncia = Denuncia(categoria: /*Categoria(rawValue: category)!*/ .Colegas, descricao: descricaoTextView.text!, date: "", status: .andamento, images: base64Array, videos: nil)
             
             let aluno = sharedDAO.aluno!
         

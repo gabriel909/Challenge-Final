@@ -49,7 +49,15 @@ class ReportsViewController: UIViewController {
         super.viewDidLoad()
         
         self.getReportsArray()
+        let rightButtonItem = UIBarButtonItem.init(
+            title: "+",
+            style: .done,
+            target: self,
+            action: #selector(rightButtonAction(sender:))
+        )
         
+        self.navigationItem.rightBarButtonItem = rightButtonItem
+
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
             UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
@@ -71,6 +79,11 @@ class ReportsViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.barStyle = .black
     }
+    
+    @objc func rightButtonAction(sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "toCatVC", sender: self)
+    }
+ 
     
     //MARK: - Aux Methods
     private func getReportsArray() {

@@ -21,9 +21,12 @@ class MainViewController: UIViewController {
         
         echobtn.layer.borderWidth = 1
         avisobtn.layer.borderWidth = 1
-
         
         self.setLabels()
+    }
+    
+    @IBAction func profileEdit(_ sender: Any) {
+        performSegue(withIdentifier: "toProfile", sender: self)
     }
     
     private func setLabels() {

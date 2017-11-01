@@ -19,6 +19,12 @@ class CategoriesViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         self.collectionSetup()
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+            UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        }
+        
+        title = "Categorias"
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,6 +35,7 @@ class CategoriesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.navigationBar.transparentNavigationBar()
+        navigationController?.navigationBar.barStyle = .black
     }
     
     //MARK: - Aux Methods
