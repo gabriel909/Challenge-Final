@@ -70,7 +70,7 @@ class DetailsReportsViewController: UIViewController {
         
         if report.images != nil {
             for urlString in report.images! {
-                let url = URL(string: "http://localhost:3000/\(urlString)")
+                let url = URL(string: "http://139.82.24.231:3000/\(urlString)")
                 let data = try? Data(contentsOf: url!)
                 let image: UIImage = UIImage(data: data!)!
                 
