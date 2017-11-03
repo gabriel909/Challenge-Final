@@ -14,7 +14,7 @@ import UIKit
 class DAO {
     
     static let sharedDAO = DAO()
-    let apiUrl = "http://172.16.1.49:3000"
+    let apiUrl = "http://localhost:3000"
     var aluno: Aluno? = nil
     
     private let archiver = NSCodingManager.sharedCodingManager

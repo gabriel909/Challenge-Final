@@ -11,6 +11,7 @@ import UIKit
 class DetailsReportsViewController: UIViewController {
     @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var attachmentLabel: UILabel!
     
     fileprivate var collectionView: UICollectionView!
     fileprivate var photoCollectionArray: [UIImage]! = []
@@ -21,6 +22,10 @@ class DetailsReportsViewController: UIViewController {
         super.viewDidLoad()
         self.loadLabels()
         self.collectionSetup()
+        
+        if !photoCollectionArray.isEmpty {
+            attachmentLabel.isHidden = true
+        }
         
         title = report.categoria.rawValue
     }
@@ -35,14 +40,13 @@ class DetailsReportsViewController: UIViewController {
     }
     
     private func collectionSetup() {
-        let collectionViewRect = CGRect(x: 0, y: height / 2.31, width: width, height: height / 5.16)
+        let collectionViewRect = CGRect(x: 0, y: height / 1.44, width: width, height: height / 5.16)
         let collectionViewCellNib = UINib(nibName: "NewReportCollectionViewCell", bundle: nil)
         
         self.photoCollectionArray = self.getImageArray()
         
         self.collectionView = UICollectionView(frame: collectionViewRect, collectionViewLayout: createLayout())
         self.collectionView.dataSource = self
-        self.collectionView.delegate = self
         self.collectionView.backgroundColor = .clear
         self.collectionView.register(collectionViewCellNib, forCellWithReuseIdentifier: "newReportCell")
         self.collectionView.clipsToBounds = true
@@ -55,7 +59,7 @@ class DetailsReportsViewController: UIViewController {
         let top_bottom = width / 10.76
         let right_left = width / 13
         layout.sectionInset = UIEdgeInsets(top: top_bottom, left: right_left, bottom: top_bottom, right: right_left)
-        layout.itemSize = CGSize(width: width / 2.46, height: height / 4.46)
+        layout.itemSize = CGSize(width: width / 3.7, height: height / 6.45)
         layout.scrollDirection = .horizontal
         
         return layout
@@ -76,10 +80,6 @@ class DetailsReportsViewController: UIViewController {
         
         return array
     }
-}
-
-extension DetailsReportsViewController: UICollectionViewDelegate {
-    
 }
 
 extension DetailsReportsViewController: UICollectionViewDataSource {
