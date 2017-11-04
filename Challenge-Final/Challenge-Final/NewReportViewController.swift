@@ -146,6 +146,7 @@ extension NewReportViewController: UICollectionViewDelegate {
     private func openGalleryAlert() {
         var cameraAction: UIAlertAction
         var galleryAction: UIAlertAction
+        var deleteAction: UIAlertAction = UIAlertAction()
         var cancelAction: UIAlertAction
         
         let alertAction = UIAlertController(title: "Escolha a Imagem", message: nil, preferredStyle: .actionSheet)
@@ -158,15 +159,24 @@ extension NewReportViewController: UICollectionViewDelegate {
             self.openGallery()
         })
         
-        cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        if !new {
+            deleteAction = UIAlertAction(title: "Apagar", style: .default, handler: { alerActionBlock in
+                self.deletePhoto()
+            })
+        }
+        
+        cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
         
         alertAction.addAction(cameraAction)
         alertAction.addAction(galleryAction)
         alertAction.addAction(cancelAction)
         
+        if !new { alertAction.addAction(deleteAction) }
+        
         self.present(alertAction, animated: true, completion: nil)
     }
     
+    //MARK: - UIAlert Actios
     //Method to open the phone gallery
     private func openGallery() {
         picker!.sourceType = .photoLibrary
@@ -184,6 +194,12 @@ extension NewReportViewController: UICollectionViewDelegate {
             message("Atenção", desc: "O dispositivo não possui camera", view: self)
             
         }
+    }
+    
+    //Delete selected photo
+    private func deletePhoto() {
+        self.photoCollectionArray.remove(at: selectedIndex - 1)
+        self.collectionView.reloadData()
     }
 }
 
