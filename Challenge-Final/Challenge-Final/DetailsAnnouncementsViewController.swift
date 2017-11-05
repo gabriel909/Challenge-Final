@@ -10,9 +10,11 @@ import UIKit
 
 class DetailsAnnouncementsViewController: UIViewController {
 
+    @IBOutlet weak var dataLabel: UILabel!
     @IBOutlet weak var avisoImage: UIImageView!
     @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var attachmentLabel: UILabel!
     
     fileprivate var collectionView: UICollectionView!
     fileprivate var photoCollectionArray: [UIImage]! = []
@@ -24,12 +26,19 @@ class DetailsAnnouncementsViewController: UIViewController {
         
         self.loadLabels()
         self.collectionSetup()
+        
+        title = aviso.titulo
+        
+        if !photoCollectionArray.isEmpty {
+            attachmentLabel.isHidden = true
+        }
+
 
     }
     
     private func loadLabels() {
         descTextView.text = aviso.descricao
-        titleLabel.text = aviso.titulo
+        dataLabel.text = aviso.data
     }
 
     override func didReceiveMemoryWarning() {
