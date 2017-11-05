@@ -23,6 +23,7 @@
 		2BC43C751F70271400A84A7F /* SchoolsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BC43C731F70271400A84A7F /* SchoolsTableViewCell.xib */; };
 		2BC43C781F7041B000A84A7F /* DAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC43C771F7041B000A84A7F /* DAO.swift */; };
 		2BC43C7A1F7041E200A84A7F /* Escola.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BC43C791F7041E200A84A7F /* Escola.swift */; };
+		4E37BC0A1FAF444500174EEE /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E37BC091FAF444500174EEE /* PopUpViewController.swift */; };
 		4EDD3BF01F547E180012117C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDD3BEF1F547E180012117C /* AppDelegate.swift */; };
 		4EDD3BF21F547E180012117C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDD3BF11F547E180012117C /* LoginViewController.swift */; };
 		4EDD3BF51F547E180012117C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EDD3BF31F547E180012117C /* Main.storyboard */; };
@@ -66,6 +67,7 @@
 		2BC43C731F70271400A84A7F /* SchoolsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SchoolsTableViewCell.xib; sourceTree = "<group>"; };
 		2BC43C771F7041B000A84A7F /* DAO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DAO.swift; sourceTree = "<group>"; };
 		2BC43C791F7041E200A84A7F /* Escola.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Escola.swift; sourceTree = "<group>"; };
+		4E37BC091FAF444500174EEE /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		4EDD3BEC1F547E180012117C /* Challenge-Final.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Challenge-Final.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4EDD3BEF1F547E180012117C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4EDD3BF11F547E180012117C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				2B787D701F7AA194009B28A2 /* CategoriesViewController.swift */,
 				2B787D721F7AA280009B28A2 /* DetailsReportsViewController.swift */,
 				2B787D761F7AAE95009B28A2 /* NewReportViewController.swift */,
+				4E37BC091FAF444500174EEE /* PopUpViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 				4EEE4C781F8D015E002EAAB0 /* NewReportCollectionViewCell.swift in Sources */,
 				4EDD3BF01F547E180012117C /* AppDelegate.swift in Sources */,
 				E5956CE31F7031F000935B58 /* Aviso.swift in Sources */,
+				4E37BC0A1FAF444500174EEE /* PopUpViewController.swift in Sources */,
 				2B787D711F7AA194009B28A2 /* CategoriesViewController.swift in Sources */,
 				E5956CE11F70308000935B58 /* Categoria.swift in Sources */,
 				2B787D731F7AA280009B28A2 /* DetailsReportsViewController.swift in Sources */,

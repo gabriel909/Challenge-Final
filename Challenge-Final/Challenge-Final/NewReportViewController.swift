@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PopupController
 
 class NewReportViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
@@ -105,6 +106,17 @@ class NewReportViewController: UIViewController {
                 }
             })
         }
+    }
+    
+    @IBAction func categoryBtnAction(_ sender: UIButton) {
+        let popup = PopupController.create(self)
+        let container = PopUpViewController.instance()
+        
+        container.closeHandler = {
+            popup.dismiss()
+        }
+        
+        let _ = popup.show(container)
     }
     
     @IBAction func cancelButtonAction(_ sender: Any) {
