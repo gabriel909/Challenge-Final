@@ -10,11 +10,36 @@ import Foundation
 import UIKit
 
 extension UINavigationBar {
-    
     func transparentNavigationBar() {
         self.setBackgroundImage(UIImage(), for: .default)
         self.shadowImage = UIImage()
         self.isTranslucent = true
+    }
+}
+
+extension String {
+    func getFormattedDate() -> String {
+        let characters = self.characters
+        var array: [String] = []
+        var strTemp: String = ""
+        
+        for letter in characters {
+            if letter == "T" {
+                array.append(strTemp)
+                break
+                
+            } else if letter == "-" {
+                array.append(strTemp)
+                strTemp = ""
+                
+            } else {
+                strTemp += "\(letter)"
+                
+            }
+        }
+        
+        strTemp = array.reversed().joined(separator: "/")
+        return strTemp
     }
 }
 

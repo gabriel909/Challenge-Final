@@ -38,7 +38,8 @@ class DetailsAnnouncementsViewController: UIViewController {
     
     private func loadLabels() {
         descTextView.text = aviso.descricao
-        dataLabel.text = aviso.data
+        dataLabel.text = aviso.data.getFormattedDate()
+        print(aviso.data)
     }
 
     override func didReceiveMemoryWarning() {

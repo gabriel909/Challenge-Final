@@ -124,7 +124,6 @@ extension AnnouncementsViewController: UITableViewDataSource {
 
 //MARK: - Table View Delegate
 extension AnnouncementsViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath.row
         performSegue(withIdentifier: "toDetailsAnnoun", sender: self)
