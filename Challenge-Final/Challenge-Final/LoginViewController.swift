@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
     private let sharedDAO = DAO.sharedDAO
     private let sharedCodingManager = NSCodingManager.sharedCodingManager
     
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,17 +30,18 @@ class LoginViewController: UIViewController {
         
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    //MARK: - Aux Methods
     private func checkIfUserIsLoggedIn() {
         let aluno = sharedDAO.getLoggedAluno()
         
         if aluno != nil {
             login(email: (aluno?.email)!, password: (aluno?.password)!)
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     private func login(email: String, password: String) {
@@ -58,7 +60,10 @@ class LoginViewController: UIViewController {
         })
     }
     
-    @IBAction func next_button_action(_ sender: Any) {
+    //MARK: - Actions
+    @IBAction func next_button_action(_ sender: UIButton) {
+        sender.animateButton()
+        
         if (email_label.text?.isEmpty)! || (password_label.text?.isEmpty)! {
             message("Atenção", desc: "O email ou a senha não podem estar em branco", view: self)
             
@@ -67,5 +72,9 @@ class LoginViewController: UIViewController {
             
             login(email: email_label.text!, password: password_label.text!)
         }
+    }
+    
+    @IBAction func signupButtonAction(_ sender: UIButton) {
+        sender.animateButton()
     }
 }

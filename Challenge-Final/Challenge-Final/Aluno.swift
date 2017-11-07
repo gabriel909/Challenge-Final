@@ -16,6 +16,7 @@ class Aluno: NSObject, NSCoding {
     var id: Int?
     var avatar: Int?
     var escola_id: Int
+    var escolaNome: String = ""
     let token: String?
     var denuncias:[Denuncia] = []
     var avisos:[Aviso] = []
@@ -69,7 +70,7 @@ class Aluno: NSObject, NSCoding {
             
         }
         
-        if let escola_id = aDecoder.decodeInteger(forKey: "escola_id") as? Int {
+        if let escola_id = aDecoder.decodeInteger(forKey: "escola_id") as? Int{
             self.escola_id = escola_id
             
         } else {
@@ -84,6 +85,14 @@ class Aluno: NSObject, NSCoding {
             self.token = ""
             
         }
+        
+        if let escolaNome = aDecoder.decodeObject(forKey: "escolaNome") as? String {
+            self.escolaNome = escolaNome
+            
+        } else {
+            self.escolaNome = ""
+            
+        }
     }
     
     public func encode(with aCoder: NSCoder) {
@@ -95,6 +104,7 @@ class Aluno: NSObject, NSCoding {
         aCoder.encode(self.avatar, forKey: "avatar")
         aCoder.encode(self.escola_id, forKey: "escola_id")
         aCoder.encode(self.token, forKey: "token")
+        aCoder.encode(self.escolaNome, forKey: "escolaNome")
     }
     
     init(parameters: [String : Any]) {
@@ -117,6 +127,8 @@ class Aluno: NSObject, NSCoding {
             self.token = nil
             
         }
+        
+        self.escolaNome = parameters["escola"] as! String
     }
     
     override init() {
@@ -127,13 +139,14 @@ class Aluno: NSObject, NSCoding {
         self.avatar = 0
         self.escola_id = 0
         self.token = nil
+        self.escolaNome = ""
     }
     
     func deleteAviso(idAviso: Int) {
         self.avisos = self.avisos.filter({$0.id != idAviso})
     }
     
-    init(name: String, password: String, serie: String, email: String, avatar: Int, id: Int, escola_id: Int, token: String) {
+    init(name: String, password: String, serie: String, email: String, avatar: Int, id: Int, escola_id: Int, token: String, escolaNome: String) {
         self.name = name
         self.email = email
         self.password = password
@@ -142,6 +155,6 @@ class Aluno: NSObject, NSCoding {
         self.id = id
         self.escola_id = escola_id
         self.token = token
-
+        self.escolaNome = escolaNome
     }
 }

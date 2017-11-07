@@ -11,6 +11,7 @@ import UIKit
 class MainViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var serieLabel: UILabel!
+    @IBOutlet weak var escolaLabel: UILabel!
     @IBOutlet weak var echobtn: CustomButton!
     @IBOutlet weak var avisobtn: CustomButton!
     
@@ -31,7 +32,8 @@ class MainViewController: UIViewController {
     
     private func setLabels() {
         nameLabel.text = sharedDAO.aluno?.name
-        serieLabel.text = sharedDAO.aluno?.serie
+        serieLabel.text = "\(sharedDAO.aluno!.serie) ano"
+        escolaLabel.text = sharedDAO.aluno?.escolaNome
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,5 +44,13 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
         
+    }
+    
+    @IBAction func echoButtonAction(_ sender: UIButton) {
+        sender.animateButton()
+    }
+    
+    @IBAction func avisosActionButton(_ sender: UIButton) {
+        sender.animateButton()
     }
 }

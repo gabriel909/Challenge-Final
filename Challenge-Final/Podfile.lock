@@ -1,15 +1,20 @@
 PODS:
+  - NVActivityIndicatorView (4.0.0):
+    - NVActivityIndicatorView/Presenter (= 4.0.0)
+  - NVActivityIndicatorView/Presenter (4.0.0)
   - PopupController (0.2.0)
   - SkyFloatingLabelTextField (3.2.1)
 
 DEPENDENCIES:
+  - NVActivityIndicatorView
   - PopupController
   - SkyFloatingLabelTextField
 
 SPEC CHECKSUMS:
+  NVActivityIndicatorView: 54c9b93b6f25a4f467512680c0c90c09a1095cf2
   PopupController: 0b69fdf11cbeaa807789a8c3992599083640988f
   SkyFloatingLabelTextField: 71d28906024e7d7e4460099b342f3ca7036a2e24
 
-PODFILE CHECKSUM: bc90532294b0e720b6cec57fc83d42f6b4bcf19e
+PODFILE CHECKSUM: '08f853b39d419e77861198cc1d876673644d1aba'
 
 COCOAPODS: 1.2.1

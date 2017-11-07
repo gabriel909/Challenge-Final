@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class ReportsViewController: UIViewController {
+    @IBOutlet weak var activityIndicatior: NVActivityIndicatorView!
     @IBOutlet weak var newBtnOutlet: UIButton!
     @IBAction func buttonPressed(_ sender: Any) {
         print("btn pressed")
@@ -48,7 +50,6 @@ class ReportsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.getReportsArray()
         let rightButtonItem = UIBarButtonItem.init(
             title: "+",
             style: .done,
@@ -78,6 +79,11 @@ class ReportsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.barStyle = .black
+        
+        self.getReportsArray()
+        self.activityIndicatior.stopAnimating()
+        self.activityIndicatior.isHidden = true
+        print("HIDDEOU")
     }
     
     @objc func rightButtonAction(sender: UIBarButtonItem) {
@@ -146,8 +152,16 @@ extension ReportsViewController: UITableViewDataSource {
 //MARK: - Table View Delegate
 extension ReportsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedIndex = indexPath.row
-        performSegue(withIdentifier: "toDetailsReport", sender: self)
+        self.activityIndicatior.isHidden = false
+        self.activityIndicatior.startAnimating()
+        
+        DispatchQueue.global().async() {
+            self.selectedIndex = indexPath.row
+            
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "toDetailsReport", sender: self)
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

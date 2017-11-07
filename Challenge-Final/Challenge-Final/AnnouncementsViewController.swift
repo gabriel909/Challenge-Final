@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class AnnouncementsViewController: UIViewController {
+    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
+    
     lazy var tableView: UITableView! = {
         let tableViewCellNib = UINib(nibName: "AnnouncementsTableViewCell", bundle: nil)
         
@@ -39,11 +42,9 @@ class AnnouncementsViewController: UIViewController {
         return constraints
     }
     
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.getAvisosArray()
-//        self.tableViewSetup()
         
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -63,8 +64,11 @@ class AnnouncementsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
-//        self.navigationController?.navigationBar.transparentNavigationBar()
         navigationController?.navigationBar.barStyle = .black
+        self.getAvisosArray()
+        
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.isHidden = true
     }
     
     //MARK: - Aux Methods
@@ -125,8 +129,16 @@ extension AnnouncementsViewController: UITableViewDataSource {
 //MARK: - Table View Delegate
 extension AnnouncementsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedIndex = indexPath.row
-        performSegue(withIdentifier: "toDetailsAnnoun", sender: self)
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
+        
+        DispatchQueue.global().async() {
+            self.selectedIndex = indexPath.row
+            
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "toDetailsAnnoun", sender: self)
+            }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -12,8 +12,10 @@ class DetailsReportsViewController: UIViewController {
     @IBOutlet weak var descTextView: UITextView!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var attachmentLabel: UILabel!
+    @IBOutlet weak var anexoLabel: UILabel!
+    @IBOutlet weak var statusStack: UIStackView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
-    fileprivate var collectionView: UICollectionView!
     fileprivate var photoCollectionArray: [UIImage]! = []
     
     var report: Denuncia!
@@ -40,26 +42,23 @@ class DetailsReportsViewController: UIViewController {
     }
     
     private func collectionSetup() {
-        let collectionViewRect = CGRect(x: 0, y: height / 1.44, width: width, height: height / 5.16)
-        let collectionViewCellNib = UINib(nibName: "NewReportCollectionViewCell", bundle: nil)
+//        let collectionViewCellNib = UINib(nibName: "NewReportCollectionViewCell", bundle: nil)
         
         self.photoCollectionArray = self.getImageArray()
         
-        self.collectionView = UICollectionView(frame: collectionViewRect, collectionViewLayout: createLayout())
         self.collectionView.dataSource = self
-        self.collectionView.backgroundColor = .clear
-        self.collectionView.register(collectionViewCellNib, forCellWithReuseIdentifier: "newReportCell")
-        self.collectionView.clipsToBounds = true
-        
-        self.view.addSubview(collectionView)
+//        self.collectionView.collectionViewLayout = createLayout()
+//        self.collectionView.register(collectionViewCellNib, forCellWithReuseIdentifier: "newReportCell")
     }
     
     private func createLayout() -> UICollectionViewFlowLayout {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         let top_bottom = width / 10.76
         let right_left = width / 13
+        let collectionHeight = collectionView.frame.height
+        print(collectionHeight)
         layout.sectionInset = UIEdgeInsets(top: top_bottom, left: right_left, bottom: top_bottom, right: right_left)
-        layout.itemSize = CGSize(width: width / 3.7, height: height / 6.45)
+        layout.itemSize = CGSize(width: height / 5.25, height: height / 5.25)
         layout.scrollDirection = .horizontal
         
         return layout

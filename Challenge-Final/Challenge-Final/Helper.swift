@@ -9,7 +9,15 @@
 import Foundation
 import UIKit
 
+//Screen width and height
+let screenRect = UIScreen.main.bounds
+let width = screenRect.size.width
+let height = screenRect.size.height
+
+//MARK: - Extensions
+//MARK: Navigation Bar
 extension UINavigationBar {
+    //Transparent Bar
     func transparentNavigationBar() {
         self.setBackgroundImage(UIImage(), for: .default)
         self.shadowImage = UIImage()
@@ -17,13 +25,13 @@ extension UINavigationBar {
     }
 }
 
+//MARK: String
 extension String {
     func getFormattedDate() -> String {
-        let characters = self.characters
         var array: [String] = []
         var strTemp: String = ""
         
-        for letter in characters {
+        for letter in self {
             if letter == "T" {
                 array.append(strTemp)
                 break
@@ -43,11 +51,7 @@ extension String {
     }
 }
 
-//Screen width and height
-let screenRect = UIScreen.main.bounds
-let width = screenRect.size.width
-let height = screenRect.size.height
-
+//MARK: View Controller
 extension UIViewController {
     //Hide the keyboard when user tap on the screen
     func hideKeyboardWhenTappedAround() {
@@ -60,14 +64,29 @@ extension UIViewController {
     }
 }
 
-//Create and present an UIAlert
-public func message(_ title: String, desc: String, view: UIViewController) {
-    let alertController = UIAlertController(title: title, message: desc, preferredStyle: UIAlertControllerStyle.alert)
-    alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
-    
-    view.present(alertController, animated: true, completion: nil)
+//MARK: UIButton
+extension UIButton {
+    func animateButton() {
+        let anticOverTiming = CAMediaTimingFunction(controlPoints: 0.42, -0.30, 0.58, 1.30)
+        let overshootTiming = CAMediaTimingFunction(controlPoints: 0.00, 0.00, 0.58, 1.30)
+        
+        let modeloBotaoScaleXAnimation = CAKeyframeAnimation(keyPath: "transform.scale.x")
+        modeloBotaoScaleXAnimation.duration = 0.350
+        modeloBotaoScaleXAnimation.values = [1.000 as Float, 0.800 as Float, 1.100 as Float, 1.000 as Float]
+        modeloBotaoScaleXAnimation.keyTimes = [0.000 as NSNumber, 0.286 as NSNumber, 0.643 as NSNumber, 1.000 as NSNumber]
+        modeloBotaoScaleXAnimation.timingFunctions = [anticOverTiming, anticOverTiming, overshootTiming]
+        self.layer.add(modeloBotaoScaleXAnimation, forKey:"ButtonPress_ScaleX")
+        
+        let modeloBotaoScaleYAnimation = CAKeyframeAnimation(keyPath: "transform.scale.y")
+        modeloBotaoScaleYAnimation.duration = 0.350
+        modeloBotaoScaleYAnimation.values = [1.000 as Float, 0.800 as Float, 1.100 as Float, 1.000 as Float]
+        modeloBotaoScaleYAnimation.keyTimes = [0.000 as NSNumber, 0.286 as NSNumber, 0.643 as NSNumber, 1.000 as NSNumber]
+        modeloBotaoScaleYAnimation.timingFunctions = [anticOverTiming, anticOverTiming, overshootTiming]
+        self.layer.add(modeloBotaoScaleYAnimation, forKey:"ButtonPress_ScaleY")
+    }
 }
 
+//MARK: UIColor
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")
@@ -84,6 +103,51 @@ extension UIColor {
             blue: rgb & 0xFF
         )
     }
+}
+
+//MARK: UIView
+extension UIView {
+    @IBInspectable
+    var cornerRadius: CGFloat {
+        get {
+            return layer.cornerRadius
+        }
+        set {
+            layer.cornerRadius = newValue
+            layer.masksToBounds = newValue > 0
+        }
+    }
+    
+    @IBInspectable
+    var borderWidth: CGFloat {
+        get {
+            return layer.borderWidth
+        }
+        set {
+            layer.borderWidth = newValue
+        }
+    }
+    
+    @IBInspectable
+    var shadowRadius: CGFloat {
+        get {
+            return layer.shadowRadius
+        }
+        set {
+            layer.shadowColor = UIColor.black.cgColor
+            layer.shadowOffset = CGSize(width: 0, height: 2)
+            layer.shadowOpacity = 0.4
+            layer.shadowRadius = shadowRadius
+        }
+    }
+}
+
+//Create and present an UIAlert
+public func message(_ title: String, desc: String, view: UIViewController) {
+    let alertController = UIAlertController(title: title, message: desc, preferredStyle: UIAlertControllerStyle.alert)
+    alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default,handler: nil))
+    
+    view.present(alertController, animated: true, completion: nil)
 }
 
 class SegueFromRight: UIStoryboardSegue {
@@ -120,44 +184,4 @@ class SegueFromLeft: UIStoryboardSegue {
             
         })
     }
-}
-
-extension UIView {
-    
-    @IBInspectable
-    var cornerRadius: CGFloat {
-        get {
-            return layer.cornerRadius
-        }
-        set {
-            layer.cornerRadius = newValue
-            layer.masksToBounds = newValue > 0
-        }
-    }
-    
-    
-    @IBInspectable
-    var borderWidth: CGFloat {
-        get {
-            return layer.borderWidth
-        }
-        set {
-            layer.borderWidth = newValue
-        }
-    }
-    
-    
-    @IBInspectable
-    var shadowRadius: CGFloat {
-        get {
-            return layer.shadowRadius
-        }
-        set {
-            layer.shadowColor = UIColor.black.cgColor
-            layer.shadowOffset = CGSize(width: 0, height: 2)
-            layer.shadowOpacity = 0.4
-            layer.shadowRadius = shadowRadius
-        }
-    }
-    
 }

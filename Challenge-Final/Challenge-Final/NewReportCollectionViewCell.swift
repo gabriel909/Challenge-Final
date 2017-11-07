@@ -18,6 +18,8 @@ class NewReportCollectionViewCell: UICollectionViewCell {
         imagem.clipsToBounds = true
         imagem.layer.masksToBounds = true
         
+        viewCell.layer.cornerRadius = 10
+        
 //        imagem.layer.cornerRadius = 15
     }
 

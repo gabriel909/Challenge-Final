@@ -9,7 +9,6 @@
 import UIKit
 
 class DetailsAnnouncementsViewController: UIViewController {
-
     @IBOutlet weak var dataLabel: UILabel!
     @IBOutlet weak var avisoImage: UIImageView!
     @IBOutlet weak var descTextView: UITextView!
@@ -32,8 +31,6 @@ class DetailsAnnouncementsViewController: UIViewController {
         if !photoCollectionArray.isEmpty {
             attachmentLabel.isHidden = true
         }
-
-
     }
     
     private func loadLabels() {
@@ -54,7 +51,6 @@ class DetailsAnnouncementsViewController: UIViewController {
         
         self.collectionView = UICollectionView(frame: collectionViewRect, collectionViewLayout: createLayout())
         self.collectionView.dataSource = self
-        self.collectionView.delegate = self
         self.collectionView.backgroundColor = .clear
         self.collectionView.register(collectionViewCellNib, forCellWithReuseIdentifier: "newReportCell")
         self.collectionView.clipsToBounds = true
@@ -78,7 +74,7 @@ class DetailsAnnouncementsViewController: UIViewController {
         
         if aviso.images != nil {
             for urlString in aviso.images! {
-                let url = URL(string: "http://localhost:3000/\(urlString)")
+                let url = URL(string: "http://139.82.24.231:3000/\(urlString)")
                 let data = try? Data(contentsOf: url!)
                 let image: UIImage = UIImage(data: data!)!
                 
@@ -88,10 +84,6 @@ class DetailsAnnouncementsViewController: UIViewController {
         
         return array
     }
-}
-
-extension DetailsAnnouncementsViewController: UICollectionViewDelegate {
-    
 }
 
 extension DetailsAnnouncementsViewController: UICollectionViewDataSource {

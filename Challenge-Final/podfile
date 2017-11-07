@@ -6,6 +6,7 @@ target 'Challenge-Final' do
   use_frameworks!
   pod 'SkyFloatingLabelTextField'
   pod 'PopupController'
+  pod 'NVActivityIndicatorView'
 
   # Pods for Challenge-Final
 

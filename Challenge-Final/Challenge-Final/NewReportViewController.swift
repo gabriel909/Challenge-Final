@@ -8,12 +8,14 @@
 
 import UIKit
 import PopupController
+import NVActivityIndicatorView
 
 class NewReportViewController: UIViewController {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var descricaoTextView: UITextView!
     @IBOutlet weak var cancelButtonOutlet: CustomButton!
     @IBOutlet weak var categoryButtonOutlet: CustomButton!
+    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     
     fileprivate var plusIndex: Int = 0
     fileprivate var selectedIndex: Int = 0
@@ -22,6 +24,8 @@ class NewReportViewController: UIViewController {
     fileprivate var tap = UITapGestureRecognizer()
     fileprivate var placeholder: String!
     
+    fileprivate var collectionViewRect: CGRect!
+    
     fileprivate var new: Bool {
         get {
             return selectedIndex == 0
@@ -29,11 +33,11 @@ class NewReportViewController: UIViewController {
     }
     
     fileprivate let sharedDAO = DAO.sharedDAO
-    
     fileprivate var collectionView: UICollectionView!
     
     var category: String! = ""
     
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,9 +50,14 @@ class NewReportViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.isHidden = true
+    }
+    
     //MARK: - Aux Methods
     private func collectionSetup() {
-        let collectionViewRect = CGRect(x: 0, y: 429, width: width, height: 120)
+        collectionViewRect = CGRect(x: 0, y: 429, width: width, height: 120)
         let collectionViewCellNib = UINib(nibName: "NewReportCollectionViewCell", bundle: nil)
         
         self.collectionView = UICollectionView(frame: collectionViewRect, collectionViewLayout: createLayout())
@@ -63,7 +72,6 @@ class NewReportViewController: UIViewController {
     
     private func elementsSetup() {
         self.cancelButtonOutlet.borderWidth = 1
-        
         self.categoryButtonOutlet.setTitle(" \(category!)", for: .normal)
         
         self.picker?.delegate = self
@@ -79,7 +87,8 @@ class NewReportViewController: UIViewController {
         let top_bottom = width / 10.76
         let right_left = width / 13
         layout.sectionInset = UIEdgeInsets(top: top_bottom, left: right_left, bottom: top_bottom, right: right_left)
-        layout.itemSize = CGSize(width: width / 2.9, height: height / 5)
+//        layout.itemSize = CGSize(width: width / 2.9, height: height / 5)
+        layout.itemSize = CGSize(width: collectionViewRect.height, height: collectionViewRect.height)
         layout.scrollDirection = .horizontal
         
         return layout
@@ -94,9 +103,12 @@ class NewReportViewController: UIViewController {
     
     //MARK: - Actions
     @IBAction func sendButtonAction(_ sender: UIButton) {
+        self.activityIndicator.startAnimating()
+        self.activityIndicator.isHidden = false
+        
         if !descricaoTextView.text.isEmpty {
             let base64Array = Base64Enconder.encode(imgs: photoCollectionArray)
-            let denuncia = Denuncia(categoria: /*Categoria(rawValue: category)!*/ .Colegas, descricao: descricaoTextView.text!, date: "", status: .andamento, images: base64Array, videos: nil)
+            let denuncia = Denuncia(categoria: /*Categoria(rawValue: category)!*/ .Acessibilidade, descricao: descricaoTextView.text!, date: "", status: .andamento, images: base64Array, videos: nil)
             
             let aluno = sharedDAO.aluno!
         
@@ -222,13 +234,10 @@ extension NewReportViewController: UIImagePickerControllerDelegate, UINavigation
         
         picker.dismiss(animated: true, completion: nil)
         
-        print("NEW \(new)")
-        
         if new {
             photoCollectionArray.append(image!)
             
         } else {
-            print("SELECTED INDEX \(selectedIndex)")
             photoCollectionArray[selectedIndex - 1] = image!
             
         }
