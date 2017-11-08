@@ -83,7 +83,6 @@ class ReportsViewController: UIViewController {
         self.getReportsArray()
         self.activityIndicatior.stopAnimating()
         self.activityIndicatior.isHidden = true
-        print("HIDDEOU")
     }
     
     @objc func rightButtonAction(sender: UIBarButtonItem) {

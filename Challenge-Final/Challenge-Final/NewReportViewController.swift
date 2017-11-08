@@ -108,7 +108,8 @@ class NewReportViewController: UIViewController {
         
         if !descricaoTextView.text.isEmpty {
             let base64Array = Base64Enconder.encode(imgs: photoCollectionArray)
-            let denuncia = Denuncia(categoria: /*Categoria(rawValue: category)!*/ .Acessibilidade, descricao: descricaoTextView.text!, date: "", status: .andamento, images: base64Array, videos: nil)
+            let categoryNew = category.folding(options: .diacriticInsensitive, locale: .current)
+            let denuncia = Denuncia(categoria: Categoria(rawValue: categoryNew)!, descricao: descricaoTextView.text!, date: "", status: .andamento, images: base64Array, videos: nil)
             
             let aluno = sharedDAO.aluno!
         

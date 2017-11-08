@@ -86,6 +86,47 @@ class DetailsAnnouncementsViewController: UIViewController {
     }
 }
 
+extension DetailsAnnouncementsViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        openAlert(indexPath.row)
+    }
+    
+    private func openAlert(_ index: Int) {
+        var saveAction: UIAlertAction
+        var seeAction: UIAlertAction
+        var cancelAction: UIAlertAction
+        let photo: UIImage = photoCollectionArray[index]
+        
+        let alertAction = UIAlertController(title: "Escolha a Imagem", message: nil, preferredStyle: .actionSheet)
+        
+        saveAction = UIAlertAction(title: "Salvar", style: .default, handler: { _ in
+            self.saveIntoGallery(photo)
+        })
+        
+        seeAction = UIAlertAction(title: "Ver", style: .default, handler: { _ in
+            self.seePicture(photo)
+        })
+        
+        cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        
+        alertAction.addAction(saveAction)
+        alertAction.addAction(seeAction)
+        alertAction.addAction(cancelAction)
+        
+        self.present(alertAction, animated: true, completion: nil)
+    }
+    
+    private func saveIntoGallery(_ photo: UIImage) {
+        UIImageWriteToSavedPhotosAlbum(photo, nil, nil, nil)
+        
+        message("Atenção", desc: "Foto salva com sucesso", view: self)
+    }
+    
+    private func seePicture(_ photo: UIImage) {
+        
+    }
+}
+
 extension DetailsAnnouncementsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoCollectionArray.count
