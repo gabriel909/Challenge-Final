@@ -103,6 +103,7 @@ class NewReportViewController: UIViewController {
     
     //MARK: - Actions
     @IBAction func sendButtonAction(_ sender: UIButton) {
+        sender.isEnabled = false
         self.activityIndicator.startAnimating()
         self.activityIndicator.isHidden = false
         
@@ -151,9 +152,11 @@ extension NewReportViewController: UICollectionViewDataSource {
         
         if indexPath.row == 0 {
             cell.imagem.image = UIImage()
+            cell.gambiarraLuisa.isHidden = false
             
         } else {
             cell.imagem.image = photoCollectionArray[indexPath.row - 1]
+            cell.gambiarraLuisa.isHidden = true
             
         }
         

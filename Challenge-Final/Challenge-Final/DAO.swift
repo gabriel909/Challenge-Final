@@ -113,6 +113,7 @@ class DAO {
                 var newAviso: Aviso? = nil
                 
                 if let imgArray = jsonAviso["image"] as? NSArray {
+                    print("IMAGE")
                     newAviso = Aviso(parameters: jsonAviso["aviso"] as! [String : Any], imgsArray: imgArray)
                     
                 } else {

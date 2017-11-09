@@ -39,6 +39,24 @@ class DetailsReportsViewController: UIViewController {
     private func loadLabels() {
         descTextView.text = report.descricao
         statusLabel.text = report.status.rawValue
+        
+    }
+    
+    private func changeStatusColor() {
+        var color = UIColor()
+        
+        switch report.status {
+            case .andamento:
+                color = UIColor(rgb: 0xBBB500)
+            
+            case .resolvido:
+                color = UIColor(rgb: 0x008A4E)
+            
+            case .nao_resolvido:
+                color = UIColor(rgb: 0xBB0000)
+        }
+        
+        statusLabel.textColor = color
     }
     
     private func collectionSetup() {
@@ -91,6 +109,7 @@ extension DetailsReportsViewController: UICollectionViewDataSource {
         
         cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newReportCell", for: indexPath as IndexPath) as! NewReportCollectionViewCell
         cell.imagem.image = photoCollectionArray[indexPath.row]
+//        cell.gambiarraLuisa.isHidden = true
         
         return cell
     }

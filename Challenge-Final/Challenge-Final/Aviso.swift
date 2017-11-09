@@ -39,6 +39,8 @@ class Aviso {
                 imgUrls = imgUrls.adding(url) as NSArray
             }
         }
+        
+        self.images = imgUrls as? [String]
     }
     
     var json: [String:Any] {

@@ -11,6 +11,7 @@ import UIKit
 class NewReportCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imagem: UIImageView!
     @IBOutlet weak var viewCell: UIView!
+    @IBOutlet weak var gambiarraLuisa: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -19,6 +20,8 @@ class NewReportCollectionViewCell: UICollectionViewCell {
         imagem.layer.masksToBounds = true
         
         viewCell.layer.cornerRadius = 10
+        //MARK: TROCAR ESSA PORRA
+//        self.gambiarraLuisa.isHidden = true
         
 //        imagem.layer.cornerRadius = 15
     }

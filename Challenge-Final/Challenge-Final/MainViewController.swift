@@ -31,13 +31,15 @@ class MainViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destViewController = segue.destination as! RegisterViewController
-        destViewController.alunoUpdate = sharedDAO.aluno
+        if segue.identifier == "mainToSignup" {
+            let destViewController = segue.destination as! RegisterViewController
+            destViewController.alunoUpdate = sharedDAO.aluno
+
+        }
     }
     
     private func setLabels() {
         nameLabel.text = sharedDAO.aluno?.name
-        print(sharedDAO.aluno?.escolaNome)
         serieLabel.text = "\(sharedDAO.aluno!.serie) ano"
         escolaLabel.text = sharedDAO.aluno?.escolaNome
     }
