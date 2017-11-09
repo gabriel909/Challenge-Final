@@ -11,6 +11,7 @@ import NVActivityIndicatorView
 
 class ReportsViewController: UIViewController {
     var activityIndicator: NVActivityIndicatorView!
+    var viewActivity: UIView!
     @IBOutlet weak var newBtnOutlet: UIButton!
     @IBAction func buttonPressed(_ sender: Any) {
         print("btn pressed")
@@ -83,8 +84,7 @@ class ReportsViewController: UIViewController {
         navigationController?.navigationBar.barStyle = .black
         
         self.getReportsArray()
-        self.activityIndicator.stopAnimating()
-        self.activityIndicator.isHidden = true
+        self.toggleActivity(true)
     }
     
     @objc func rightButtonAction(sender: UIBarButtonItem) {
@@ -108,12 +108,41 @@ class ReportsViewController: UIViewController {
         })
     }
     
+    fileprivate func toggleActivity(_ bool: Bool) {
+        let centerPoint = CGPoint(x: width / 2, y: height / 2 + tableView.contentOffset.y)
+        
+        self.viewActivity.center = centerPoint
+//        self.activityIndicator.center = centerPoint
+        self.viewActivity.isHidden = bool
+        self.activityIndicator.isHidden = bool
+        
+        if !bool {
+            self.activityIndicator.startAnimating()
+            
+        } else {
+            self.activityIndicator.stopAnimating()
+            
+        }
+    }
+    
     private func setActivityIndicator() {
-        let size = width / 5.3
-        let rect = CGRect(x: (width / 2) - (size / 2) , y: height / 2 - 100, width: size, height: size)
-        self.activityIndicator = NVActivityIndicatorView(frame: rect)
+        let visibleRect = CGRect(x: tableView.contentOffset.x, y: tableView.contentOffset.y, width: tableView.bounds.size.width, height: tableView.bounds.size.height)
+        let centerPoint = CGPoint(x: visibleRect.size.width / 2, y: visibleRect.size.height / 2)
+        let sizeView = width / 4
+        let rect = CGRect(x: (width / 2) - (sizeView / 2) , y: height / 2 - 100, width: sizeView, height: sizeView)
+        viewActivity = UIView(frame: rect)
+        viewActivity.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        viewActivity.layer.cornerRadius = 10
+        viewActivity.center = centerPoint
+        
+        let widthHeight = width / 5.3
+        let midRect = (viewActivity.frame.width / 2) - (widthHeight / 2)
+        let rectActivity = CGRect(x: midRect, y: midRect, width: widthHeight, height: widthHeight)
+        self.activityIndicator = NVActivityIndicatorView(frame: rectActivity)
         self.activityIndicator.type = .ballScaleRipple
-        self.tableView.addSubview(activityIndicator)
+        
+        self.viewActivity.addSubview(activityIndicator)
+        self.tableView.addSubview(viewActivity)
     }
     
     private func getColor(forStatus status: Status) -> UIColor {
@@ -160,8 +189,7 @@ extension ReportsViewController: UITableViewDataSource {
 //MARK: - Table View Delegate
 extension ReportsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.activityIndicator.isHidden = false
-        self.activityIndicator.startAnimating()
+        self.toggleActivity(false)
         
         DispatchQueue.global().async() {
             self.selectedIndex = indexPath.row
