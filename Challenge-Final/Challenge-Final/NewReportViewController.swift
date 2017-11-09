@@ -138,7 +138,7 @@ class NewReportViewController: UIViewController {
 }
 
 //MARK: - Extensions
-//MARK: - Table View Data Source
+//MARK: - Collection View Data Source
 extension NewReportViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoCollectionArray.count + 1
@@ -161,7 +161,7 @@ extension NewReportViewController: UICollectionViewDataSource {
     }
 }
 
-//MARK: - Table View Delegate
+//MARK: - Collection View Delegate
 extension NewReportViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.selectedIndex = indexPath.row

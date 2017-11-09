@@ -20,15 +20,43 @@ class RegisterViewController: UIViewController {
     @IBOutlet var passwordTextField: SkyFloatingLabelTextField!
     @IBOutlet var confirmPasswordTextField: SkyFloatingLabelTextField!
     @IBOutlet var yearTextField: SkyFloatingLabelTextField!
+    @IBOutlet weak var avatarLabel: UILabel!
     
     fileprivate var sharedDAO = DAO.sharedDAO
+    fileprivate var selectedAvatar: IndexPath? = nil
     
     var chosenSchool: String!
+    var alunoUpdate: Aluno!
+    
+    var collectionLayout: UICollectionViewFlowLayout {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        let top_bottom = width / 10.76
+        let right_left = width / 13
+        layout.sectionInset = UIEdgeInsets(top: top_bottom, left: right_left, bottom: top_bottom, right: right_left)
+        layout.itemSize = CGSize(width: height / 4.73, height: height / 4.73)
+        layout.scrollDirection = .horizontal
+        
+        return layout
+    }
+    
+    lazy var collectionView: UICollectionView! = {
+        var collectionViewCellNib = UINib(nibName: "NewReportCollectionViewCell", bundle: nil)
+        let collectionViewRect = CGRect(x: 0, y: 0, width: 0, height: 0)
+        
+        let collection = UICollectionView(frame: collectionViewRect, collectionViewLayout: collectionLayout)
+        
+        collection.dataSource = self
+        collection.delegate = self
+        collection.backgroundColor = .clear
+        collection.clipsToBounds = true
+        collection.register(collectionViewCellNib, forCellWithReuseIdentifier: "newReportCell")
+        
+        return collection
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         self.schoolTextField.delegate = self
         self.nameTextField.delegate = self
         self.emailTextField.delegate = self
@@ -36,13 +64,26 @@ class RegisterViewController: UIViewController {
         self.confirmPasswordTextField.delegate = self
         self.yearTextField.delegate = self
         
+        if alunoUpdate != nil {
+            self.setLabels()
+        }
+        
+        self.view.addSubview(collectionView)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
         self.navigationController?.navigationBar.transparentNavigationBar()
         self.navigationController?.navigationItem.title = "Cadastro"
-        schoolTextField.text = gambi.nomeEscola
+        
+        if alunoUpdate == nil {
+            schoolTextField.text = gambi.nomeEscola
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        let collectionY = (avatarLabel.layer.position.y + (avatarLabel.frame.height / 2)) + (width / 16)
+        collectionView.frame = CGRect(x: 0, y: collectionY, width: width, height: height / 4.73)
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,12 +123,22 @@ class RegisterViewController: UIViewController {
         }
     }
     
+    private func setLabels() {
+        nameTextField.text = alunoUpdate.name
+        emailTextField.text = alunoUpdate.email
+        selectedAvatar?.row = alunoUpdate.avatar!
+        collectionView.reloadData()
+        yearTextField.text = alunoUpdate.serie
+        schoolTextField.text = alunoUpdate.escolaNome
+        print(alunoUpdate.escolaNome)
+    }
+    
     private func getAlunoFromLabels() -> Aluno {
         let aluno = Aluno()
         
         aluno.name = nameTextField.text!
         aluno.email = emailTextField.text!
-        aluno.avatar = 1
+        aluno.avatar = selectedAvatar?.row
         aluno.password = passwordTextField.text!
         aluno.serie = yearTextField.text!
         
@@ -132,5 +183,35 @@ extension RegisterViewController: UITextFieldDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+}
+
+extension RegisterViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedCell = collectionView.cellForItem(at: indexPath) as! NewReportCollectionViewCell
+        
+        if selectedAvatar != nil {
+            let cell = collectionView.cellForItem(at: selectedAvatar!) as! NewReportCollectionViewCell
+            cell.layer.borderWidth = 0
+        }
+        
+        self.selectedAvatar = indexPath
+        selectedCell.layer.borderWidth = 2
+        selectedCell.layer.borderColor = UIColor.white.cgColor
+    }
+}
+
+extension RegisterViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newReportCell", for: indexPath as IndexPath) as! NewReportCollectionViewCell
+        
+        cell.imagem.image = UIImage(named: "avatar\(indexPath.row)")
+        cell.imagem.contentMode = .scaleAspectFit
+        
+        return cell
     }
 }
