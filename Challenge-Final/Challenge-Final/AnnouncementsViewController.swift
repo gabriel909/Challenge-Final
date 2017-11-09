@@ -10,7 +10,7 @@ import UIKit
 import NVActivityIndicatorView
 
 class AnnouncementsViewController: UIViewController {
-    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
+    var activityIndicator: NVActivityIndicatorView!
     
     lazy var tableView: UITableView! = {
         let tableViewCellNib = UINib(nibName: "AnnouncementsTableViewCell", bundle: nil)
@@ -53,6 +53,8 @@ class AnnouncementsViewController: UIViewController {
         
         title = "Avisos"
         
+        self.setActivityIndicator()
+        
         self.view.addSubview(tableView)
         NSLayoutConstraint.activate(tableConstraints)
     }
@@ -85,6 +87,14 @@ class AnnouncementsViewController: UIViewController {
         self.tableView.clipsToBounds = true
         
         self.view.addSubview(tableView)
+    }
+    
+    private func setActivityIndicator() {
+        let size = width / 5.3
+        let rect = CGRect(x: (width / 2) - (size / 2) , y: height / 2 - 100, width: size, height: size)
+        self.activityIndicator = NVActivityIndicatorView(frame: rect)
+        self.activityIndicator.type = .ballScaleRipple
+        self.tableView.addSubview(activityIndicator)
     }
     
     private func getAvisosArray() {

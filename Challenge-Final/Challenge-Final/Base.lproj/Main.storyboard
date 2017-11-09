@@ -851,27 +851,7 @@
                     <view key="view" contentMode="scaleToFill" id="MKT-q4-EC6" customClass="GradientView" customModule="Challenge_Final" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="taf-Fu-p6K" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
-                                <rect key="frame" x="130.5" y="254" width="60" height="60"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="G8h-fh-kLc"/>
-                                    <constraint firstAttribute="height" constant="60" id="kyl-hP-Kw2"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballScaleRipple"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="taf-Fu-p6K" firstAttribute="centerY" secondItem="MKT-q4-EC6" secondAttribute="centerY" id="F39-P5-cpk"/>
-                            <constraint firstItem="taf-Fu-p6K" firstAttribute="centerX" secondItem="MKT-q4-EC6" secondAttribute="centerX" id="I8Y-uH-6os"/>
-                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="topColor">
                                 <color key="value" red="0.21960784310000001" green="0.31372549020000001" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -894,7 +874,6 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
-                        <outlet property="activityIndicatior" destination="taf-Fu-p6K" id="ZZV-m7-IKW"/>
                         <segue destination="RqA-UR-LIr" kind="unwind" unwindAction="unWindToViewControllerWithSender:" id="ngW-UA-Tqr"/>
                         <segue destination="Gg9-Kh-SWv" kind="show" identifier="toDetailsReport" id="7V3-Wk-K1G"/>
                         <segue destination="5Lb-di-r3L" kind="show" identifier="toCatVC" id="vOB-e6-rwn"/>
@@ -916,27 +895,7 @@
                     <view key="view" contentMode="scaleToFill" id="JBT-3J-8Fr" customClass="GradientView" customModule="Challenge_Final" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NhV-bo-dpX" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
-                                <rect key="frame" x="133" y="257" width="55" height="55"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="55" id="X4M-os-YdT"/>
-                                    <constraint firstAttribute="height" constant="55" id="oBb-MV-hTn"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballScaleRipple"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="NhV-bo-dpX" firstAttribute="centerY" secondItem="JBT-3J-8Fr" secondAttribute="centerY" id="bnb-6p-GAA"/>
-                            <constraint firstItem="NhV-bo-dpX" firstAttribute="centerX" secondItem="JBT-3J-8Fr" secondAttribute="centerX" id="mNJ-2M-L9s"/>
-                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="topColor">
                                 <color key="value" red="0.21960784310000001" green="0.31372549020000001" blue="0.47058823529999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -959,7 +918,6 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="NhV-bo-dpX" id="P22-VM-R3u"/>
                         <segue destination="haT-L4-fh5" kind="unwind" unwindAction="unWindToViewControllerWithSender:" id="1tb-yy-ovA"/>
                         <segue destination="Ajm-t5-q0c" kind="show" identifier="toDetailsAnnoun" id="YUB-PX-ZoO"/>
                     </connections>

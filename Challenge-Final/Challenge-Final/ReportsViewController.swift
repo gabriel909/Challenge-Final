@@ -10,7 +10,7 @@ import UIKit
 import NVActivityIndicatorView
 
 class ReportsViewController: UIViewController {
-    @IBOutlet weak var activityIndicatior: NVActivityIndicatorView!
+    var activityIndicator: NVActivityIndicatorView!
     @IBOutlet weak var newBtnOutlet: UIButton!
     @IBAction func buttonPressed(_ sender: Any) {
         print("btn pressed")
@@ -58,6 +58,8 @@ class ReportsViewController: UIViewController {
         )
         
         self.navigationItem.rightBarButtonItem = rightButtonItem
+        
+        self.setActivityIndicator()
 
         if #available(iOS 11.0, *) {
             self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -81,14 +83,13 @@ class ReportsViewController: UIViewController {
         navigationController?.navigationBar.barStyle = .black
         
         self.getReportsArray()
-        self.activityIndicatior.stopAnimating()
-        self.activityIndicatior.isHidden = true
+        self.activityIndicator.stopAnimating()
+        self.activityIndicator.isHidden = true
     }
     
     @objc func rightButtonAction(sender: UIBarButtonItem) {
         performSegue(withIdentifier: "toCatVC", sender: self)
     }
- 
     
     //MARK: - Aux Methods
     private func getReportsArray() {
@@ -105,6 +106,14 @@ class ReportsViewController: UIViewController {
                 self.tableView.reloadData()
             }
         })
+    }
+    
+    private func setActivityIndicator() {
+        let size = width / 5.3
+        let rect = CGRect(x: (width / 2) - (size / 2) , y: height / 2 - 100, width: size, height: size)
+        self.activityIndicator = NVActivityIndicatorView(frame: rect)
+        self.activityIndicator.type = .ballScaleRipple
+        self.tableView.addSubview(activityIndicator)
     }
     
     private func getColor(forStatus status: Status) -> UIColor {
@@ -151,8 +160,8 @@ extension ReportsViewController: UITableViewDataSource {
 //MARK: - Table View Delegate
 extension ReportsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.activityIndicatior.isHidden = false
-        self.activityIndicatior.startAnimating()
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
         
         DispatchQueue.global().async() {
             self.selectedIndex = indexPath.row
