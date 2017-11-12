@@ -7,6 +7,7 @@ target 'Challenge-Final' do
   pod 'SkyFloatingLabelTextField'
   pod 'PopupController'
   pod 'NVActivityIndicatorView'
+  pod 'ImageScrollView'
 
   # Pods for Challenge-Final
 

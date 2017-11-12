@@ -1365,12 +1365,41 @@
                         <outlet property="descTextView" destination="gWn-du-MvY" id="nvb-ml-cu9"/>
                         <outlet property="titleLabel" destination="Mmg-V8-OjY" id="NRJ-Gu-A6l"/>
                         <segue destination="wwU-3e-agu" kind="unwind" unwindAction="unWindToViewControllerWithSender:" id="SkX-Vi-Io5"/>
+                        <segue destination="Rz1-SA-PE0" kind="show" identifier="detailsToScrollPhoto" id="10B-is-VLc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HPL-yb-omV" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="wwU-3e-agu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2611.875" y="1267.605633802817"/>
+        </scene>
+        <!--Scrollable Photo View Controller-->
+        <scene sceneID="4XN-oC-sdR">
+            <objects>
+                <viewController id="Rz1-SA-PE0" customClass="ScrollablePhotoViewController" customModule="Challenge_Final" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="veN-io-XbT"/>
+                        <viewControllerLayoutGuide type="bottom" id="h2d-5Y-uEc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xeQ-aR-7d5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Vm-lo-TEt" customClass="ImageScrollView" customModule="ImageScrollView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <outlet property="imageScrollView" destination="2Vm-lo-TEt" id="cO2-dc-Myo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ivd-y4-SgM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3473" y="1438"/>
         </scene>
         <!--New Report View Controller-->
         <scene sceneID="hcw-Z6-xIm">
@@ -1603,7 +1632,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gv5-Wd-B8i" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="HCS-nD-VbX" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4373" y="18"/>
+            <point key="canvasLocation" x="4335" y="-8"/>
         </scene>
     </scenes>
     <resources>

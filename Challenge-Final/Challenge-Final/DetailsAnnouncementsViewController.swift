@@ -17,9 +17,11 @@ class DetailsAnnouncementsViewController: UIViewController {
     
     fileprivate var collectionView: UICollectionView!
     fileprivate var photoCollectionArray: [UIImage]! = []
+    fileprivate var selectedIndex: Int = -1
     
     var aviso: Aviso!
     
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,14 +35,22 @@ class DetailsAnnouncementsViewController: UIViewController {
         }
     }
     
-    private func loadLabels() {
-        descTextView.text = aviso.descricao
-        dataLabel.text = aviso.data.getFormattedDate()
-        print(aviso.data)
+    override func viewWillAppear(_ animated: Bool) {
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+            UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    //MARK: - Aux Methods
+    private func loadLabels() {
+        descTextView.text = aviso.descricao
+        dataLabel.text = aviso.data.getFormattedDate()
+        print(aviso.data)
     }
     
     private func collectionSetup() {
@@ -51,6 +61,7 @@ class DetailsAnnouncementsViewController: UIViewController {
         
         self.collectionView = UICollectionView(frame: collectionViewRect, collectionViewLayout: createLayout())
         self.collectionView.dataSource = self
+        self.collectionView.delegate = self
         self.collectionView.backgroundColor = .clear
         self.collectionView.register(collectionViewCellNib, forCellWithReuseIdentifier: "newReportCell")
         self.collectionView.clipsToBounds = true
@@ -86,9 +97,12 @@ class DetailsAnnouncementsViewController: UIViewController {
     }
 }
 
+//MARK: - Extensions
+//MARK: Collection Delegate
 extension DetailsAnnouncementsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         openAlert(indexPath.row)
+        selectedIndex = indexPath.row
     }
     
     private func openAlert(_ index: Int) {
@@ -123,10 +137,18 @@ extension DetailsAnnouncementsViewController: UICollectionViewDelegate {
     }
     
     private func seePicture(_ photo: UIImage) {
-        
+        self.performSegue(withIdentifier: "detailsToScrollPhoto", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailsToScrollPhoto" {
+            let destinationViewController = segue.destination as! ScrollablePhotoViewController
+            destinationViewController.scrollableImage = photoCollectionArray[selectedIndex]
+        }
     }
 }
 
+//MARK: Collection Data Source
 extension DetailsAnnouncementsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoCollectionArray.count
