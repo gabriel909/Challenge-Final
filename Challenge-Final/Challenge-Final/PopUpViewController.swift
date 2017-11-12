@@ -12,8 +12,15 @@ import PopupController
 class PopUpViewController: UIViewController, PopupContentViewController {
     var closeHandler: (() -> (Void))?
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descLabel: UITextView!
+    @IBOutlet weak var imagem: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.layer.cornerRadius = 20
+        self.view.layer.masksToBounds = true
         
     }
 

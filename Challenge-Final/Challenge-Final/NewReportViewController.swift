@@ -15,8 +15,10 @@ class NewReportViewController: UIViewController {
     @IBOutlet weak var descricaoTextView: UITextView!
     @IBOutlet weak var cancelButtonOutlet: CustomButton!
     @IBOutlet weak var categoryButtonOutlet: CustomButton!
-    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
+    fileprivate var viewActivity: UIView!
+    fileprivate var activityIndicator: NVActivityIndicatorView!
     fileprivate var plusIndex: Int = 0
     fileprivate var selectedIndex: Int = 0
     fileprivate var photoCollectionArray: [UIImage] = []
@@ -44,6 +46,7 @@ class NewReportViewController: UIViewController {
         self.collectionSetup()
         self.setTextViewPlaceholder()
         self.elementsSetup()
+        self.setActivityIndicator()
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,8 +54,7 @@ class NewReportViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.activityIndicator.stopAnimating()
-        self.activityIndicator.isHidden = true
+        self.toggleActivity(true)
     }
     
     //MARK: - Aux Methods
@@ -94,6 +96,42 @@ class NewReportViewController: UIViewController {
         return layout
     }
     
+    fileprivate func toggleActivity(_ bool: Bool) {
+        let centerPoint = CGPoint(x: width / 2, y: height / 2 + self.scrollView.contentOffset.y)
+        
+        self.viewActivity.center = centerPoint
+        self.viewActivity.isHidden = bool
+        self.activityIndicator.isHidden = bool
+        
+        if !bool {
+            self.activityIndicator.startAnimating()
+            
+        } else {
+            self.activityIndicator.stopAnimating()
+            
+        }
+    }
+    
+    private func setActivityIndicator() {
+        let visibleRect = CGRect(x: scrollView.contentOffset.x, y: scrollView.contentOffset.y, width: scrollView.bounds.size.width, height: scrollView.bounds.size.height)
+        let centerPoint = CGPoint(x: visibleRect.size.width / 2, y: visibleRect.size.height / 2)
+        let sizeView = width / 4
+        let rect = CGRect(x: (width / 2) - (sizeView / 2) , y: height / 2 - 100, width: sizeView, height: sizeView)
+        viewActivity = UIView(frame: rect)
+        viewActivity.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        viewActivity.layer.cornerRadius = 10
+        viewActivity.center = centerPoint
+        
+        let widthHeight = width / 5.3
+        let midRect = (viewActivity.frame.width / 2) - (widthHeight / 2)
+        let rectActivity = CGRect(x: midRect, y: midRect, width: widthHeight, height: widthHeight)
+        self.activityIndicator = NVActivityIndicatorView(frame: rectActivity)
+        self.activityIndicator.type = .ballScaleRipple
+        
+        self.viewActivity.addSubview(activityIndicator)
+        self.scrollView.addSubview(viewActivity)
+    }
+    
     private func setTextViewPlaceholder() {
         placeholder = " Digite aqui a descrição..."
         descricaoTextView.delegate = self
@@ -104,8 +142,7 @@ class NewReportViewController: UIViewController {
     //MARK: - Actions
     @IBAction func sendButtonAction(_ sender: UIButton) {
         sender.isEnabled = false
-        self.activityIndicator.startAnimating()
-        self.activityIndicator.isHidden = false
+        self.toggleActivity(false)
         
         if !descricaoTextView.text.isEmpty {
             let base64Array = Base64Enconder.encode(imgs: photoCollectionArray)

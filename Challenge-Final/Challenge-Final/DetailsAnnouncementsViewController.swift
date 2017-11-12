@@ -71,13 +71,10 @@ class DetailsAnnouncementsViewController: UIViewController {
     
     private func getImageArray() -> [UIImage] {
         var array: [UIImage] = []
-        print("OLHA EU AQUI DE NOVO")
         
         if aviso.images != nil {
-            print("XAXANDO")
             for urlString in aviso.images! {
                 let url = URL(string: "http://139.82.24.231:3000/\(urlString)")
-                print("URL CARALHO \(url)")
                 let data = try? Data(contentsOf: url!)
                 let image: UIImage = UIImage(data: data!)!
                 

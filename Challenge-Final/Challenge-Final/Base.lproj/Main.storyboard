@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3hs-8V-abz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="3hs-8V-abz">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -349,6 +349,11 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <size key="freeformSize" width="300" height="300"/>
+                    <connections>
+                        <outlet property="descLabel" destination="9Z2-eb-PPH" id="S8W-vr-OFa"/>
+                        <outlet property="imagem" destination="sdJ-pD-rNl" id="Oll-1f-UGa"/>
+                        <outlet property="titleLabel" destination="bRa-PS-xjf" id="qZE-Zo-0Hw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EnN-zg-RSk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1547,25 +1552,9 @@
                                             <constraint firstItem="fiF-Mp-Zij" firstAttribute="leading" secondItem="sVA-dc-DCF" secondAttribute="leadingMargin" constant="20" id="y25-AQ-fcw"/>
                                         </constraints>
                                     </view>
-                                    <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mma-Bs-MnS" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
-                                        <rect key="frame" x="132.5" y="312.5" width="55" height="55"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="55" id="03A-Rc-cdp"/>
-                                            <constraint firstAttribute="height" constant="55" id="f4M-Ft-EJH"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballScaleRipple"/>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Mma-Bs-MnS" firstAttribute="centerY" secondItem="C2C-06-Va5" secondAttribute="centerY" id="DSq-mV-FWx"/>
                                     <constraint firstAttribute="bottom" secondItem="sVA-dc-DCF" secondAttribute="bottom" id="DXF-UW-DUK"/>
-                                    <constraint firstItem="Mma-Bs-MnS" firstAttribute="centerX" secondItem="C2C-06-Va5" secondAttribute="centerX" id="N0T-97-wgl"/>
                                     <constraint firstItem="sVA-dc-DCF" firstAttribute="leading" secondItem="C2C-06-Va5" secondAttribute="leading" id="WJc-fg-dDC"/>
                                     <constraint firstAttribute="trailing" secondItem="sVA-dc-DCF" secondAttribute="trailing" id="XPH-wV-gCp"/>
                                     <constraint firstItem="sVA-dc-DCF" firstAttribute="top" secondItem="C2C-06-Va5" secondAttribute="top" id="tQw-UF-tcd"/>
@@ -1603,11 +1592,11 @@
                     </view>
                     <size key="freeformSize" width="320" height="700"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="Mma-Bs-MnS" id="yOx-LO-Hn5"/>
                         <outlet property="cancelButtonOutlet" destination="jiB-qf-uni" id="KXs-bG-RGe"/>
                         <outlet property="categoryButtonOutlet" destination="Dyw-y3-Fqn" id="Nlh-Pz-BT8"/>
                         <outlet property="contentView" destination="sVA-dc-DCF" id="IFl-y4-eZs"/>
                         <outlet property="descricaoTextView" destination="Dme-YH-q4t" id="Xfy-PH-puZ"/>
+                        <outlet property="scrollView" destination="C2C-06-Va5" id="czy-9r-X7F"/>
                         <segue destination="HCS-nD-VbX" kind="unwind" unwindAction="unWindToViewControllerWithSender:" id="dSb-pb-NZI"/>
                     </connections>
                 </viewController>

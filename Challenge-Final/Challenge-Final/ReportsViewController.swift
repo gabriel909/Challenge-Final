@@ -10,8 +10,8 @@ import UIKit
 import NVActivityIndicatorView
 
 class ReportsViewController: UIViewController {
-    var activityIndicator: NVActivityIndicatorView!
-    var viewActivity: UIView!
+    fileprivate var activityIndicator: NVActivityIndicatorView!
+    fileprivate var viewActivity: UIView!
     @IBOutlet weak var newBtnOutlet: UIButton!
     @IBAction func buttonPressed(_ sender: Any) {
         print("btn pressed")
@@ -48,6 +48,7 @@ class ReportsViewController: UIViewController {
     
     fileprivate let sharedDAO = DAO.sharedDAO
     
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -87,11 +88,11 @@ class ReportsViewController: UIViewController {
         self.toggleActivity(true)
     }
     
+    //MARK: - Aux Methods
     @objc func rightButtonAction(sender: UIBarButtonItem) {
         performSegue(withIdentifier: "toCatVC", sender: self)
     }
-    
-    //MARK: - Aux Methods
+
     private func getReportsArray() {
         var aluno = Aluno()
         
@@ -112,7 +113,6 @@ class ReportsViewController: UIViewController {
         let centerPoint = CGPoint(x: width / 2, y: height / 2 + tableView.contentOffset.y)
         
         self.viewActivity.center = centerPoint
-//        self.activityIndicator.center = centerPoint
         self.viewActivity.isHidden = bool
         self.activityIndicator.isHidden = bool
         
