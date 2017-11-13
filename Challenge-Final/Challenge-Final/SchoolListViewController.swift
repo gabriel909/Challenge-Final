@@ -52,6 +52,12 @@ class SchoolListViewController: UIViewController {
         searchController.dimsBackgroundDuringPresentation = false
         searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
+        searchController.searchBar.changeSearchBar(color: .clear)
+        searchController.searchBar.changeTint(color: .white)
+        searchController.searchBar.searchBarStyle = .minimal
+        searchController.searchBar.tintColor = .white
+        searchController.searchBar.placeholder = "Buscar"
+        searchController.view.backgroundColor = .clear
         
         self.tableView.delegate = self
         
@@ -127,14 +133,14 @@ extension SchoolListViewController: UITableViewDataSource {
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: 30))
-//
-//        headerView.backgroundColor = .clear
-//        headerView.layer.zPosition = -10
-//
-//        return headerView
-//    }
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        // Background color
+        view.tintColor = UIColor.white.withAlphaComponent(0.3)
+        
+        // Text Color
+        let headerView = view as! UITableViewHeaderFooterView
+        headerView.textLabel?.textColor = UIColor.white
+    }
     
     fileprivate func searchBarIsEmpty() -> Bool {
         return searchController.searchBar.text?.isEmpty ?? true

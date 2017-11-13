@@ -34,7 +34,6 @@ class CategoriesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = false
-        self.navigationController?.navigationBar.transparentNavigationBar()
         navigationController?.navigationBar.barStyle = .black
     }
     

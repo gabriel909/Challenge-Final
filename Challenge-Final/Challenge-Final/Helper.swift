@@ -170,6 +170,51 @@ extension UIView {
     }
 }
 
+//MARK: as UISearchBar extension
+extension UISearchBar {
+    func changeSearchBar(color : UIColor) {
+        for subView in self.subviews {
+            for subSubView in subView.subviews {
+                
+                if let _ = subSubView as? UITextInputTraits {
+                    let textField = subSubView as! UITextField
+                    textField.backgroundColor = color
+                    
+                    break
+                }
+                
+            }
+        }
+    }
+    
+    func changeTint(color: UIColor) {
+        for subView in self.subviews {
+            for subSubView in subView.subviews {
+                
+                if let _ = subSubView as? UITextInputTraits {
+                    let textField = subSubView as! UITextField
+                    textField.textColor = color
+                    
+                    let textFieldInsideUISearchBarLabel = textField.value(forKey: "placeholderLabel") as? UILabel
+                    textFieldInsideUISearchBarLabel?.textColor = .white
+                    break
+                }
+            }
+        }
+    }
+    
+}
+
+extension UIImage {
+    func tinted(with color: UIColor) -> UIImage? {
+        defer { UIGraphicsEndImageContext() }
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        color.set()
+        withRenderingMode(.alwaysTemplate).draw(in: CGRect(origin: .zero, size: size))
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+}
+
 //Global Methods
 //Create and present an UIAlert
 public func message(_ title: String, desc: String, view: UIViewController) {

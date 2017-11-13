@@ -14,6 +14,7 @@ import SkyFloatingLabelTextField
 
 class RegisterViewController: UIViewController {
     
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet var schoolTextField: SkyFloatingLabelTextField!
     @IBOutlet var nameTextField: SkyFloatingLabelTextField!
     @IBOutlet var emailTextField: SkyFloatingLabelTextField!
@@ -54,6 +55,7 @@ class RegisterViewController: UIViewController {
         return collection
     }()
     
+    //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -67,10 +69,11 @@ class RegisterViewController: UIViewController {
         if alunoUpdate != nil {
             self.setLabels()
         }
+      
         
         title = "Cadastro"
         
-        self.view.addSubview(collectionView)
+        self.contentView.addSubview(collectionView)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -84,7 +87,8 @@ class RegisterViewController: UIViewController {
         }
         
         if #available(iOS 11.0, *) {
-            self.navigationController?.navigationBar.prefersLargeTitles = false
+            self.navigationController?.navigationBar.prefersLargeTitles = true
+            UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         }
     }
     
@@ -98,6 +102,7 @@ class RegisterViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    //MARK: - Actions
     @IBAction func unWindToViewController(sender: UIStoryboardSegue) {
         let sourceVC = sender.source as! SchoolListViewController
         self.chosenSchool = sourceVC.selected
@@ -130,6 +135,7 @@ class RegisterViewController: UIViewController {
         }
     }
     
+    //MARK: - Aux Methods
     private func setLabels() {
         nameTextField.text = alunoUpdate.name
         emailTextField.text = alunoUpdate.email
@@ -137,7 +143,6 @@ class RegisterViewController: UIViewController {
         collectionView.reloadData()
         yearTextField.text = alunoUpdate.serie
         schoolTextField.text = alunoUpdate.escolaNome
-        print(alunoUpdate.escolaNome)
     }
     
     private func getAlunoFromLabels() -> Aluno {
@@ -153,61 +158,45 @@ class RegisterViewController: UIViewController {
     }
 }
 
+//MARK: - Extensions
+//MARK: TextField Delegate
 extension RegisterViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        
+
         if textField.tag == 1 {
-            self.view.endEditing(true)
+            self.contentView.endEditing(true)
             performSegue(withIdentifier: "toSchoolList", sender: self)
-        
-        } else {
-            animateViewMoving(true, moveValue: 100)
-            
+
         }
     }
-    
+
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
+
         if textField.tag == 1 {
             textField.text = chosenSchool
-        
-        } else {
-            animateViewMoving(false, moveValue: 100)
-        
+
         }
-    }
-    
-    func animateViewMoving(_ up: Bool, moveValue: CGFloat){
-        let movementDuration: TimeInterval = 0.3
-        let movement: CGFloat = ( up ? -moveValue : moveValue)
-        UIView.beginAnimations("animateView", context: nil)
-        UIView.setAnimationBeginsFromCurrentState(true)
-        UIView.setAnimationDuration(movementDuration)
-        self.view.frame = self.view.frame.offsetBy(dx: 0,  dy: movement)
-        UIView.commitAnimations()
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
     }
 }
 
+//MARK: Collection Delegate
 extension RegisterViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedCell = collectionView.cellForItem(at: indexPath) as! NewReportCollectionViewCell
         
         if selectedAvatar != nil {
             let cell = collectionView.cellForItem(at: selectedAvatar!) as! NewReportCollectionViewCell
-            cell.layer.borderWidth = 0
+            cell.imagem.layer.borderWidth = 0
         }
         
         self.selectedAvatar = indexPath
-        selectedCell.layer.borderWidth = 2
-        selectedCell.layer.borderColor = UIColor.white.cgColor
+        selectedCell.imagem.layer.borderWidth = 2
+        selectedCell.imagem.layer.borderColor = UIColor.white.cgColor
     }
 }
 
+//MARK: Collection Data Source
 extension RegisterViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
@@ -217,7 +206,8 @@ extension RegisterViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newReportCell", for: indexPath as IndexPath) as! NewReportCollectionViewCell
         
         cell.imagem.image = UIImage(named: "avatar\(indexPath.row)")
-        cell.imagem.contentMode = .scaleAspectFit
+        cell.imagem.contentMode = .center
+        cell.viewCell.backgroundColor = .clear
         cell.gambiarraLuisa.isHidden = true
         
         return cell

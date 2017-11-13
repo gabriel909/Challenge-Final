@@ -135,7 +135,7 @@ class ReportsViewController: UIViewController {
         viewActivity.layer.cornerRadius = 10
         viewActivity.center = centerPoint
         
-        let widthHeight = width / 5.3
+        let widthHeight = width / 6.4
         let midRect = (viewActivity.frame.width / 2) - (widthHeight / 2)
         let rectActivity = CGRect(x: midRect, y: midRect, width: widthHeight, height: widthHeight)
         self.activityIndicator = NVActivityIndicatorView(frame: rectActivity)

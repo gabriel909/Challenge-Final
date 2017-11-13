@@ -62,26 +62,9 @@ class DetailsReportsViewController: UIViewController {
     }
     
     private func collectionSetup() {
-//        let collectionViewCellNib = UINib(nibName: "NewReportCollectionViewCell", bundle: nil)
-        
         self.photoCollectionArray = self.getImageArray()
         
         self.collectionView.dataSource = self
-//        self.collectionView.collectionViewLayout = createLayout()
-//        self.collectionView.register(collectionViewCellNib, forCellWithReuseIdentifier: "newReportCell")
-    }
-    
-    private func createLayout() -> UICollectionViewFlowLayout {
-        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        let top_bottom = width / 10.76
-        let right_left = width / 13
-        let collectionHeight = collectionView.frame.height
-        print(collectionHeight)
-        layout.sectionInset = UIEdgeInsets(top: top_bottom, left: right_left, bottom: top_bottom, right: right_left)
-        layout.itemSize = CGSize(width: height / 5.25, height: height / 5.25)
-        layout.scrollDirection = .horizontal
-        
-        return layout
     }
     
     private func getImageArray() -> [UIImage] {
