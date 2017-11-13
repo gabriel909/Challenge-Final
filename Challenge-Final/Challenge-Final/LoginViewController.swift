@@ -35,6 +35,10 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
     //MARK: - Aux Methods
     private func checkIfUserIsLoggedIn() {
         let aluno = sharedDAO.getLoggedAluno()
@@ -54,7 +58,7 @@ class LoginViewController: UIViewController {
                 }
                 
             } else {
-                message("Atenção", desc: "Deu Merda", view: self)
+                message("Atenção", desc: "Erro no login", view: self)
                 
             }
         })

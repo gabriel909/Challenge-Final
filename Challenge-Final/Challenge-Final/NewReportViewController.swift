@@ -30,7 +30,7 @@ class NewReportViewController: UIViewController {
     
     fileprivate var new: Bool {
         get {
-            return selectedIndex == 0
+            return (selectedIndex == 0 && photoCollectionArray.count < 3)
         }
     }
     
@@ -179,7 +179,8 @@ class NewReportViewController: UIViewController {
 //MARK: - Collection View Data Source
 extension NewReportViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photoCollectionArray.count + 1
+        let count = photoCollectionArray.count >= 3 ? photoCollectionArray.count : photoCollectionArray.count + 1
+        return count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -187,12 +188,14 @@ extension NewReportViewController: UICollectionViewDataSource {
         
         cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newReportCell", for: indexPath as IndexPath) as! NewReportCollectionViewCell
         
-        if indexPath.row == 0 {
+        if indexPath.row == 0 && photoCollectionArray.count < 3 {
             cell.imagem.image = UIImage()
             cell.gambiarraLuisa.isHidden = false
             
         } else {
-            cell.imagem.image = photoCollectionArray[indexPath.row - 1]
+            let index = photoCollectionArray.count >= 3 ? indexPath.row : indexPath.row - 1
+            
+            cell.imagem.image = photoCollectionArray[index]
             cell.gambiarraLuisa.isHidden = true
             
         }
@@ -263,7 +266,8 @@ extension NewReportViewController: UICollectionViewDelegate {
     
     //Delete selected photo
     private func deletePhoto() {
-        self.photoCollectionArray.remove(at: selectedIndex - 1)
+        let index = photoCollectionArray.count >= 3 ? selectedIndex : selectedIndex - 1
+        self.photoCollectionArray.remove(at: index)
         self.collectionView.reloadData()
     }
 }
@@ -272,14 +276,15 @@ extension NewReportViewController: UICollectionViewDelegate {
 extension NewReportViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        let resizedImage = image?.resize(CGSize(width: 300, height: 300))
         
         picker.dismiss(animated: true, completion: nil)
         
         if new {
-            photoCollectionArray.append(image!)
+            photoCollectionArray.append(resizedImage!)
             
         } else {
-            photoCollectionArray[selectedIndex - 1] = image!
+            photoCollectionArray[selectedIndex - 1] = resizedImage!
             
         }
         

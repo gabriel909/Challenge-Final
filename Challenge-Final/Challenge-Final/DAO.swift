@@ -16,6 +16,7 @@ class DAO {
     static let sharedDAO = DAO()
     let apiUrl = "http://139.82.24.231:3000"
     var aluno: Aluno? = nil
+    var announcementsCount: Int = 0
     
     private let archiver = NSCodingManager.sharedCodingManager
     
@@ -25,6 +26,7 @@ class DAO {
     func set(aluno: Aluno) {
         self.aluno = aluno
         print(archiver.save(aluno, withPath: "aluno"))
+        let _ = archiver.save(announcementsCount, withPath: "count")
     }
     
     func getLoggedAluno() -> Aluno? {
@@ -79,11 +81,12 @@ class DAO {
         
         parameters["header"] = aluno?.token
         
-        sendRequest(url: url, parameters: parameters, method: Methods.post, completion: { (dict, abc, def) in
+        sendRequest(url: url, parameters: parameters, method: Methods.post, completion: { (dict, _, _) in
             guard let jsonDict = dict as? [String : Any] else { return }
             
             if jsonDict["message"] == nil {
                 self.aluno = Aluno(parameters: jsonDict)
+//                self.announcementsCount = jsonDict["count"] as! Int
                 completion(self.aluno!, nil)
                 
             } else {

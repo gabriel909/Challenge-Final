@@ -24,12 +24,14 @@ class DetailsReportsViewController: UIViewController {
         super.viewDidLoad()
         self.loadLabels()
         self.collectionSetup()
+        self.changeStatusColor()
         
         if !photoCollectionArray.isEmpty {
             attachmentLabel.isHidden = true
         }
         
         title = report.categoria.rawValue
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,7 +52,7 @@ class DetailsReportsViewController: UIViewController {
                 color = UIColor(rgb: 0xBBB500)
             
             case .resolvido:
-                color = UIColor(rgb: 0x008A4E)
+                color = UIColor(rgb: 0x30D284)
             
             case .nao_resolvido:
                 color = UIColor(rgb: 0xBB0000)
@@ -109,7 +111,6 @@ extension DetailsReportsViewController: UICollectionViewDataSource {
         
         cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newReportCell", for: indexPath as IndexPath) as! NewReportCollectionViewCell
         cell.imagem.image = photoCollectionArray[indexPath.row]
-//        cell.gambiarraLuisa.isHidden = true
         
         return cell
     }

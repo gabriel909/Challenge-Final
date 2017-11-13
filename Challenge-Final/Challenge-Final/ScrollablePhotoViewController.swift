@@ -16,8 +16,9 @@ class ScrollablePhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageScrollView.frame = CGRect(x: 0, y: 0, width: width, height: height)
-        imageScrollView.display(image: scrollableImage)
+        self.imageScrollView.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        self.imageScrollView.backgroundColor = .black
+        self.imageScrollView.display(image: scrollableImage)
     }
 
     override func didReceiveMemoryWarning() {

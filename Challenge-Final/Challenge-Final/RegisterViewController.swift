@@ -68,16 +68,23 @@ class RegisterViewController: UIViewController {
             self.setLabels()
         }
         
+        title = "Cadastro"
+        
         self.view.addSubview(collectionView)
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.isNavigationBarHidden = false
-        self.navigationController?.navigationBar.transparentNavigationBar()
-        self.navigationController?.navigationItem.title = "Cadastro"
+        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.barStyle = .black
+//        self.navigationController?.navigationBar.transparentNavigationBar()
+//        self.navigationController?.navigationItem.title = "Cadastro"
         
         if alunoUpdate == nil {
             schoolTextField.text = gambi.nomeEscola
+        }
+        
+        if #available(iOS 11.0, *) {
+            self.navigationController?.navigationBar.prefersLargeTitles = false
         }
     }
     
@@ -211,6 +218,7 @@ extension RegisterViewController: UICollectionViewDataSource {
         
         cell.imagem.image = UIImage(named: "avatar\(indexPath.row)")
         cell.imagem.contentMode = .scaleAspectFit
+        cell.gambiarraLuisa.isHidden = true
         
         return cell
     }
