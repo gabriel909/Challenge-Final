@@ -176,7 +176,18 @@ extension ReportsViewController: UITableViewDataSource {
         
         cell = tableView.dequeueReusableCell(withIdentifier: "idReportCell", for: indexPath as IndexPath) as! ReportsTableViewCell
         cell.backgroundColor = .clear
-        cell.titleLabel.text = denuncia.categoria.rawValue
+        
+        if denuncia.categoria.rawValue == "Manutencao" {
+            cell.titleLabel.text = "Manutenção"
+            
+        } else if denuncia.categoria.rawValue == "Funcionarios" {
+            cell.titleLabel.text = "Funcionários"
+            
+        } else {
+            cell.titleLabel.text = denuncia.categoria.rawValue
+            
+        }
+        
         cell.descriptionLabel.text = denuncia.descricao
         cell.selectionStyle = .none
         

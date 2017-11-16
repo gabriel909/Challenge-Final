@@ -70,7 +70,6 @@ class RegisterViewController: UIViewController {
             self.setLabels()
         }
       
-        
         title = "Cadastro"
         
         self.contentView.addSubview(collectionView)
@@ -107,7 +106,6 @@ class RegisterViewController: UIViewController {
         let sourceVC = sender.source as! SchoolListViewController
         self.chosenSchool = sourceVC.selected
         self.schoolTextField.text = chosenSchool
-
     }
     
     @IBAction func signupButton(_ sender: Any) {

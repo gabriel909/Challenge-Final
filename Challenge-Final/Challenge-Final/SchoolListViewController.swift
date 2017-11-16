@@ -82,7 +82,7 @@ class SchoolListViewController: UIViewController {
         }
         
         var result = [String : [String]]()
-        let characters = Array(Set(array.flatMap({ $0.characters.first }))).sorted()
+        let characters = Array(Set(array.flatMap({ $0.first }))).sorted()
         
         for character in characters.map({ String($0) }) {
             result[character] = array.filter({ $0.hasPrefix(character) })

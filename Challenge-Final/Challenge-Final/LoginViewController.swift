@@ -58,8 +58,9 @@ class LoginViewController: UIViewController {
                 }
                 
             } else {
-                message("Atenção", desc: "Erro no login", view: self)
-                
+                if error == Errors.invalidCredentials.rawValue {
+                    message("Atenção", desc: "Email ou senha inválidos", view: self)
+                }
             }
         })
     }

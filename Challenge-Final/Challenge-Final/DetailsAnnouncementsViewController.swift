@@ -10,11 +10,10 @@ import UIKit
 
 class DetailsAnnouncementsViewController: UIViewController {
     @IBOutlet weak var dataLabel: UILabel!
-    @IBOutlet weak var avisoImage: UIImageView!
-    @IBOutlet weak var descTextView: UITextView!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descTextView: UILabel!
     @IBOutlet weak var attachmentLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
 //    fileprivate var collectionView: UICollectionView!
     fileprivate var photoCollectionArray: [UIImage]! = []
@@ -45,6 +44,10 @@ class DetailsAnnouncementsViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        self.scrollView.contentSize = CGSize(width: width, height: descTextView.frame.height + 400)
     }
     
     //MARK: - Aux Methods

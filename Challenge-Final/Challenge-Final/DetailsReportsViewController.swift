@@ -9,12 +9,13 @@
 import UIKit
 
 class DetailsReportsViewController: UIViewController {
-    @IBOutlet weak var descTextView: UITextView!
+    @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var attachmentLabel: UILabel!
     @IBOutlet weak var anexoLabel: UILabel!
     @IBOutlet weak var statusStack: UIStackView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     fileprivate var photoCollectionArray: [UIImage]! = []
     
@@ -38,8 +39,12 @@ class DetailsReportsViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    override func viewDidLayoutSubviews() {
+        self.scrollView.contentSize = CGSize(width: width, height: descLabel.frame.height + 400)
+    }
+    
     private func loadLabels() {
-        descTextView.text = report.descricao
+        descLabel.text = report.descricao
         statusLabel.text = report.status.rawValue
         
     }
