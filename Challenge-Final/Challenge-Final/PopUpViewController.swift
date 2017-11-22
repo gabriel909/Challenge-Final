@@ -16,11 +16,21 @@ class PopUpViewController: UIViewController, PopupContentViewController {
     @IBOutlet weak var descLabel: UITextView!
     @IBOutlet weak var imagem: UIImageView!
     
+    var categoryImage: UIImage!
+    var titleString: String!
+    var desc: String!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("PASSEI AQUIIII")
+        
         self.view.layer.cornerRadius = 20
         self.view.layer.masksToBounds = true
+        self.imagem.image = categoryImage
+        self.imagem.contentMode = .center
+//        self.descLabel = UITextView()
+        self.titleLabel.text = titleString
         
     }
 

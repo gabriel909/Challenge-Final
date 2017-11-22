@@ -49,6 +49,11 @@ extension String {
         strTemp = array.reversed().joined(separator: "/")
         return strTemp
     }
+    
+    var localized: String {
+        print(self)
+        return NSLocalizedString(self, tableName: nil, bundle: Bundle.main, value: "", comment: "")
+    }
 }
 
 //MARK: View Controller

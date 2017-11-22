@@ -1,0 +1,125 @@
+
+/* Class = "UIViewController"; title = "PopupViewController"; ObjectID = "0GI-og-LI2"; */
+"0GI-og-LI2.title" = "PopupViewController";
+
+/* Class = "UILabel"; text = "Categoria"; ObjectID = "101-yu-dNp"; */
+"101-yu-dNp.text" = "Categoria";
+
+/* Class = "UILabel"; text = "Escolha seu avatar"; ObjectID = "1Op-nu-jnU"; */
+"1Op-nu-jnU.text" = "Escolha seu avatar";
+
+/* Class = "UILabel"; text = "Resolvido"; ObjectID = "1Zu-Ke-67T"; */
+"1Zu-Ke-67T.text" = "Resolvido";
+
+/* Class = "UIButton"; normalTitle = "Cadastro"; ObjectID = "5cO-gy-rg6"; */
+"5cO-gy-rg6.normalTitle" = "Cadastro";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "9Z2-eb-PPH"; */
+"9Z2-eb-PPH.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UILabel"; text = "Descrição"; ObjectID = "A9J-MC-xzv"; */
+"A9J-MC-xzv.text" = "Descrição";
+
+/* Class = "UILabel"; text = "Não há fotos anexadas"; ObjectID = "BPi-60-u8N"; */
+"BPi-60-u8N.text" = "Não há fotos anexadas";
+
+/* Class = "UITextView"; text = "Digite aqui a descrição..."; ObjectID = "Dme-YH-q4t"; */
+"Dme-YH-q4t.text" = "Digite aqui a descrição...";
+
+/* Class = "UIButton"; normalTitle = "   Manutenção"; ObjectID = "Dyw-y3-Fqn"; */
+"Dyw-y3-Fqn.normalTitle" = "   Manutenção";
+
+/* Class = "UILabel"; text = "Não há fotos anexadas"; ObjectID = "FYX-tp-fQQ"; */
+"FYX-tp-fQQ.text" = "Não há fotos anexadas";
+
+/* Class = "UIButton"; normalTitle = "Avisos"; ObjectID = "JEF-KF-FNM"; */
+"JEF-KF-FNM.normalTitle" = "Avisos";
+
+/* Class = "UILabel"; text = "Anexar"; ObjectID = "KM3-ig-dUv"; */
+"KM3-ig-dUv.text" = "Anexar";
+
+/* Class = "UILabel"; text = "Anexos"; ObjectID = "M60-CM-KmK"; */
+"M60-CM-KmK.text" = "Anexos";
+
+/* Class = "UIButton"; normalTitle = "Cancelar"; ObjectID = "Mia-xZ-V0E"; */
+"Mia-xZ-V0E.normalTitle" = "Cancelar";
+
+/* Class = "UILabel"; text = "Descrição"; ObjectID = "Mmg-V8-OjY"; */
+"Mmg-V8-OjY.text" = "Descrição";
+
+/* Class = "UILabel"; text = "Data"; ObjectID = "Q3d-zO-rap"; */
+"Q3d-zO-rap.text" = "Data";
+
+/* Class = "UIButton"; normalTitle = "Sair"; ObjectID = "QEH-gE-hCd"; */
+"QEH-gE-hCd.normalTitle" = "Sair";
+
+/* Class = "UILabel"; text = "data"; ObjectID = "QHQ-ci-ekz"; */
+"QHQ-ci-ekz.text" = "data";
+
+/* Class = "UILabel"; text = "Data"; ObjectID = "QgT-Wb-rbc"; */
+"QgT-Wb-rbc.text" = "Data";
+
+/* Class = "UILabel"; text = "Descrição"; ObjectID = "R7V-r4-jrv"; */
+"R7V-r4-jrv.text" = "Descrição";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "WKF-Po-yi9"; */
+"WKF-Po-yi9.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Yhk-Xd-s07"; */
+"Yhk-Xd-s07.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ava-Ac-Ppa"; */
+"ava-Ac-Ppa.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "bRa-PS-xjf"; */
+"bRa-PS-xjf.text" = "Label";
+
+/* Class = "UILabel"; text = "Status:"; ObjectID = "dac-lw-YnG"; */
+"dac-lw-YnG.text" = "Status:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "eBJ-NR-dAT"; */
+"eBJ-NR-dAT.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Cadastrar"; ObjectID = "fH9-gg-1zh"; */
+"fH9-gg-1zh.normalTitle" = "Cadastrar";
+
+/* Class = "UITextView"; text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda."; ObjectID = "gWn-du-MvY"; */
+"gWn-du-MvY.text" = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.";
+
+/* Class = "UIButton"; normalTitle = "Cancelar"; ObjectID = "jiB-qf-uni"; */
+"jiB-qf-uni.normalTitle" = "Cancelar";
+
+/* Class = "UIButton"; normalTitle = "Enviar"; ObjectID = "kO7-QL-gSy"; */
+"kO7-QL-gSy.normalTitle" = "Enviar";
+
+/* Class = "UILabel"; text = "Não há fotos anexadas"; ObjectID = "kzU-YG-B6o"; */
+"kzU-YG-B6o.text" = "Não há fotos anexadas";
+
+/* Class = "UILabel"; text = "Anexos"; ObjectID = "l6u-AI-vqa"; */
+"l6u-AI-vqa.text" = "Anexos";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "noc-Dm-VJ9"; */
+"noc-Dm-VJ9.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Echo"; ObjectID = "oHz-js-DeL"; */
+"oHz-js-DeL.normalTitle" = "Echo";
+
+/* Class = "UILabel"; text = "Novo Echo"; ObjectID = "pYG-Nt-7gH"; */
+"pYG-Nt-7gH.text" = "Novo Echo";
+
+/* Class = "UILabel"; text = "data"; ObjectID = "sEZ-l7-A0B"; */
+"sEZ-l7-A0B.text" = "data";
+
+/* Class = "UIButton"; normalTitle = "Entrar"; ObjectID = "tuJ-Ds-pGo"; */
+"tuJ-Ds-pGo.normalTitle" = "Entrar";
+
+/* Class = "UILabel"; text = "Descrição"; ObjectID = "xuP-jY-1ly"; */
+"xuP-jY-1ly.text" = "Descrição";
+
+/* Class = "UILabel"; text = "Anexos"; ObjectID = "yOe-M7-k4f"; */
+"yOe-M7-k4f.text" = "Anexos";
+
+"EY0-vS-or1.normalTitle" = "Esqueci minha senha";
+
+
+

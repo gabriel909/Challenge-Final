@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var email_label: SkyFloatingLabelTextField!
     @IBOutlet weak var password_label: SkyFloatingLabelTextField!
     @IBOutlet weak var cadastroBtn: CustomButton!
+    @IBOutlet weak var forgotButton: UIButton!
     
     private let sharedDAO = DAO.sharedDAO
     private let sharedCodingManager = NSCodingManager.sharedCodingManager
@@ -22,6 +23,8 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         cadastroBtn.layer.borderWidth = 1
+        
+        self.localize()
         
 //        self.checkIfUserIsLoggedIn()
         self.hideKeyboardWhenTappedAround()
@@ -39,6 +42,10 @@ class LoginViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
     }
     
+    override func viewDidLayoutSubviews() {
+        self.localize()
+    }
+    
     //MARK: - Aux Methods
     private func checkIfUserIsLoggedIn() {
         let aluno = sharedDAO.getLoggedAluno()
@@ -46,6 +53,16 @@ class LoginViewController: UIViewController {
         if aluno != nil {
             login(email: (aluno?.email)!, password: (aluno?.password)!)
         }
+    }
+    
+    private func localize() {
+        print("Forgot".localized)
+        password_label.placeholder = "Password".localized
+        password_label.title = "Password".localized
+        password_label.selectedTitle = "Password".localized
+        
+//        forgotButton.setTitle("Forgot".localized, for: .normal)
+        forgotButton.setTitle("TESTE", for: .normal)
     }
     
     private func login(email: String, password: String) {

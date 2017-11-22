@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  Challenge-Final
+
+  Created by Gabriel Oliveira on 21/11/17.
+  Copyright © 2017 Gabriel Oliveira. All rights reserved.
+*/
+
+"Password" = "Password";
+
+"Forgot" = "Forgot my password";
+
+"Announcements" = "Announcements";
+
+"Signup" = "Cadastro";
